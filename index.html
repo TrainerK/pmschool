@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>독일피엠학교</title>
+    <style>
+        :root{--primary-bg:#000;--primary-text:#fff;--accent-color:#FFD700;--secondary-bg:#333;--hover-bg:#666;--border-radius:8px;--transition:all 0.3s ease;}
+        *{margin:0;padding:0;box-sizing:border-box;}
+        body{background:var(--primary-bg)!important;color:var(--primary-text);font-family:Arial,sans-serif;padding:20px 10px!important;min-height:100vh;overflow-x:hidden;}
+        .header{text-align:center;margin-bottom:25px!important;}
+        .header h1{color:#ccc;font-size:18px!important;margin-bottom:5px!important;}
+        .header h2{color:var(--accent-color);font-size:32px!important;font-weight:bold!important;}
+        .menu-container{max-width:500px;margin:0 auto;position:relative;}
+        .button-row{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px;}
+        .menu-button{width:100%;height:70px!important;font-size:28px!important;font-weight:bold!important;border:none;border-radius:15px;cursor:pointer;transition:var(--transition);color:var(--primary-text)!important;position:relative;z-index:1;}
+        .menu-button:hover{transform:translateY(-2px);box-shadow:0 6px 12px rgba(0,0,0,0.4);}
+        .menu-button:disabled{opacity:0.3;cursor:not-allowed;transform:none;}
+        .btn-1{background:linear-gradient(145deg,#ff6b7a,#ff5252)!important;}
+        .btn-2{background:linear-gradient(145deg,#4ecdc4,#26a69a)!important;}
+        .btn-3{background:linear-gradient(145deg,#42a5f5,#1e88e5)!important;}
+        .btn-4{background:linear-gradient(145deg,#a5d6a7,#66bb6a)!important;}
+        .btn-5{background:linear-gradient(145deg,#ffb74d,#ff9800)!important;}
+        .btn-6{background:linear-gradient(145deg,#ab47bc,#8e24aa)!important;}
+        .btn-7{background:linear-gradient(145deg,#f06292,#e91e63)!important;}
+        .btn-8{background:linear-gradient(145deg,#ba68c8,#9c27b0)!important;}
+        .btn-9{background:linear-gradient(145deg,#ffb74d,#ff9800)!important;}
+        .btn-10{background:linear-gradient(145deg,#42a5f5,#1976d2)!important;}
+        .btn-11{background:linear-gradient(145deg,#4dd0e1,#00acc1)!important;}
+        .btn-12{background:linear-gradient(145deg,#f06292,#ec407a)!important;}
+        .dropdown-container{width:100%;margin:0;position:relative;z-index:2;}
+        .dropdown-content{display:none;background:var(--secondary-bg);border-radius:10px;padding:15px;margin:8px 0;box-shadow:0 4px 8px rgba(0,0,0,0.3);}
+        .dropdown-content.show{display:block;}
+        .news-item,.group-item,.alarm-item,.catalog-item{background:#555;color:var(--primary-text);padding:12px 15px!important;margin:5px 0;border-radius:var(--border-radius);cursor:pointer;font-size:16px!important;transition:var(--transition);}
+        .news-item:hover,.group-item:hover,.alarm-item:hover,.catalog-item:hover{background:var(--hover-bg);}
+        .program-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+        .program-item{background:#555;color:var(--primary-text);padding:15px 15px 15px 10px!important;border-radius:var(--border-radius);cursor:pointer;font-size:16px!important;text-align:right!important;transition:var(--transition);}
+        .program-item:hover{background:var(--hover-bg);}
+        .program-word{font-size:21px!important;}
+        .program-suffix{font-size:15px!important;}
+        .footer{text-align:center;margin-top:25px!important;color:#ccc;font-size:14px!important;}
+        .health-modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.95);z-index:2000;justify-content:center;align-items:center;padding:10px;}
+        .health-modal-content{background:linear-gradient(145deg,var(--secondary-bg),#444);border-radius:15px;padding:20px;max-width:95%;width:100%;max-width:500px;text-align:left;border:2px solid var(--accent-color);box-shadow:0 8px 25px rgba(255,215,0,0.3);max-height:90vh;overflow-y:auto;}
+        .health-title{color:var(--accent-color);font-size:20px;margin-bottom:15px;font-weight:bold;text-align:center;line-height:1.3;}
+        .health-subtitle{color:#ccc;font-size:14px;margin-bottom:20px;line-height:1.4;text-align:center;}
+        .question-group{margin-bottom:15px;}
+        .question-label{color:var(--accent-color);font-size:14px;font-weight:bold;margin-bottom:8px;display:block;}
+        .question-input,.question-select{width:100%;padding:10px;font-size:14px;border:1px solid #555;border-radius:6px;background:#222;color:var(--primary-text);margin-bottom:5px;}
+        .question-input:focus,.question-select:focus{border-color:var(--accent-color);outline:none;}
+        .radio-group{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:5px;}
+        .radio-item{display:flex;align-items:center;gap:5px;min-width:80px;}
+        .radio-item input[type="radio"]{margin:0;}
+        .radio-item label{font-size:14px;color:var(--primary-text);cursor:pointer;}
+        .checkbox-group{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:5px;}
+        .checkbox-item{display:flex;align-items:center;gap:5px;min-width:70px;}
+        .checkbox-item input[type="checkbox"]{margin:0;}
+        .checkbox-item label{font-size:13px;color:var(--primary-text);cursor:pointer;}
+        .health-buttons{display:flex;gap:8px;margin-top:20px;}
+        .health-btn{flex:1;padding:12px;font-size:14px;font-weight:bold;border:none;border-radius:8px;cursor:pointer;transition:var(--transition);}
+        .health-btn-close{background:#666;color:var(--primary-text);}
+        .health-btn-prev{background:#f44336;color:var(--primary-text);}
+        .health-btn-next{background:#4CAF50;color:var(--primary-text);}
+        .health-btn-submit{background:var(--accent-color);color:#000;}
+        .health-btn:hover{transform:translateY(-1px);opacity:0.9;}
+        .page-indicator{text-align:center;margin-bottom:15px;color:#888;font-size:12px;}
+        .two-input-row{display:flex;gap:8px;}
+        .two-input-row input{flex:1;}
+        @media (max-width:480px){
+            body{padding:15px 5px!important;}
+            .menu-button{font-size:24px!important;height:65px!important;}
+            .header h2{font-size:28px!important;}
+            .button-row{gap:6px;margin-bottom:6px;}
+            .health-modal-content{padding:15px;margin:5px;}
+            .health-title{font-size:18px;}
+            .health-subtitle{font-size:13px;}
+            .question-label{font-size:13px;}
+            .question-input,.question-select{padding:8px;font-size:13px;}
+            .health-btn{padding:10px;font-size:13px;}
+            .radio-item label,.checkbox-item label{font-size:12px;}
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>God is Love</h1>
+        <h2>독일피엠학교</h2>
+    </div>
+    
+    <div class="menu-container">
+        <div class="button-row">
+            <button class="menu-button btn-1" onclick="toggleDropdown('news')">피엠소식</button>
+            <button class="menu-button btn-2" onclick="toggleDropdown('group')">그룹메세지</button>
+        </div>
+        
+        <div class="dropdown-container">
+            <div class="dropdown-content" id="news-dropdown">
+                <div class="news-item" onclick="alert('공지사항 기능')">공지사항</div>
+                <div class="news-item" onclick="alert('카드 무이자 정보')">이달의 카드 무이자</div>
+                <div class="news-item" onclick="alert('BA 행사 정보')">이달의 BA 행사</div>
+                <div class="news-item" onclick="alert('BA 이벤트 정보')">이달의 BA 이벤트</div>
+                <div class="news-item" onclick="alert('월말 이벤트 정보')">이달의 월말 이벤트</div>
+                <div class="news-item" onclick="alert('특별 이벤트 정보')">이달의 특별 이벤트</div>
+                <div class="news-item" onclick="alert('본사 일정 정보')">이달의 본사 일정</div>
+                <div class="news-item" onclick="alert('규정위반 조치안내')">규정위반 조치안내</div>
+                <div class="news-item" onclick="alert('전국지사 정보')">독일피엠 전국지사 및 반품처</div>
+            </div>
+        </div>
+
+        <div class="dropdown-container">
+            <div class="dropdown-content" id="group-dropdown">
+                <div class="group-item" onclick="alert('체험사례 정보')">참고용 체험사례들</div>
+                <div class="group-item" onclick="alert('트레이너 K 일정')">트레이너 K 일정</div>
+                <div class="group-item" onclick="alert('학교 소식')">독일피엠학교 소식</div>
+                <div class="group-item" onclick="alert('학교 문화')">독일피엠학교 문화</div>
+                <div class="group-item" onclick="alert('학교 이벤트')">독일피엠학교 이벤트</div>
+                <div class="group-item" onclick="alert('교육프로그램')">독일피엠학교 교육프로그램</div>
+                <div class="group-item" onclick="alert('교칙 및 후원안내')">독일피엠학교 교칙 및 후원안내</div>
+            </div>
+        </div>
+        
+        <div class="button-row">
+            <button class="menu-button btn-3" onclick="toggleDropdown('program')">프로그램</button>
+            <button class="menu-button btn-4" onclick="alert('주문서 작성 기능')">주문서작성</button>
+        </div>
+        
+        <div class="dropdown-container">
+            <div class="dropdown-content" id="program-dropdown">
+                <div class="program-grid">
+                    <div class="program-item" onclick="alert('해독 프로그램')"><span class="program-word">해독</span> <span class="program-suffix">프로그램</span></div>
+                    <div class="program-item" onclick="alert('다이어트 프로그램')"><span class="program-word">다이어트</span> <span class="program-suffix">프로그램</span></div>
+                    <div class="program-item" onclick="alert('장건강 프로그램')"><span class="program-word">장건강</span> <span class="program-suffix">프로그램</span></div>
+                    <div class="program-item" onclick="alert('혈당관리 프로그램')"><span class="program-word">혈당관리</span> <span class="program-suffix">프로그램</span></div>
+                    <div class="program-item" onclick="alert('눈건강 프로그램')"><span class="program-word">눈건강</span> <span class="program-suffix">프로그램</span></div>
+                    <div class="program-item" onclick="alert('혈압관리 프로그램')"><span class="program-word">혈압관리</span> <span class="program-suffix">프로그램</span></div>
+                    <div class="program-item" onclick="alert('뼈건강 프로그램')"><span class="program-word">뼈건강</span> <span class="program-suffix">프로그램</span></div>
+                    <div class="program-item" onclick="alert('혈액생성 프로그램')"><span class="program-word">혈액생성</span> <span class="program-suffix">프로그램</span></div>
+                    <div class="program-item" onclick="alert('갱년기 프로그램')"><span class="program-word">갱년기</span> <span class="program-suffix">프로그램</span></div>
+                    <div class="program-item" onclick="alert('혈관건강 프로그램')"><span class="program-word">혈관건강</span> <span class="program-suffix">프로그램</span></div>
+                    <div class="program-item" onclick="alert('전립선 프로그램')"><span class="program-word">전립선</span> <span class="program-suffix">프로그램</span></div>
+                    <div class="program-item" onclick="alert('염증제거 프로그램')"><span class="program-word">염증제거</span> <span class="program-suffix">프로그램</span></div>
+                    <div class="program-item" onclick="alert('고지혈 프로그램')"><span class="program-word">고지혈</span> <span class="program-suffix">프로그램</span></div>
+                    <div class="program-item" onclick="alert('피로회복 프로그램')"><span class="program-word">피로회복</span> <span class="program-suffix">프로그램</span></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="button-row">
+            <button class="menu-button btn-5" onclick="alert('카탈로그 기능')">카탈로그</button>
+            <button class="menu-button btn-6" onclick="alert('섭취알람기 기능')">섭취알람기</button>
+        </div>
+        
+        <div class="button-row">
+            <button class="menu-button btn-7" onclick="alert('섭취방법 기능')">섭취방법</button>
+            <button class="menu-button btn-8" onclick="window.open('https://www.youtube.com/@독일피엠학교', '_blank')">유튜브채널</button>
+        </div>
+        
+        <div class="button-row">
+            <button class="menu-button btn-9" onclick="openHealthSurvey()">건강상담</button>
+            <button class="menu-button btn-10" onclick="window.open('https://m.cafe.naver.com/fitlineschool.cafe?', '_blank')">네이버카페</button>
+        </div>
+        
+        <div class="button-row">
+            <button class="menu-button btn-11" onclick="window.open('https://xn--9d0bl6jk3qcqb4w6a9e.com/', '_blank')">홈페이지</button>
+            <button class="menu-button btn-12" onclick="window.open('https://pms.liveklass.com/', '_blank')">강의사이트</button>
+        </div>
+    </div>
+
+    <!-- 건강상담 모달 -->
+    <div class="health-modal" id="health-modal">
+        <div class="health-modal-content">
+            <div class="page-indicator" id="page-indicator">1 / 8</div>
+            
+            <!-- 페이지 1: 1-4번 질문 -->
+            <div class="survey-page" id="page-1">
+                <div class="health-title">개인맞춤 영양설계를 위한<br>사전문진표</div>
+                <div class="health-subtitle">😊 건강상담을 보다 정확하게 도와드리기 위해, 간단한 질문 몇가지를 드리려고 합니다. 편하게 답해주시면 감사하겠습니다!</div>
+                
+                <div class="question-group">
+                    <label class="question-label">당신의 성별은 무엇인가요?</label>
+                    <select class="question-select" id="q1">
+                        <option value="">성별을 선택해 주세요</option>
+                        <option value="남성">남성</option>
+                        <option value="여성">여성</option>
+                    </select>
+                </div>
+                
+                <div class="question-group">
+                    <label class="question-label">당신의 키는 몇 cm인가요?</label>
+                    <input type="number" class="question-input" id="q2" placeholder="숫자만 입력해 주세요 (예: 165)">
+                </div>
+                
+                <div class="question-group">
+                    <label class="question-label">당신의 몸무게는 몇 kg인가요?</label>
+                    <input type="number" class="question-input" id="q3" placeholder="숫자만 입력해 주세요 (예: 55)">
+                </div>
+                
+                <div class="question-group">
+                    <label class="question-label">당신은 몇년생인가요?</label>
+                    <input type="number" class="question-input" id="q4" placeholder="숫자만 입력해 주세요 (예: 1970)">
+                </div>
+            </div>
+
+            <!-- 페이지 2: 5-8번 질문 -->
+            <div class="survey-page" id="page-2" style="display:none;">
+                <div class="health-title">개인맞춤 영양설계를 위한<br>사전문진표</div>
+                
+                <div class="question-group">
+                    <label class="question-label">당신은 수술 또는 시술을 한적이 있나요?</label>
+                    <div class="radio-group">
+                        <div class="radio-item">
+                            <input type="radio" name="q5" value="있다" id="q5_1">
+                            <label for="q5_1">있다</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" name="q5" value="없다" id="q5_2">
+                            <label for="q5_2">없다</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="question-group">
+                    <label class="question-label">당신은 술을 드시나요?</label>
+                    <div class="radio-group">
+                        <div class="radio-item">
+                            <input type="radio" name="q6" value="먹는다" id="q6_1">
+                            <label for="q6_1">먹는다</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" name="q6" value="전혀 안먹는다" id="q6_2">
+                            <label for="q6_2">전혀 안먹는다</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="question-group">
+                    <label class="question-label">당신은 흡연을 하시나요?</label>
+                    <div class="radio-group">
+                        <div class="radio-item">
+                            <input type="radio" name="q7" value="한다" id="q7_1">
+                            <label for="q7_1">한다</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" name="q7" value="안한다" id="q7_2">
+                            <label for="q7_2">안한다</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="question-group">
+                    <label class="question-label">당신은 우유를 섭취하면 설사를 하나요?</label>
+                    <div class="radio-group">
+                        <div class="radio-item">
+                            <input type="radio" name="q8" value="한다" id="q8_1">
+                            <label for="q8_1">한다</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" name="q8" value="안한다" id="q8_2">
+                            <label for="q8_2">안한다</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 페이지 3: 9-12번 질문 -->
+            <div class="survey-page" id="page-3" style="display:none;">
+                <div class="health-title">개인맞춤 영양설계를 위한<br>사전문진표</div>
+                
+                <div class="question-group">
+                    <label class="question-label">당신은 하루에 커피를 몇잔정도 드시나요?</label>
+                    <div class="two-input-row">
+                        <input type="number" class="question-input" id="q9" placeholder="숫자만">
+                        <span style="color:#ccc;align-self:center;flex:0 0 auto;padding:0 5px;">잔</span>
+                    </div>
+                </div>
+                
+                <div class="question-group">
+                    <label class="question-label">당신의 대변보는 주기는 어떤가요?</label>
+                    <div class="two-input-row">
+                        <input type="number" class="question-input" id="q10_1" placeholder="숫자">
+                        <span style="color:#ccc;align-self:center;flex:0 0 auto;padding:0 5px;">일에</span>
+                        <input type="number" class="question-input" id="q10_2" placeholder="숫자">
+                        <span style="color:#ccc;align-self:center;flex:0 0 auto;padding:0 5px;">회</span>
+                    </div>
+                </div>
+                
+                <div class="question-group">
+                    <label class="question-label">당신이 1가지만 먹고 살아야 한다면 무엇을 선택하겠습니까?</label>
+                    <div class="radio-group">
+                        <div class="radio-item">
+                            <input type="radio" name="q11" value="육식" id="q11_1">
+                            <label for="q11_1">육식</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" name="q11" value="생선" id="q11_2">
+                            <label for="q11_2">생선</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" name="q11" value="채식" id="q11_3">
+                            <label for="q11_3">채식</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" name="q11" value="과일" id="q11_4">
+                            <label for="q11_4">과일</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="question-group">
+                    <label class="question-label">당신은 국,찌게,탕,라면 등을 요리할때 수돗물을 사용하나요?</label>
+                    <div class="radio-group">
+                        <div class="radio-item">
+                            <input type="radio" name="q12" value="사용한다" id="q12_1">
+                            <label for="q12_1">사용한다</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" name="q12" value="사용안한다" id="q12_2">
+                            <label for="q12_2">사용안한다</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 페이지 4: 13-16번 질문 -->
+            <div class="survey-page" id="page-4" style="display:none;">
+                <div class="health-title">개인맞춤 영양설계를 위한<br>사전문진표</div>
+                
+                <div class="question-group">
+                    <label class="question-label">당신은 하루 평균 몇 끼를 드시나요?</label>
+                    <div class="radio-group">
+                        <div class="radio-item">
+                            <input type="radio" name="q13" value="1끼" id="q13_1">
+                            <label for="q13_1">1끼</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" name="q13" value="2끼" id="q13_2">
+                            <label for="q13_2">2끼</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" name="q13" value="3끼" id="q13_3">
+                            <label for="q13_3">3끼</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" name="q13" value="불규칙" id="q13_4">
+                            <label for="q13_4">불규칙</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="question-group">
+                    <label class="question-label">당신의 식사시간은 주로 어떻게 되시나요? (복수선택 가능)</label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="q14" value="아침" id="q14_1">
+                            <label for="q14_1">아침</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="q14" value="오전" id="q14_2">
+                            <label for="q14_2">오전</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="q14" value="점심" id="q14_3">
+                            <label for="q14_3">점심</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="q14" value="오후" id="q14_4">
+                            <label for="q14_4">오후</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="q14" value="저녁" id="q14_5">
+                            <label for="q14_5">저녁</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="q14" value="밤" id="q14_6">
+                            <label for="q14_6">밤</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="question-group">
+                    <label class="question-label">당신은 음식 섭취 후 속쓰림, 더부룩함, 가스, 트림 등이 자주 발생하나요?</label>
+                    <div class="radio-group">
+                        <div class="radio-item">
+                            <input type="radio" name="q15" value="그렇다" id="q15_1">
+                            <label for="q15_1">그렇다</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" name="q15" value="그렇지않다" id="q15_2">
+                            <label for="q15_2">그렇지않다</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="question-group">
+                    <label class="question-label">당신은 특별히 알러지 반응이 있는 음식이 있으신가요?</label>
+                    <div class="two-input-row">
+                        <input type="text" class="question-input" id="q16" placeholder="알러지 음식을 입력하세요">
+                        <span style="color:#ccc;align-self:center;flex:0 0 auto;padding:0 5px;">알러지가 있다.</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 페이지 5: 17-20번 질문 -->
+            <div class="survey-page" id="page-5" style="display:none;">
+                <div class="health-title">개인맞춤 영양설계를 위한<br>사전문진표</div>
+                
+                <div class="question-group">
+                    <label class="question-label">당신은 과거에 영양제를 섭취해 봤거나 섭취하고 있나요?</label>
+                    <div class="radio-group">
+                        <div class="radio-item">
+                            <input type="radio" name="q17" value="그렇다" id="q17_1">
+                            <label for="q17_1">그렇다</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" name="q17" value="그렇지않다" id="q17_2">
+                            <label for="q17_2">그렇지않다</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="question-group">
+                    <label class="question-label">당신은 독일피엠 제품을 섭취해 봤거나 섭취하고 있나요?</label>
+                    <div class="radio-group">
+                        <div class="radio-item">
+                            <input type="radio" name="q18" value="그렇다" id="q18_1">
+                            <label for="q18_1">그렇다</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" name="q18" value="그렇지않다" id="q18_2">
+                            <label for="q18_2">그렇지않다</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="question-group">
+                    <label class="question-label">당신은 현재 영양제가 아닌 약을 섭취하고 계신가요?</label>
+                    <div class="radio-group">
+                        <div class="radio-item">
+                            <input type="radio" name="q19" value="섭취중이다" id="q19_1">
+                            <label for="q19_1">섭취중이다</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" name="q19" value="섭취중이 아니다" id="q19_2">
+                            <label for="q19_2">섭취중이 아니다</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="question-group">
+                    <label class="question-label">당신은 지금까지 살면서 암에 걸린 적이 있나요?</label>
+                    <div class="radio-group">
+                        <div class="radio-item">
+                            <input type="radio" name="q20" value="있다" id="q20_1">
+                            <label for="q20_1">있다</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" name="q20" value="없다" id="q20_2">
+                            <label for="q20_2">없다</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 페이지 6: 21-24번 질문 -->
+            <div class="survey-page" id="page-6" style="display:none;">
+                <div class="health-title">개인맞춤 영양설계를 위한<br>사전문진표</div>
+                
+                <div class="question-group">
+                    <label class="question-label">당신은 해독이란 것을 해본적이 있나요?</label>
+                    <div class="radio-group">
+                        <div class="radio-item">
+                            <input type="radio" name="q21" value="있다" id="q21_1">
+                            <label for="q21_1">있다</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" name="q21" value="없다" id="q21_2">
+                            <label for="q21_2">없다</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="question-group">
+                    <label class="question-label">당신의 하루 평균 수면 시간은 몇 시간인가요?</label>
+                    <div class="two-input-row">
+                        <input type="number" class="question-input" id="q22" placeholder="숫자만">
+                        <span style="color:#ccc;align-self:center;flex:0 0 auto;padding:0 5px;">시간</span>
+                    </div>
+                </div>
+                
+                <div class="question-group">
+                    <label class="question-label">당신의 수면은 어떤가요?</label>
+                    <div class="radio-group">
+                        <div class="radio-item">
+                            <input type="radio" name="q23" value="잠들기 힘들다" id="q23_1">
+                            <label for="q23_1">잠들기 힘들다</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" name="q23" value="중간에 자주깬다" id="q23_2">
+                            <label for="q23_2">중간에 자주깬다</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" name="q23" value="잘잔다" id="q23_3">
+                            <label for="q23_3">잘잔다</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="question-group">
+                    <label class="question-label">당신은 하루중 에너지가 가장 떨어지는 시간은 언제인가요?</label>
+                    <div class="radio-group">
+                        <div class="radio-item">
+                            <input type="radio" name="q24" value="아침" id="q24_1">
+                            <label for="q24_1">아침</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" name="q24" value="오전" id="q24_2">
+                            <label for="q24_2">오전</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" name="q24" value="오후" id="q24_3">
+                            <label for="q24_3">오후</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" name="q24" value="저녁" id="q24_4">
+                            <label for="q24_4">저녁</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" name="q24" value="식후" id="q24_5">
+                            <label for="q24_5">식후</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" name="q24" value="일정치않음" id="q24_6">
+                            <label for="q24_6">일정치않음</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 페이지 7: 25-28번 질문 -->
+            <div class="survey-page" id="page-7" style="display:none;">
+                <div class="health-title">개인맞춤 영양설계를 위한<br>사전문진표</div>
+                
+                <div class="question-group">
+                    <label class="question-label">당신은 지금 생활하면서 제일 불편한 점이 무엇인가요 이것만 좋아지면 좋겠다 라는 것을 적어주세요.</label>
+                    <textarea class="question-input" id="q25" placeholder="불편한 점을 자유롭게 작성해주세요" rows="3"></textarea>
+                </div>
+                
+                <div class="question-group">
+                    <label class="question-label">당신은 스트레스를 얼마나 느끼시나요?</label>
+                    <div class="radio-group">
+                        <div class="radio-item">
+                            <input type="radio" name="q26" value="거의없음" id="q26_1">
+                            <label for="q26_1">거의없음</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" name="q26" value="가끔" id="q26_2">
+                            <label for="q26_2">가끔</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" name="q26" value="자주" id="q26_3">
+                            <label for="q26_3">자주</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" name="q26" value="매우심함" id="q26_4">
+                            <label for="q26_4">매우심함</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="question-group">
+                    <label class="question-label">당신은 아직 생리를 하시나요?</label>
+                    <div class="radio-group">
+                        <div class="radio-item">
+                            <input type="radio" name="q27" value="잘한다" id="q27_1">
+                            <label for="q27_1">잘한다</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" name="q27" value="불순하다" id="q27_2">
+                            <label for="q27_2">불순하다</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" name="q27" value="폐경이다" id="q27_3">
+                            <label for="q27_3">폐경이다</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" name="q27" value="폐경진행중이다" id="q27_4">
+                            <label for="q27_4">폐경진행중이다</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="question-group">
+                    <label class="question-label">당신은 생리통 또는 생리전증상(PMS)은 있으신가요?</label>
+                    <div class="radio-group">
+                        <div class="radio-item">
+                            <input type="radio" name="q28" value="전혀없다" id="q28_1">
+                            <label for="q28_1">전혀없다</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" name="q28" value="가볍게 있다" id="q28_2">
+                            <label for="q28_2">가볍게 있다</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" name="q28" value="매우 심하다" id="q28_3">
+                            <label for="q28_3">매우 심하다</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 페이지 8: 29-31번 질문 -->
+            <div class="survey-page" id="page-8" style="display:none;">
+                <div class="health-title">개인맞춤 영양설계를 위한<br>사전문진표</div>
+                
+                <div class="question-group">
+                    <label class="question-label">당신의 이름은 무엇인가요?</label>
+                    <input type="text" class="question-input" id="q29" placeholder="이름을 입력해주세요">
+                </div>
+                
+                <div class="question-group">
+                    <label class="question-label">당신이 연락받을 핸드폰 번호를 알려주세요?</label>
+                    <input type="tel" class="question-input" id="q30" placeholder="010-0000-0000">
+                </div>
+                
+                <div class="question-group">
+                    <label class="question-label">당신은 이 문진표를 보내고 상담받기를 원하시면 눌러주세요.</label>
+                    <button class="health-btn health-btn-submit" onclick="submitSurvey()" style="width:100%;margin-top:10px;">상담요청</button>
+                </div>
+            </div>
+
+            <div class="health-buttons">
+                <button class="health-btn health-btn-close" onclick="closeHealthSurvey()">닫기</button>
+                <button class="health-btn health-btn-prev" onclick="prevPage()" id="prev-btn" style="display:none;">이전</button>
+                <button class="health-btn health-btn-next" onclick="nextPage()" id="next-btn">다음</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        독일피엠 프리미엄그룹<br/>
+        독일피엠학교 @ 2025
+    </div>
+
+    <script>
+        let currentDropdown = null;
+        let currentPage = 1;
+        const totalPages = 8;
+
+        function toggleDropdown(type) {
+            const dropdowns = ['news', 'program'];
+            const targetDropdown = document.getElementById(type + '-dropdown');
+            
+            dropdowns.forEach(dropdown => {
+                if (dropdown !== type) {
+                    const element = document.getElementById(dropdown + '-dropdown');
+                    if (element) {
+                        element.classList.remove('show');
+                    }
+                }
+            });
+            
+            if (targetDropdown) {
+                if (currentDropdown === type && targetDropdown.classList.contains('show')) {
+                    targetDropdown.classList.remove('show');
+                    currentDropdown = null;
+                } else {
+                    targetDropdown.classList.add('show');
+                    currentDropdown = type;
+                }
+            }
+        }
+
+        function openHealthSurvey() {
+            document.getElementById('health-modal').style.display = 'flex';
+            currentPage = 1;
+            updatePageDisplay();
+        }
+
+        function closeHealthSurvey() {
+            document.getElementById('health-modal').style.display = 'none';
+            currentPage = 1;
+            updatePageDisplay();
+        }
+
+        function nextPage() {
+            if (currentPage < totalPages) {
+                currentPage++;
+                updatePageDisplay();
+            }
+        }
+
+        function prevPage() {
+            if (currentPage > 1) {
+                currentPage--;
+                updatePageDisplay();
+            }
+        }
+
+        function updatePageDisplay() {
+            // 모든 페이지 숨기기
+            for (let i = 1; i <= totalPages; i++) {
+                document.getElementById('page-' + i).style.display = 'none';
+            }
+            
+            // 현재 페이지 보이기
+            document.getElementById('page-' + currentPage).style.display = 'block';
+            
+            // 페이지 인디케이터 업데이트
+            document.getElementById('page-indicator').textContent = currentPage + ' / ' + totalPages;
+            
+            // 버튼 상태 업데이트
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+            
+            if (currentPage === 1) {
+                prevBtn.style.display = 'none';
+            } else {
+                prevBtn.style.display = 'block';
+            }
+            
+            if (currentPage === totalPages) {
+                nextBtn.style.display = 'none';
+            } else {
+                nextBtn.style.display = 'block';
+            }
+        }
+
+        function submitSurvey() {
+            // 모든 답변 수집
+            const answers = {};
+            
+            // 기본 정보
+            answers.q1 = document.getElementById('q1').value;
+            answers.q2 = document.getElementById('q2').value;
+            answers.q3 = document.getElementById('q3').value;
+            answers.q4 = document.getElementById('q4').value;
+            
+            // 라디오 버튼 답변들
+            for (let i = 5; i <= 28; i++) {
+                if (i === 10) {
+                    answers.q10_1 = document.getElementById('q10_1').value;
+                    answers.q10_2 = document.getElementById('q10_2').value;
+                    continue;
+                }
+                if (i === 14) {
+                    const checkboxes = document.querySelectorAll('input[name="q14"]:checked');
+                    answers.q14 = Array.from(checkboxes).map(cb => cb.value);
+                    continue;
+                }
+                const radio = document.querySelector('input[name="q' + i + '"]:checked');
+                if (radio) answers['q' + i] = radio.value;
+            }
+            
+            // 기타 입력들
+            answers.q9 = document.getElementById('q9').value;
+            answers.q16 = document.getElementById('q16').value;
+            answers.q22 = document.getElementById('q22').value;
+            answers.q25 = document.getElementById('q25').value;
+            answers.q29 = document.getElementById('q29').value;
+            answers.q30 = document.getElementById('q30').value;
+            
+            alert('문진표가 제출되었습니다!\n상담사가 검토 후 연락드리겠습니다.\n\n이름: ' + answers.q29 + '\n연락처: ' + answers.q30);
+            closeHealthSurvey();
+        }
+
+        // 외부 클릭 시 드롭다운 닫기
+        document.addEventListener('click', function(event) {
+            const menuContainer = document.querySelector('.menu-container');
+            const healthModal = document.getElementById('health-modal');
+            
+            if (!menuContainer.contains(event.target) && !healthModal.contains(event.target)) {
+                const dropdowns = ['news', 'program'];
+                dropdowns.forEach(dropdown => {
+                    const element = document.getElementById(dropdown + '-dropdown');
+                    if (element) {
+                        element.classList.remove('show');
+                    }
+                });
+                currentDropdown = null;
+            }
+        });
+
+        // 키보드 이벤트
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeHealthSurvey();
+            }
+        });
+    </script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"rayId":"95498906afb629d1","serverTiming":{"name":{"cfExtPri":true,"cfEdge":true,"cfOrigin":true,"cfL4":true,"cfSpeedBrain":true,"cfCacheStatus":true}},"version":"2025.6.2","token":"4edd5f8ec12a48cfa682ab8261b80a79"}' crossorigin="anonymous"></script>
+</body>
+</html>
+    <script id="html_badge_script1">
+        window.__genspark_remove_badge_link = "https://www.genspark.ai/api/html_badge/" +
+            "remove_badge?token=To%2FBnjzloZ3UfQdcSaYfDqfQbRbaiYQpKwjKU7bgSxJisL41DlMrjgXDYz9ea4fDPEJptNgujBGnfIeLOp5GAqccXCi7RzvuQXbBBOrYP42UTSFmKmOlVImnk1L1rO58fhCN3qnLtJdGErMs1l2WQ43xA4pHgTxM4cQhQtqlBXNub%2Fzk%2F7Uq%2FfTkJR21zluA15HnbR5qQaSeRiViOd4B8uaOzVH3cspWCDQaUhlymk2nBBZjpISr0pV9x4Y1NClEOmUWYcjQNh3xmfnM%2Bma6dudlDLRARZfTpQ7y0BTEJzAL6jQ6eB%2FgI%2FvLhMNtIdcME79wmS6oCDVRJhzYKxzIh9anXqyXcqEd7RsQnsO8OPUMEu4X3EEgGRzHIBLgReqL8UGwzOwXX%2BDmFjgMhiQoVAA4UAtUYoYWwRrCopBQBSsX%2Feyb3rWl2bORNL71KK%2BnA942aBurxnjiAqCd%2Bh75AnMxlPebbqGLQNx0VhNz7sacLua0gLIyaNkhuh%2BHREBFNqtcQgh%2BJ4kPzUcwIeEnJgAfp8LRUxgAVTQl%2FTAkTKs%3D";
+        window.__genspark_locale = "ko-KR";
+        window.__genspark_token = "To/BnjzloZ3UfQdcSaYfDqfQbRbaiYQpKwjKU7bgSxJisL41DlMrjgXDYz9ea4fDPEJptNgujBGnfIeLOp5GAqccXCi7RzvuQXbBBOrYP42UTSFmKmOlVImnk1L1rO58fhCN3qnLtJdGErMs1l2WQ43xA4pHgTxM4cQhQtqlBXNub/zk/7Uq/fTkJR21zluA15HnbR5qQaSeRiViOd4B8uaOzVH3cspWCDQaUhlymk2nBBZjpISr0pV9x4Y1NClEOmUWYcjQNh3xmfnM+ma6dudlDLRARZfTpQ7y0BTEJzAL6jQ6eB/gI/vLhMNtIdcME79wmS6oCDVRJhzYKxzIh9anXqyXcqEd7RsQnsO8OPUMEu4X3EEgGRzHIBLgReqL8UGwzOwXX+DmFjgMhiQoVAA4UAtUYoYWwRrCopBQBSsX/eyb3rWl2bORNL71KK+nA942aBurxnjiAqCd+h75AnMxlPebbqGLQNx0VhNz7sacLua0gLIyaNkhuh+HREBFNqtcQgh+J4kPzUcwIeEnJgAfp8LRUxgAVTQl/TAkTKs=";
+    </script>
+    
+    <script id="html_notice_dialog_script" src="https://www.genspark.ai/notice_dialog.js"></script>
+    
