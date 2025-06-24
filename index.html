@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>독일피엠학교</title>
+    <style>
+        :root{--primary-bg:#000;--primary-text:#fff;--accent-color:#FFD700;--secondary-bg:#333;--hover-bg:#666;--border-radius:8px;--transition:all 0.3s ease}*{margin:0;padding:0;box-sizing:border-box}body{background:var(--primary-bg)!important;color:var(--primary-text);font-family:Arial,sans-serif;padding:20px 10px!important;min-height:100vh;overflow-x:hidden}.header{text-align:center;margin-bottom:25px!important}.header h1{color:#ccc;font-size:18px!important;margin-bottom:5px!important}.header h2{color:var(--accent-color);font-size:32px!important;font-weight:bold!important}.menu-container{max-width:500px;margin:0 auto;position:relative}.button-row{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px}.menu-button{width:100%;height:70px!important;font-size:28px!important;font-weight:bold!important;border:none;border-radius:15px;cursor:pointer;transition:var(--transition);color:var(--primary-text)!important;position:relative;z-index:1}.menu-button:hover{transform:translateY(-2px);box-shadow:0 6px 12px rgba(0,0,0,0.4)}.menu-button:disabled{opacity:0.3;cursor:not-allowed;transform:none}.btn-1{background:linear-gradient(145deg,#ff6b7a,#ff5252)!important}.btn-2{background:linear-gradient(145deg,#4ecdc4,#26a69a)!important}.btn-3{background:linear-gradient(145deg,#42a5f5,#1e88e5)!important}.btn-4{background:linear-gradient(145deg,#a5d6a7,#66bb6a)!important}.btn-5{background:linear-gradient(145deg,#ffb74d,#ff9800)!important}.btn-6{background:linear-gradient(145deg,#ab47bc,#8e24aa)!important}.btn-7{background:linear-gradient(145deg,#f06292,#e91e63)!important}.btn-8{background:linear-gradient(145deg,#ba68c8,#9c27b0)!important}.btn-9{background:linear-gradient(145deg,#ffb74d,#ff9800)!important}.btn-10{background:linear-gradient(145deg,#42a5f5,#1976d2)!important}.btn-11{background:linear-gradient(145deg,#4dd0e1,#00acc1)!important}.btn-12{background:linear-gradient(145deg,#f06292,#ec407a)!important}.dropdown-container{width:100%;margin:0;position:relative;z-index:2}.dropdown-content{display:none;background:var(--secondary-bg);border-radius:10px;padding:15px;margin:8px 0;box-shadow:0 4px 8px rgba(0,0,0,0.3)}.dropdown-content.show{display:block}.order-dropdown{display:none;background:var(--secondary-bg);border-radius:10px;padding:15px;margin:8px 0;box-shadow:0 4px 8px rgba(0,0,0,0.3)}.order-dropdown.show{display:block}.order-top-row{display:grid;grid-template-columns:4fr 1fr 1fr;gap:10px;margin-bottom:15px}.order-select,.quantity-button,.reset-button{background:#555;color:var(--primary-text);padding:12px 10px;border-radius:var(--border-radius);border:none;font-size:14px;cursor:pointer;transition:var(--transition)}.order-select:hover,.quantity-button:hover{background:var(--hover-bg)}.order-select:focus{outline:none;background:#777}.reset-button{background:#ff4444}.reset-button:hover{background:#cc3333}.quantity-dropdown{display:none;position:absolute;top:100%;left:0;right:0;background:#444;border-radius:var(--border-radius);max-height:200px;overflow-y:auto;z-index:100;border:1px solid var(--hover-bg)}.quantity-dropdown.show{display:block}.quantity-option{padding:10px;cursor:pointer;border-bottom:1px solid #555;font-size:14px}.quantity-option:hover{background:#555}.quantity-option:last-child{border-bottom:none}.price-buttons-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:15px}.price-button{background:#555;color:var(--primary-text);padding:12px 10px;border-radius:var(--border-radius);border:none;font-size:14px;cursor:pointer;transition:var(--transition)}.price-button:hover{background:var(--hover-bg)}.price-button.selected{background:var(--accent-color)!important;color:var(--primary-bg)!important;box-shadow:0 0 10px rgba(255,215,0,0.5)}.order-bottom-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:15px}.order-bottom-button{background:var(--hover-bg);color:var(--primary-text);padding:15px 10px;border-radius:var(--border-radius);border:none;font-size:16px;font-weight:bold;cursor:pointer;transition:var(--transition);text-align:center}.order-bottom-button:hover{background:#777}.order-bottom-button.display{background:#444!important;cursor:default;color:var(--accent-color)}.order-bottom-button.display:hover{background:#444!important}.order-textbox,.memo-textbox{width:100%;background:#444;color:var(--primary-text);border:1px solid var(--hover-bg);border-radius:var(--border-radius);padding:10px;font-size:14px;resize:vertical}.order-textbox{margin-bottom:10px;min-height:200px}.memo-textbox{height:60px}.order-textbox:focus,.memo-textbox:focus{outline:none;border-color:var(--accent-color)}.news-item,.group-item,.alarm-item,.catalog-item{background:#555;color:var(--primary-text);padding:12px 15px!important;margin:5px 0;border-radius:var(--border-radius);cursor:pointer;font-size:16px!important;transition:var(--transition)}.news-item:hover,.group-item:hover,.alarm-item:hover,.catalog-item:hover{background:var(--hover-bg)}.news-item:disabled{opacity:0.3;cursor:not-allowed;background:var(--secondary-bg)}.news-item-full{width:100%}.alarm-item{text-align:center}.time-period-buttons{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}.time-period-btn{background:#555;color:var(--primary-text);padding:12px 15px;border-radius:var(--border-radius);border:none;cursor:pointer;font-size:16px;transition:var(--transition);text-align:center}.time-period-btn:hover{background:var(--hover-bg)}.time-period-btn.selected{background:var(--accent-color)!important;color:var(--primary-bg)!important}.program-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.program-item{background:#555;color:var(--primary-text);padding:15px 15px 15px 10px!important;border-radius:var(--border-radius);cursor:pointer;font-size:16px!important;text-align:right!important;transition:var(--transition)}.program-item:hover{background:var(--hover-bg)}.program-word{font-size:21px!important}.program-suffix{font-size:15px!important}.intake-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:10px}.intake-bottom{display:grid;grid-template-columns:1fr 1fr;gap:8px}.intake-item{background:#555;color:var(--primary-text);padding:10px 8px!important;border-radius:var(--border-radius);cursor:pointer;font-size:14px!important;text-align:center;transition:var(--transition)}.intake-item:hover{background:var(--hover-bg)}.intake-bottom .intake-item{font-size:16px!important;padding:12px 8px!important}.auth-modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.9);z-index:2000;justify-content:center;align-items:center;padding:20px}.auth-modal-content{background:linear-gradient(145deg,var(--secondary-bg),#444);border-radius:20px;padding:30px;max-width:400px;width:100%;text-align:center;border:2px solid var(--accent-color);box-shadow:0 8px 25px rgba(255,215,0,0.3)}.auth-modal h3{color:var(--accent-color);font-size:24px;margin-bottom:20px;font-weight:bold}.auth-modal p{color:#ccc;font-size:16px;margin-bottom:25px;line-height:1.5}.auth-input{width:100%;padding:15px;font-size:18px;text-align:center;border:2px solid #555;border-radius:10px;background:#222;color:var(--primary-text);margin-bottom:15px}.auth-input:focus{border-color:var(--accent-color);outline:none;box-shadow:0 0 10px rgba(255,215,0,0.5)}.auth-buttons{display:flex;gap:15px;margin-top:20px}.auth-btn{flex:1;padding:15px;font-size:18px;font-weight:bold;border:none;border-radius:10px;cursor:pointer;transition:var(--transition)}.auth-btn-confirm{background:linear-gradient(145deg,#4CAF50,#45a049);color:var(--primary-text)}.auth-btn-confirm:hover{background:linear-gradient(145deg,#45a049,#4CAF50);transform:translateY(-2px);box-shadow:0 4px 12px rgba(76,175,80,0.4)}.auth-btn-cancel{background:linear-gradient(145deg,#f44336,#da190b);color:var(--primary-text)}.auth-btn-cancel:hover{background:linear-gradient(145deg,#da190b,#f44336);transform:translateY(-2px);box-shadow:0 4px 12px rgba(244,67,54,0.4)}.auth-message{margin-top:15px;font-size:16px;font-weight:bold}.auth-success{color:#4CAF50}.auth-error{color:#f44336}.auth-loading{color:var(--accent-color)}.popup-overlay,.slide-popup-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.9);z-index:1000;justify-content:center;align-items:center;padding:10px}.popup-content,.slide-popup-content{position:relative;max-width:95%;max-height:95%;background:transparent;display:flex;justify-content:center;align-items:center}.slide-popup-content{flex-direction:column}.popup-image,.slide-image{max-width:100%;max-height:100%;width:auto;height:auto;border-radius:10px;box-shadow:0 4px 20px rgba(255,255,255,0.1)}.slide-container{position:relative;width:100%;height:auto;display:flex;justify-content:center;align-items:center}.slide-image{display:none;max-height:80vh}.slide-image.active{display:block}.slide-nav{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,0.7);color:var(--primary-text);border:2px solid var(--primary-text);border-radius:50%;width:50px;height:50px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:20px;font-weight:bold;transition:var(--transition)}.slide-nav:hover{background:rgba(255,255,255,0.2)}.slide-nav.prev{left:-60px}.slide-nav.next{right:-60px}.slide-indicator{margin-top:20px;color:var(--primary-text);font-size:18px;font-weight:bold;text-align:center;background:rgba(0,0,0,0.7);padding:8px 16px;border-radius:20px;border:1px solid var(--primary-text)}.popup-close,.slide-close{position:absolute;top:-40px;right:-10px;color:var(--primary-text);font-size:30px;cursor:pointer;background:rgba(0,0,0,0.7);border-radius:50%;width:40px;height:40px;display:flex;align-items:center;justify-content:center;border:2px solid var(--primary-text)}.slide-close{top:-50px}.popup-close:hover,.slide-close:hover{background:rgba(255,255,255,0.2)}.alarm-controls{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:8px;margin-bottom:15px}.alarm-control-btn{background:#555;color:var(--primary-text);padding:12px 8px;border-radius:var(--border-radius);border:none;font-size:14px;cursor:pointer;transition:var(--transition);text-align:center}.alarm-control-btn:hover{background:var(--hover-bg)}.alarm-control-btn.active-on{background:linear-gradient(145deg,#4CAF50,#45a049)!important}.alarm-control-btn.active-off{background:linear-gradient(145deg,#f44336,#da190b)!important}.alarm-settings{margin-top:10px}.alarm-row{display:grid;grid-template-columns:15% 15% 15% 50%;gap:8px;margin-bottom:8px}.alarm-select{background:#555;color:var(--primary-text);padding:8px 6px;border-radius:var(--border-radius);border:none;font-size:14px;cursor:pointer;transition:var(--transition)}.alarm-select:hover{background:var(--hover-bg)}.alarm-input{background:#555;color:var(--primary-text);padding:8px 6px;border-radius:var(--border-radius);border:1px solid var(--hover-bg);font-size:14px}.alarm-input:focus{outline:none;border-color:var(--accent-color)}.sound-modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.9);z-index:2000;justify-content:center;align-items:center;padding:20px}.sound-modal-content{background:linear-gradient(145deg,var(--secondary-bg),#444);border-radius:20px;padding:30px;max-width:400px;width:100%;text-align:center;border:2px solid var(--accent-color);box-shadow:0 8px 25px rgba(255,215,0,0.3)}.sound-option{background:#555;color:var(--primary-text);padding:15px;margin:10px 0;border-radius:var(--border-radius);cursor:pointer;transition:var(--transition);border:none;width:100%;font-size:16px}.sound-option:hover{background:var(--hover-bg)}.sound-option.selected{background:var(--accent-color)!important;color:var(--primary-bg)!important}.footer{text-align:center;margin-top:25px!important;color:#ccc;font-size:14px!important}@media (max-width:480px){body{padding:15px 5px!important}.menu-button{font-size:24px!important;height:65px!important}.header h2{font-size:28px!important}.button-row{gap:6px;margin-bottom:6px}.popup-close,.slide-close{top:-35px;right:-5px;font-size:25px;width:35px;height:35px}.slide-nav.prev{left:-40px}.slide-nav.next{right:-40px}.slide-nav{width:40px;height:40px;font-size:18px}.auth-modal-content{padding:20px;margin:10px}.auth-modal h3{font-size:20px}.auth-input{font-size:16px;padding:12px}.auth-btn{font-size:16px;padding:12px}.alarm-controls{grid-template-columns:1fr 1fr;gap:4px}.alarm-control-btn{font-size:12px;padding:8px 4px}.alarm-row{grid-template-columns:20% 20% 20% 40%;gap:4px}}
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>God is Love</h1>
+        <h2>독일피엠학교</h2>
+    </div>
+    
+    <div class="menu-container">
+        <div class="button-row">
+            <button class="menu-button btn-1" onclick="toggleDropdown('news')">피엠소식</button>
+            <button class="menu-button btn-2" onclick="toggleDropdown('group')">그룹메세지</button>
+        </div>
+        
+        <div class="dropdown-container">
+            <div class="dropdown-content" id="news-dropdown">
+                <div class="news-item">공지사항</div>
+                <div class="news-item" onclick="showImage('https://res.cloudinary.com/dj2g9dtca/image/upload/v1750000337/card-1.png', '카드 무이자 할부 안내')">이달의 카드 무이자</div>
+                <div class="news-item" onclick="showImage('https://res.cloudinary.com/dj2g9dtca/image/upload/v1750000337/BA-1.png', '2025년 6월 비즈니스 아카데미')">이달의 BA 행사</div>
+                <div class="news-item" onclick="showSlide('ba-event', 5)">이달의 BA 이벤트</div>
+                <div class="news-item" onclick="showImage('https://res.cloudinary.com/dj2g9dtca/image/upload/month-event-1', '월말 이벤트 안내')">이달의 월말 이벤트</div>
+                <div class="news-item" onclick="showSlide('special-event', 3)">이달의 특별 이벤트</div>
+                <div class="news-item" onclick="showSlide('monthly-plan', 3)">이달의 본사 일정</div>
+                <div class="news-item" onclick="showSlide('warning', 4)">규정위반 조치안내</div>
+                <div class="news-item news-item-full" onclick="showImage('https://res.cloudinary.com/dj2g9dtca/image/upload/v1750000337/branch-1.png', '독일피엠 전국지사 및 반품처')">독일피엠 전국지사 및 반품처</div>
+            </div>
+        </div>
+
+        <div class="dropdown-container">
+            <div class="dropdown-content" id="group-dropdown">
+                <div class="group-item" onclick="showGroupMessage('참고용 체험사례들')">참고용 체험사례들</div>
+                <div class="group-item" onclick="showGroupMessage('트레이너 K 일정')">트레이너 K 일정</div>
+                <div class="group-item" onclick="showGroupMessage('독일피엠학교 소식')">독일피엠학교 소식</div>
+                <div class="group-item" onclick="showGroupMessage('독일피엠학교 문화')">독일피엠학교 문화</div>
+                <div class="group-item" onclick="showGroupMessage('독일피엠학교 이벤트')">독일피엠학교 이벤트</div>
+                <div class="group-item" onclick="showGroupMessage('독일피엠학교 교육프로그램')">독일피엠학교 교육프로그램</div>
+                <div class="group-item" onclick="showGroupMessage('독일피엠학교 교칙 및 후원안내')">독일피엠학교 교칙 및 후원안내</div>
+            </div>
+        </div>
+        
+        <div class="button-row">
+            <button class="menu-button btn-3" onclick="toggleDropdown('program')">프로그램</button>
+            <button class="menu-button btn-4" onclick="toggleDropdown('order')">주문서작성</button>
+        </div>
+        
+        <div class="dropdown-container">
+            <div class="dropdown-content" id="program-dropdown">
+                <div class="program-grid">
+                    <div class="program-item" onclick="checkMemberAuth('해독 프로그램')"><span class="program-word">해독</span> <span class="program-suffix">프로그램</span></div>
+                    <div class="program-item" onclick="checkMemberAuth('다이어트 프로그램')"><span class="program-word">다이어트</span> <span class="program-suffix">프로그램</span></div>
+                    <div class="program-item" onclick="checkMemberAuth('장건강 프로그램')"><span class="program-word">장건강</span> <span class="program-suffix">프로그램</span></div>
+                    <div class="program-item" onclick="checkMemberAuth('혈당관리 프로그램')"><span class="program-word">혈당관리</span> <span class="program-suffix">프로그램</span></div>
+                    <div class="program-item" onclick="checkMemberAuth('눈건강 프로그램')"><span class="program-word">눈건강</span> <span class="program-suffix">프로그램</span></div>
+                    <div class="program-item" onclick="checkMemberAuth('혈압관리 프로그램')"><span class="program-word">혈압관리</span> <span class="program-suffix">프로그램</span></div>
+                    <div class="program-item" onclick="checkMemberAuth('뼈건강 프로그램')"><span class="program-word">뼈건강</span> <span class="program-suffix">프로그램</span></div>
+                    <div class="program-item" onclick="checkMemberAuth('혈액생성 프로그램')"><span class="program-word">혈액생성</span> <span class="program-suffix">프로그램</span></div>
+                    <div class="program-item" onclick="checkMemberAuth('갱년기 프로그램')"><span class="program-word">갱년기</span> <span class="program-suffix">프로그램</span></div>
+                    <div class="program-item" onclick="checkMemberAuth('혈관건강 프로그램')"><span class="program-word">혈관건강</span> <span class="program-suffix">프로그램</span></div>
+                    <div class="program-item" onclick="checkMemberAuth('전립선 프로그램')"><span class="program-word">전립선</span> <span class="program-suffix">프로그램</span></div>
+                    <div class="program-item" onclick="checkMemberAuth('염증제거 프로그램')"><span class="program-word">염증제거</span> <span class="program-suffix">프로그램</span></div>
+                    <div class="program-item" onclick="checkMemberAuth('고지혈 프로그램')"><span class="program-word">고지혈</span> <span class="program-suffix">프로그램</span></div>
+                    <div class="program-item" onclick="checkMemberAuth('피로회복 프로그램')"><span class="program-word">피로회복</span> <span class="program-suffix">프로그램</span></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="dropdown-container">
+            <div class="dropdown-content" id="order-dropdown">
+                <div class="order-top-row">
+                    <select class="order-select" id="product-select">
+                        <option value="">제품을 선택하세요</option>
+                        <option value="파워">파워</option>
+                        <option value="리스">리스</option>
+                        <option value="액티(스테비아)">액티(스테비아)</option>
+                        <option value="액티(레몬라임)">액티(레몬라임)</option>
+                        <option value="액티(레몬그라스)">액티(레몬그라스)</option>
+                        <option value="액티(피치 아이스티)">액티(피치 아이스티)</option>
+                        <option value="액티펀치">액티펀치</option>
+                        <option value="액티 투 고">액티 투 고</option>
+                        <option value="피트니스 드링크">피트니스 드링크</option>
+                        <option value="젤슈츠(오렌지)">젤슈츠(오렌지)</option>
+                        <option value="젤슈츠(사과)">젤슈츠(사과)</option>
+                        <option value="요거트 드링크">요거트 드링크</option>
+                        <option value="D-드링크">D-드링크</option>
+                        <option value="제너레이션">제너레이션</option>
+                        <option value="듀오">듀오</option>
+                        <option value="오메가3">오메가3</option>
+                        <option value="큐10 플러스">큐10 플러스</option>
+                        <option value="뮤노겐">뮤노겐</option>
+                        <option value="뷰티">뷰티</option>
+                        <option value="C-밸런스">C-밸런스</option>
+                        <option value="겔링핏">겔링핏</option>
+                        <option value="액티브 젤">액티브 젤</option>
+                        <option value="맨플러스">맨플러스</option>
+                        <option value="허벌티">허벌티</option>
+                        <option value="탑쉐이프">탑쉐이프</option>
+                        <option value="아이비5(IB5)">아이비5(IB5)</option>
+                        <option value="프로(망고)">프로(망고)</option>
+                        <option value="프로(바닐라)">프로(바닐라)</option>
+                        <option value="프로(베리)">프로(베리)</option>
+                        <option value="프로(코코넛)">프로(코코넛)</option>
+                        <option value="프로(초코릿무스)">프로(초코릿무스)</option>
+                        <option value="웨이">웨이</option>
+                        <option value="주니어">주니어</option>
+                    </select>
+                    <div style="position: relative;">
+                        <button class="quantity-button" id="quantity-button" onclick="toggleQuantityDropdown()">수량</button>
+                        <div class="quantity-dropdown" id="quantity-dropdown">
+                            <div class="quantity-option" onclick="selectQuantity(1)">1</div>
+                            <div class="quantity-option" onclick="selectQuantity(2)">2</div>
+                            <div class="quantity-option" onclick="selectQuantity(3)">3</div>
+                            <div class="quantity-option" onclick="selectQuantity(4)">4</div>
+                            <div class="quantity-option" onclick="selectQuantity(5)">5</div>
+                            <div class="quantity-option" onclick="selectQuantity(6)">6</div>
+                            <div class="quantity-option" onclick="selectQuantity(7)">7</div>
+                            <div class="quantity-option" onclick="selectQuantity(8)">8</div>
+                            <div class="quantity-option" onclick="selectQuantity(9)">9</div>
+                            <div class="quantity-option" onclick="selectQuantity(10)">10</div>
+                        </div>
+                    </div>
+                    <button class="reset-button" onclick="resetOrderList()">초기화</button>
+                </div>
+                
+                <div class="price-buttons-grid">
+                    <button class="price-button" onclick="selectPriceType('회원기준')">회원기준</button>
+                    <button class="price-button" onclick="selectPriceType('5+1 단품')">5+1 단품</button>
+                    <button class="price-button" onclick="selectPriceType('5+1 세트')">5+1 세트</button>
+                    <button class="price-button" onclick="selectPriceType('오토십')">오토십</button>
+                    <button class="price-button" onclick="selectPriceType('BA')">BA</button>
+                    <button class="price-button" onclick="selectPriceType('액션팩')">액션팩</button>
+                </div>
+                
+                <div class="order-bottom-row">
+                    <div class="order-bottom-button display" id="subtotal-display">소계</div>
+                    <button class="order-bottom-button" onclick="registerOrder()">등록</button>
+                    <button class="order-bottom-button" onclick="calculateAndCopy()">정산(복사)</button>
+                </div>
+                
+                <textarea class="order-textbox" id="order-textbox" placeholder="등록된 주문 내역이 여기에 표시됩니다..."></textarea>
+                
+                <textarea class="memo-textbox" id="memo-textbox" placeholder="메모를 입력하세요...">[입금계좌안내] 
+카카오뱅크/김희진 3333-12-564789</textarea>
+            </div>
+        </div>
+        
+        <div class="button-row">
+            <button class="menu-button btn-5" onclick="toggleDropdown('catalog')">카탈로그</button>
+            <button class="menu-button btn-6" onclick="toggleDropdown('alarm')">섭취알람기</button>
+        </div>
+        
+        <div class="dropdown-container">
+            <div class="dropdown-content" id="catalog-dropdown">
+                <div class="catalog-item" onclick="showSlide('price', 35)">가격정보 카탈로그</div>
+                <div class="catalog-item" onclick="showSlide('promotion', 28)">프로모션 카탈로그</div>
+                <div class="catalog-item">효능정보 카탈로그</div>
+                <div class="catalog-item" onclick="showImage('https://res.cloudinary.com/dj2g9dtca/image/upload/v1750000337/ratio-pvsr-1.png', '파워리스 비율계산표')">파워리스 비율계산표</div>
+            </div>
+        </div>
+
+        <div class="dropdown-container">
+            <div class="dropdown-content" id="alarm-dropdown">
+                <div class="alarm-controls">
+                    <button class="alarm-control-btn" id="alarm-on-btn" onclick="toggleAlarm(true)">알람켜기</button>
+                    <button class="alarm-control-btn" id="alarm-off-btn" onclick="toggleAlarm(false)">알람끄기</button>
+                    <button class="alarm-control-btn" onclick="showSoundModal()">알람소리</button>
+                    <button class="alarm-control-btn" onclick="addAlarmRow()">알람추가</button>
+                </div>
+                
+                <div class="alarm-settings" id="alarm-settings">
+                    <div class="alarm-row">
+                        <select class="alarm-select">
+                            <option value="오전">오전</option>
+                            <option value="오후">오후</option>
+                        </select>
+                        <select class="alarm-select">
+                            <option value="">시간</option>
+                            <option value="1">1시</option>
+                            <option value="2">2시</option>
+                            <option value="3">3시</option>
+                            <option value="4">4시</option>
+                            <option value="5">5시</option>
+                            <option value="6">6시</option>
+                            <option value="7">7시</option>
+                            <option value="8">8시</option>
+                            <option value="9">9시</option>
+                            <option value="10">10시</option>
+                            <option value="11">11시</option>
+                            <option value="12">12시</option>
+                        </select>
+                        <select class="alarm-select">
+                            <option value="">분</option>
+                            <option value="00">00분</option>
+                            <option value="10">10분</option>
+                            <option value="20">20분</option>
+                            <option value="30">30분</option>
+                            <option value="40">40분</option>
+                            <option value="50">50분</option>
+                        </select>
+                        <input type="text" class="alarm-input" placeholder="제품명 및 메모">
+                    </div>
+                    <div class="alarm-row">
+                        <select class="alarm-select">
+                            <option value="오전">오전</option>
+                            <option value="오후">오후</option>
+                        </select>
+                        <select class="alarm-select">
+                            <option value="">시간</option>
+                            <option value="1">1시</option>
+                            <option value="2">2시</option>
+                            <option value="3">3시</option>
+                            <option value="4">4시</option>
+                            <option value="5">5시</option>
+                            <option value="6">6시</option>
+                            <option value="7">7시</option>
+                            <option value="8">8시</option>
+                            <option value="9">9시</option>
+                            <option value="10">10시</option>
+                            <option value="11">11시</option>
+                            <option value="12">12시</option>
+                        </select>
+                        <select class="alarm-select">
+                            <option value="">분</option>
+                            <option value="00">00분</option>
+                            <option value="10">10분</option>
+                            <option value="20">20분</option>
+                            <option value="30">30분</option>
+                            <option value="40">40분</option>
+                            <option value="50">50분</option>
+                        </select>
+                        <input type="text" class="alarm-input" placeholder="제품명 및 메모">
+                    </div>
+                    <div class="alarm-row">
+                        <select class="alarm-select">
+                            <option value="오전">오전</option>
+                            <option value="오후">오후</option>
+                        </select>
+                        <select class="alarm-select">
+                            <option value="">시간</option>
+                            <option value="1">1시</option>
+                            <option value="2">2시</option>
+                            <option value="3">3시</option>
+                            <option value="4">4시</option>
+                            <option value="5">5시</option>
+                            <option value="6">6시</option>
+                            <option value="7">7시</option>
+                            <option value="8">8시</option>
+                            <option value="9">9시</option>
+                            <option value="10">10시</option>
+                            <option value="11">11시</option>
+                            <option value="12">12시</option>
+                        </select>
+                        <select class="alarm-select">
+                            <option value="">분</option>
+                            <option value="00">00분</option>
+                            <option value="10">10분</option>
+                            <option value="20">20분</option>
+                            <option value="30">30분</option>
+                            <option value="40">40분</option>
+                            <option value="50">50분</option>
+                        </select>
+                        <input type="text" class="alarm-input" placeholder="제품명 및 메모">
+                    </div>
+                    <div class="alarm-row">
+                        <select class="alarm-select">
+                            <option value="오전">오전</option>
+                            <option value="오후">오후</option>
+                        </select>
+                        <select class="alarm-select">
+                            <option value="">시간</option>
+                            <option value="1">1시</option>
+                            <option value="2">2시</option>
+                            <option value="3">3시</option>
+                            <option value="4">4시</option>
+                            <option value="5">5시</option>
+                            <option value="6">6시</option>
+                            <option value="7">7시</option>
+                            <option value="8">8시</option>
+                            <option value="9">9시</option>
+                            <option value="10">10시</option>
+                            <option value="11">11시</option>
+                            <option value="12">12시</option>
+                        </select>
+                        <select class="alarm-select">
+                            <option value="">분</option>
+                            <option value="00">00분</option>
+                            <option value="10">10분</option>
+                            <option value="20">20분</option>
+                            <option value="30">30분</option>
+                            <option value="40">40분</option>
+                            <option value="50">50분</option>
+                        </select>
+                        <input type="text" class="alarm-input" placeholder="제품명 및 메모">
+                    </div>
+                    <div class="alarm-row">
+                        <select class="alarm-select">
+                            <option value="오전">오전</option>
+                            <option value="오후">오후</option>
+                        </select>
+                        <select class="alarm-select">
+                            <option value="">시간</option>
+                            <option value="1">1시</option>
+                            <option value="2">2시</option>
+                            <option value="3">3시</option>
+                            <option value="4">4시</option>
+                            <option value="5">5시</option>
+                            <option value="6">6시</option>
+                            <option value="7">7시</option>
+                            <option value="8">8시</option>
+                            <option value="9">9시</option>
+                            <option value="10">10시</option>
+                            <option value="11">11시</option>
+                            <option value="12">12시</option>
+                        </select>
+                        <select class="alarm-select">
+                            <option value="">분</option>
+                            <option value="00">00분</option>
+                            <option value="10">10분</option>
+                            <option value="20">20분</option>
+                            <option value="30">30분</option>
+                            <option value="40">40분</option>
+                            <option value="50">50분</option>
+                        </select>
+                        <input type="text" class="alarm-input" placeholder="제품명 및 메모">
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="button-row">
+            <button class="menu-button btn-7" onclick="toggleDropdown('intake')">섭취방법</button>
+            <button class="menu-button btn-8" onclick="window.open('https://www.youtube.com/@독일피엠학교', '_blank')">유튜브채널</button>
+        </div>
+        
+        <div class="dropdown-container">
+            <div class="dropdown-content" id="intake-dropdown">
+                <div class="intake-grid">
+                    <div class="intake-item" onclick="showIntakeImage('howtotake-01')">파워</div>
+                    <div class="intake-item" onclick="showIntakeImage('howtotake-02')">리스</div>
+                    <div class="intake-item" onclick="showIntakeImage('howtotake-03')">젤슈츠</div>
+                    <div class="intake-item" onclick="showIntakeImage('howtotake-04')">액티</div>
+                    <div class="intake-item" onclick="showIntakeImage('howtotake-05')">뷰티</div>
+                    <div class="intake-item" onclick="showIntakeImage('howtotake-06')">겔링핏</div>
+                    <div class="intake-item" onclick="showProIntakeSlide()">프로</div>
+                    <div class="intake-item" onclick="showIntakeImage('howtotake-08')">웨이</div>
+                    <div class="intake-item" onclick="showIntakeImage('howtotake-09')">뮤노겐</div>
+                    <div class="intake-item" onclick="showIntakeImage('howtotake-10')">듀오</div>
+                    <div class="intake-item" onclick="showIntakeImage('howtotake-11')">큐10</div>
+                    <div class="intake-item" onclick="showIntakeImage('howtotake-12')">오메가-3</div>
+                    <div class="intake-item" onclick="showIntakeImage('howtotake-13')">제너</div>
+                    <div class="intake-item" onclick="showIntakeImage('howtotake-14')">맨+</div>
+                    <div class="intake-item" onclick="showIntakeImage('howtotake-15')">C-밸런스</div>
+                    <div class="intake-item" onclick="showIntakeImage('howtotake-16')">IB5</div>
+                    <div class="intake-item" onclick="showIntakeImage('howtotake-17')">주니어</div>
+                    <div class="intake-item" onclick="showIntakeImage('howtotake-18')">D-드링크</div>
+                </div>
+                <div class="intake-bottom">
+                    <div class="intake-item" onclick="showIntakeImage('howtotake-19')">피트니스 드링크</div>
+                    <div class="intake-item" onclick="showIntakeImage('howtotake-20')">요거트 드링크</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="button-row">
+            <button class="menu-button btn-9">건강상담</button>
+            <button class="menu-button btn-10" onclick="window.open('https://m.cafe.naver.com/fitlineschool.cafe?', '_blank')">네이버카페</button>
+        </div>
+        
+        <div class="button-row">
+            <button class="menu-button btn-11" onclick="window.open('https://xn--9d0bl6jk3qcqb4w6a9e.com/', '_blank')">홈페이지</button>
+            <button class="menu-button btn-12" onclick="window.open('https://pms.liveklass.com/', '_blank')">강의사이트</button>
+        </div>
+    </div>
+
+    <!-- 회원 인증 모달 -->
+    <div class="auth-modal" id="auth-modal">
+        <div class="auth-modal-content">
+            <h3>🔐 회원 인증</h3>
+            <p>프로그램 이용을 위해<br/>회원번호와 비밀번호를 입력해주세요</p>
+            <input class="auth-input" id="member-id" maxlength="8" placeholder="회원번호 (7-8자리)" type="text"/>
+            <input class="auth-input" id="member-password" placeholder="비밀번호" type="password"/>
+            <div class="auth-buttons">
+                <button class="auth-btn auth-btn-confirm" onclick="verifyMemberAuth()">확인</button>
+                <button class="auth-btn auth-btn-cancel" onclick="closeAuthModal()">취소</button>
+            </div>
+            <div class="auth-message" id="auth-message"></div>
+        </div>
+    </div>
+
+    <!-- 알람음 설정 모달 -->
+    <div class="sound-modal" id="sound-modal">
+        <div class="sound-modal-content">
+            <h3>🔊 알람음 설정</h3>
+            <button class="sound-option" onclick="selectSound('notification')">🔔 브라우저 기본 알림음</button>
+            <button class="sound-option" onclick="selectSound('beep')">📢 비프음 (짧은 소리)</button>
+            <button class="sound-option" onclick="selectSound('bell')">🛎️ 벨 소리</button>
+            <button class="sound-option" onclick="selectSound('vibrate')">📳 진동 + 소리 (모바일)</button>
+            <div class="auth-buttons" style="margin-top: 20px;">
+                <button class="auth-btn auth-btn-confirm" onclick="testSound()">미리듣기</button>
+                <button class="auth-btn auth-btn-cancel" onclick="closeSoundModal()">완료</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 이미지 팝업 -->
+    <div class="popup-overlay" id="popup-overlay" onclick="closePopup()">
+        <div class="popup-content" onclick="event.stopPropagation()">
+            <span class="popup-close" onclick="closePopup()">×</span>
+            <img alt="이벤트 안내" class="popup-image" id="popup-image" src=""/>
+        </div>
+    </div>
+
+    <!-- 슬라이드 팝업 -->
+    <div class="slide-popup-overlay" id="slide-overlay" onclick="closeSlide()">
+        <div class="slide-popup-content" onclick="event.stopPropagation()">
+            <span class="slide-close" onclick="closeSlide()">×</span>
+            <div class="slide-container" id="slide-container">
+                <div class="slide-nav prev" onclick="changeSlide(-1)">‹</div>
+                <div class="slide-nav next" onclick="changeSlide(1)">›</div>
+            </div>
+            <div class="slide-indicator" id="slide-indicator">1 / 1</div>
+        </div>
+    </div>
+
+    <div class="footer">
+        독일피엠 프리미엄그룹<br/>
+        독일피엠학교 @ 2025
+    </div>
+
+    <script>
+        let currentDropdown = null;
+        let currentSlideType = '';
+        let currentSlideIndex = 1;
+        let totalSlides = 1;
+        let selectedQuantity = null;
+        let selectedPriceType = null;
+        let currentProgramName = '';
+        let alarmEnabled = false;
+        let selectedSoundType = 'notification';
+        let alarmInterval = null;
+        let memberDataCache = null;
+        
+        const PRODUCT_PRICES = {
+            '파워': { 회원기준: 125000, 오토십: 107987, BA: 93762, 액션팩: 85948 },
+            '리스': { 회원기준: 33700, 오토십: 29113, BA: 25278, 액션팩: 23172 },
+            '액티(스테비아)': { 회원기준: 42600, '5+1 세트': 213000, '5+1 단품': 35500 },
+            '액티(레몬라임)': { 회원기준: 42600, '5+1 세트': 213000, '5+1 단품': 35500 },
+            '액티(레몬그라스)': { 회원기준: 42600, '5+1 세트': 213000, '5+1 단품': 35500 },
+            '액티(피치 아이스티)': { 회원기준: 42600, '5+1 세트': 213000, '5+1 단품': 35500 }
+        };
+
+        function toggleDropdown(type) {
+            const dropdowns = ['news', 'program', 'catalog', 'intake', 'order', 'group', 'alarm'];
+            const targetDropdown = document.getElementById(type + '-dropdown');
+            
+            dropdowns.forEach(dropdown => {
+                if (dropdown !== type) {
+                    const element = document.getElementById(dropdown + '-dropdown');
+                    if (element) {
+                        element.classList.remove('show');
+                    }
+                }
+            });
+            
+            if (targetDropdown) {
+                if (currentDropdown === type && targetDropdown.classList.contains('show')) {
+                    targetDropdown.classList.remove('show');
+                    currentDropdown = null;
+                } else {
+                    targetDropdown.classList.add('show');
+                    currentDropdown = type;
+                }
+            }
+        }
+
+        function showImage(src, alt) {
+            const popup = document.getElementById('popup-overlay');
+            const image = document.getElementById('popup-image');
+            image.src = src;
+            image.alt = alt;
+            popup.style.display = 'flex';
+        }
+
+        function showIntakeImage(imageName) {
+            const popup = document.getElementById('popup-overlay');
+            const image = document.getElementById('popup-image');
+            image.src = `https://res.cloudinary.com/dj2g9dtca/image/upload/v1750000337/${imageName}.png`;
+            image.alt = '섭취방법 안내';
+            popup.style.display = 'flex';
+        }
+
+        function showSlide(type, count) {
+            currentSlideType = type;
+            currentSlideIndex = 1;
+            totalSlides = count;
+            
+            const slideContainer = document.getElementById('slide-container');
+            const prevBtn = slideContainer.querySelector('.prev');
+            const nextBtn = slideContainer.querySelector('.next');
+            
+            // 기존 이미지들 제거
+            const existingImages = slideContainer.querySelectorAll('.slide-image');
+            existingImages.forEach(img => img.remove());
+            
+            // 새 이미지들 생성
+            for (let i = 1; i <= count; i++) {
+                const img = document.createElement('img');
+                img.className = 'slide-image' + (i === 1 ? ' active' : '');
+                img.alt = `${type} ${i}`;
+                
+                if (type === 'ba-event') {
+                    img.src = `https://res.cloudinary.com/dj2g9dtca/image/upload/v1750000337/BA-event-${i}.png`;
+                } else if (type === 'special-event') {
+                    img.src = `https://res.cloudinary.com/dj2g9dtca/image/upload/v1750000337/special-event-${i}.png`;
+                } else if (type === 'monthly-plan') {
+                    img.src = `https://res.cloudinary.com/dj2g9dtca/image/upload/v1750000337/MonthlyPlan-${i}.png`;
+                } else if (type === 'warning') {
+                    img.src = `https://res.cloudinary.com/dj2g9dtca/image/upload/v1750000337/Warning-${i}.png`;
+                } else if (type === 'price') {
+                    img.src = `https://res.cloudinary.com/dj2g9dtca/image/upload/v1750000337/price-${String(i).padStart(2, '0')}.png`;
+                } else if (type === 'promotion') {
+                    img.src = `https://res.cloudinary.com/dj2g9dtca/image/upload/v1750000337/promotion-${String(i).padStart(2, '0')}.png`;
+                }
+                
+                slideContainer.insertBefore(img, prevBtn);
+            }
+            
+            updateSlideIndicator();
+            document.getElementById('slide-overlay').style.display = 'flex';
+        }
+
+        function changeSlide(direction) {
+            const slides = document.querySelectorAll('.slide-image');
+            slides[currentSlideIndex - 1].classList.remove('active');
+            
+            currentSlideIndex += direction;
+            if (currentSlideIndex > totalSlides) currentSlideIndex = 1;
+            if (currentSlideIndex < 1) currentSlideIndex = totalSlides;
+            
+            slides[currentSlideIndex - 1].classList.add('active');
+            updateSlideIndicator();
+        }
+
+        function updateSlideIndicator() {
+            document.getElementById('slide-indicator').textContent = `${currentSlideIndex} / ${totalSlides}`;
+        }
+
+        function closePopup() {
+            document.getElementById('popup-overlay').style.display = 'none';
+        }
+
+        function closeSlide() {
+            document.getElementById('slide-overlay').style.display = 'none';
+        }
+
+        function showGroupMessage(message) {
+            alert(`${message}가 선택되었습니다.`);
+        }
+
+        // 주문서 작성 관련 함수들
+        function toggleQuantityDropdown() {
+            const dropdown = document.getElementById('quantity-dropdown');
+            dropdown.classList.toggle('show');
+        }
+        
+        function selectQuantity(quantity) {
+            selectedQuantity = quantity;
+            document.getElementById('quantity-button').textContent = `수량: ${quantity}`;
+            document.getElementById('quantity-dropdown').classList.remove('show');
+            calculatePrice();
+        }
+        
+        function selectPriceType(priceType) {
+            document.querySelectorAll('.price-button').forEach(btn => {
+                btn.classList.remove('selected');
+            });
+            
+            event.target.classList.add('selected');
+            selectedPriceType = priceType;
+            calculatePrice();
+        }
+        
+        function calculatePrice() {
+            const productSelect = document.getElementById('product-select');
+            const selectedProduct = productSelect.value;
+            const subtotalDisplay = document.getElementById('subtotal-display');
+            
+            if (selectedProduct && selectedQuantity && selectedPriceType) {
+                const productData = PRODUCT_PRICES[selectedProduct];
+                
+                if (productData && productData[selectedPriceType]) {
+                    const unitPrice = productData[selectedPriceType];
+                    const total = unitPrice * selectedQuantity;
+                    subtotalDisplay.textContent = `${total.toLocaleString()}원`;
+                } else {
+                    subtotalDisplay.textContent = '해당 가격 없음';
+                }
+            } else {
+                subtotalDisplay.textContent = '소계';
+            }
+        }
+        
+        function registerOrder() {
+            const productSelect = document.getElementById('product-select');
+            const selectedProduct = productSelect.value;
+            const orderTextbox = document.getElementById('order-textbox');
+            
+            if (!selectedProduct || !selectedQuantity || !selectedPriceType) {
+                alert('모든 항목을 선택해주세요.');
+                return;
+            }
+            
+            const productData = PRODUCT_PRICES[selectedProduct];
+            if (!productData || !productData[selectedPriceType]) {
+                alert('선택한 제품에 해당 가격기준이 없습니다.');
+                return;
+            }
+            
+            const unitPrice = productData[selectedPriceType];
+            const total = unitPrice * selectedQuantity;
+            
+            const orderLine = `${selectedProduct} (${selectedPriceType}) ${unitPrice.toLocaleString()} x ${selectedQuantity} = ${total.toLocaleString()}원`;
+            
+            if (orderTextbox.value) {
+                orderTextbox.value += '\n' + orderLine;
+            } else {
+                orderTextbox.value = orderLine;
+            }
+            
+            // 입력 초기화
+            productSelect.value = '';
+            selectedQuantity = null;
+            selectedPriceType = null;
+            document.getElementById('quantity-button').textContent = '수량';
+            document.querySelectorAll('.price-button').forEach(btn => {
+                btn.classList.remove('selected');
+            });
+            document.getElementById('subtotal-display').textContent = '소계';
+        }
+        
+        function calculateAndCopy() {
+            const orderTextbox = document.getElementById('order-textbox');
+            const memoTextbox = document.getElementById('memo-textbox');
+            
+            if (!orderTextbox.value.trim()) {
+                alert('등록된 주문이 없습니다.');
+                return;
+            }
+            
+            const lines = orderTextbox.value.split('\n');
+            let total = 0;
+            
+            lines.forEach(line => {
+                const match = line.match(/= ([\d,]+)원/);
+                if (match) {
+                    const amount = parseInt(match[1].replace(/,/g, ''));
+                    total += amount;
+                }
+            });
+            
+            if (total === 0) {
+                alert('계산할 금액이 없습니다.');
+                return;
+            }
+            
+            const memoContent = memoTextbox.value.trim();
+            let finalContent = orderTextbox.value;
+            
+            finalContent += '\n\n합계 = ' + total.toLocaleString() + '원';
+            if (memoContent) {
+                finalContent += '\n' + memoContent;
+            }
+            
+            orderTextbox.value = finalContent;
+            
+            try {
+                navigator.clipboard.writeText(finalContent).then(() => {
+                    alert('정산 완료!\n전체 내용이 클립보드에 복사되었습니다.');
+                }).catch(() => {
+                    orderTextbox.select();
+                    document.execCommand('copy');
+                    alert('정산 완료!\n전체 내용이 클립보드에 복사되었습니다.');
+                });
+            } catch (error) {
+                orderTextbox.select();
+                alert('정산 완료!\n텍스트가 선택되었습니다. Ctrl+C로 복사해주세요.');
+            }
+        }
+        
+        function resetOrderList() {
+            document.getElementById('order-textbox').value = '';
+            alert('목록이 초기화되었습니다.');
+        }
+
+        // 회원 인증 관련 함수들
+        function checkMemberAuth(programName) {
+            currentProgramName = programName;
+            
+            const authTime = localStorage.getItem('memberAuthTime');
+            const now = new Date().getTime();
+            
+            if (authTime && (now - parseInt(authTime)) < 30 * 60 * 1000) {
+                showProgramContent(programName);
+            } else {
+                showAuthModal();
+            }
+        }
+        
+        function showAuthModal() {
+            const modal = document.getElementById('auth-modal');
+            const idInput = document.getElementById('member-id');
+            const passwordInput = document.getElementById('member-password');
+            const message = document.getElementById('auth-message');
+            
+            idInput.value = '';
+            passwordInput.value = '';
+            message.textContent = '';
+            modal.style.display = 'flex';
+            
+            setTimeout(() => {
+                idInput.focus();
+            }, 300);
+        }
+        
+        async function verifyMemberAuth() {
+            const idInput = document.getElementById('member-id');
+            const passwordInput = document.getElementById('member-password');
+            const message = document.getElementById('auth-message');
+            const memberId = idInput.value.trim();
+            const memberPassword = passwordInput.value.trim();
+            
+            if (!memberId || !memberPassword) {
+                message.textContent = '회원번호와 비밀번호를 입력해주세요.';
+                message.className = 'auth-message auth-error';
+                return;
+            }
+            
+            message.textContent = '인증 정보를 확인하고 있습니다...';
+            message.className = 'auth-message auth-loading';
+            
+            // 간단한 인증 (실제로는 서버 검증 필요)
+            const validMembers = {
+                '7919915': 'pms0586',
+                '7963475': 'pms2958',
+                '8201555': 'pms2958'
+            };
+            
+            if (validMembers[memberId] && validMembers[memberId] === memberPassword) {
+                message.textContent = '인증되었습니다!';
+                message.className = 'auth-message auth-success';
+                
+                localStorage.setItem('memberAuthTime', new Date().getTime().toString());
+                
+                setTimeout(() => {
+                    closeAuthModal();
+                    showProgramContent(currentProgramName);
+                }, 1000);
+                
+            } else {
+                message.textContent = '회원번호 또는 비밀번호가 일치하지 않습니다.';
+                message.className = 'auth-message auth-error';
+            }
+        }
+        
+        function closeAuthModal() {
+            document.getElementById('auth-modal').style.display = 'none';
+        }
+        
+        function showProgramContent(programName) {
+            if (programName === '해독 프로그램') {
+                showImage('https://res.cloudinary.com/dj2g9dtca/image/upload/plan-dtox-01', '해독 프로그램 안내');
+            } else {
+                alert(`${programName} 콘텐츠에 접근하였습니다.`);
+            }
+        }
+
+        // 알람 관련 함수들
+        function toggleAlarm(isOn) {
+            const onBtn = document.getElementById('alarm-on-btn');
+            const offBtn = document.getElementById('alarm-off-btn');
+            
+            if (isOn) {
+                onBtn.classList.add('active-on');
+                offBtn.classList.remove('active-off');
+                alarmEnabled = true;
+                startAlarmCheck();
+            } else {
+                onBtn.classList.remove('active-on');
+                offBtn.classList.add('active-off');
+                alarmEnabled = false;
+                stopAlarmCheck();
+            }
+        }
+
+        function startAlarmCheck() {
+            if (alarmInterval) clearInterval(alarmInterval);
+            
+            alarmInterval = setInterval(() => {
+                if (!alarmEnabled) return;
+                
+                const now = new Date();
+                const currentHour = now.getHours();
+                const currentMinute = now.getMinutes();
+                
+                // 알람 설정 체크
+                const alarmRows = document.querySelectorAll('.alarm-row');
+                alarmRows.forEach(row => {
+                    const period = row.children[0].value;
+                    const hour = row.children[1].value;
+                    const minute = row.children[2].value;
+                    const memo = row.children[3].value;
+                    
+                    if (hour && minute && memo) {
+                        let alarmHour = parseInt(hour);
+                        if (period === '오후' && alarmHour !== 12) alarmHour += 12;
+                        if (period === '오전' && alarmHour === 12) alarmHour = 0;
+                        
+                        if (currentHour === alarmHour && currentMinute === parseInt(minute)) {
+                            playAlarm(memo);
+                        }
+                    }
+                });
+            }, 60000); // 1분마다 체크
+        }
+
+        function stopAlarmCheck() {
+            if (alarmInterval) {
+                clearInterval(alarmInterval);
+                alarmInterval = null;
+            }
+        }
+
+        function playAlarm(memo) {
+            if (selectedSoundType === 'notification') {
+                if (Notification.permission === 'granted') {
+                    new Notification('독일피엠학교 알람', {
+                        body: memo,
+                        icon: '/favicon.ico'
+                    });
+                }
+            } else if (selectedSoundType === 'beep') {
+                const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                const oscillator = audioContext.createOscillator();
+                oscillator.connect(audioContext.destination);
+                oscillator.frequency.setValueAtTime(800, audioContext.currentTime);
+                oscillator.start();
+                oscillator.stop(audioContext.currentTime + 0.2);
+            } else if (selectedSoundType === 'vibrate') {
+                if (navigator.vibrate) {
+                    navigator.vibrate([200, 100, 200]);
+                }
+            }
+        }
+
+        function showSoundModal() {
+            document.getElementById('sound-modal').style.display = 'flex';
+        }
+
+        function closeSoundModal() {
+            document.getElementById('sound-modal').style.display = 'none';
+        }
+
+        function selectSound(type) {
+            selectedSoundType = type;
+            document.querySelectorAll('.sound-option').forEach(btn => {
+                btn.classList.remove('selected');
+            });
+            event.target.classList.add('selected');
+        }
+
+        function testSound() {
+            playAlarm('테스트 알람입니다.');
+        }
+
+        function addAlarmRow() {
+            const alarmSettings = document.getElementById('alarm-settings');
+            const newRow = document.createElement('div');
+            newRow.className = 'alarm-row';
+            newRow.innerHTML = `
+                <select class="alarm-select">
+                    <option value="오전">오전</option>
+                    <option value="오후">오후</option>
+                </select>
+                <select class="alarm-select">
+                    <option value="">시간</option>
+                    <option value="1">1시</option>
+                    <option value="2">2시</option>
+                    <option value="3">3시</option>
+                    <option value="4">4시</option>
+                    <option value="5">5시</option>
+                    <option value="6">6시</option>
+                    <option value="7">7시</option>
+                    <option value="8">8시</option>
+                    <option value="9">9시</option>
+                    <option value="10">10시</option>
+                    <option value="11">11시</option>
+                    <option value="12">12시</option>
+                </select>
+                <select class="alarm-select">
+                    <option value="">분</option>
+                    <option value="00">00분</option>
+                    <option value="10">10분</option>
+                    <option value="20">20분</option>
+                    <option value="30">30분</option>
+                    <option value="40">40분</option>
+                    <option value="50">50분</option>
+                </select>
+                <input type="text" class="alarm-input" placeholder="제품명 및 메모">
+            `;
+            alarmSettings.appendChild(newRow);
+        }
+
+        // 페이지 로드 시 알림 권한 요청
+        document.addEventListener('DOMContentLoaded', function() {
+            if ('Notification' in window && Notification.permission === 'default') {
+                Notification.requestPermission();
+            }
+            
+            // 외부 클릭 시 드롭다운 닫기
+            document.addEventListener('click', function(event) {
+                const menuContainer = document.querySelector('.menu-container');
+                const authModal = document.getElementById('auth-modal');
+                const soundModal = document.getElementById('sound-modal');
+                
+                if (!menuContainer.contains(event.target) && 
+                    !authModal.contains(event.target) && 
+                    !soundModal.contains(event.target)) {
+                    const dropdowns = ['news', 'program', 'catalog', 'intake', 'order', 'group', 'alarm'];
+                    dropdowns.forEach(dropdown => {
+                        const element = document.getElementById(dropdown + '-dropdown');
+                        if (element) {
+                            element.classList.remove('show');
+                        }
+                    });
+                    currentDropdown = null;
+                }
+            });
+        });
+
+        // 키보드 이벤트
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closePopup();
+                closeSlide();
+                closeAuthModal();
+                closeSoundModal();
+            } else if (event.key === 'ArrowLeft') {
+                if (document.getElementById('slide-overlay').style.display === 'flex') {
+                    changeSlide(-1);
+                }
+            } else if (event.key === 'ArrowRight') {
+                if (document.getElementById('slide-overlay').style.display === 'flex') {
+                    changeSlide(1);
+                }
+            }
+        });
+    </script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"rayId":"954824355c8afccb","serverTiming":{"name":{"cfExtPri":true,"cfEdge":true,"cfOrigin":true,"cfL4":true,"cfSpeedBrain":true,"cfCacheStatus":true}},"version":"2025.6.2","token":"4edd5f8ec12a48cfa682ab8261b80a79"}' crossorigin="anonymous"></script>
+</body>
+</html>
+    <script id="html_badge_script1">
+        window.__genspark_remove_badge_link = "https://www.genspark.ai/api/html_badge/" +
+            "remove_badge?token=To%2FBnjzloZ3UfQdcSaYfDlrf6uuv%2Fz4bjTpJXbQKVMBxvUEVGdf2cH60mTlZ34KeoqIhPrvtteMDl7%2BkT%2FEJ8y7vs2MPGxbbZWlmsC6VUUmutyInH1Z1sJTQXH7TKdnE16BvCVJm%2BS71g%2BvzbBpsBAppd62%2FLMMXMcOKelB19alOxX76EOcd98JctFgDq5rveu2ug5Dgq54YCWqZu6cnjYfkmGrxaLsYvcXWveIPmsq6VyNb3aPN4zrf7namgX3Gx9tqzRA1kA7FF9lelpmnY%2BoiAfQnE4Sk8H8sKrepEq1P%2Frrv3L0%2FNgS1B%2F5TsSjVSts9VBAWRCL2rrqkJeqRlrU%2FL0UTekidvNppF%2BgqRfjbnRe1RmaRLofxwYC%2BCOWMkeEPl7M6KcYr%2Fv4jT2jLr%2Fu78KThvVvvhYNwQJDp8KqrvV%2F9Pz64MZU55fkBNhptWc63tS0H%2BoUQwK3uhU9tppVJtZ7v3%2Fha%2BKm0ctEXrUQOfa02%2B0yUiergLzWI4A2GPfOFVf9LVLOgSU0aZtFYfg%3D%3D";
+        window.__genspark_locale = "ko-KR";
+        window.__genspark_token = "To/BnjzloZ3UfQdcSaYfDlrf6uuv/z4bjTpJXbQKVMBxvUEVGdf2cH60mTlZ34KeoqIhPrvtteMDl7+kT/EJ8y7vs2MPGxbbZWlmsC6VUUmutyInH1Z1sJTQXH7TKdnE16BvCVJm+S71g+vzbBpsBAppd62/LMMXMcOKelB19alOxX76EOcd98JctFgDq5rveu2ug5Dgq54YCWqZu6cnjYfkmGrxaLsYvcXWveIPmsq6VyNb3aPN4zrf7namgX3Gx9tqzRA1kA7FF9lelpmnY+oiAfQnE4Sk8H8sKrepEq1P/rrv3L0/NgS1B/5TsSjVSts9VBAWRCL2rrqkJeqRlrU/L0UTekidvNppF+gqRfjbnRe1RmaRLofxwYC+COWMkeEPl7M6KcYr/v4jT2jLr/u78KThvVvvhYNwQJDp8KqrvV/9Pz64MZU55fkBNhptWc63tS0H+oUQwK3uhU9tppVJtZ7v3/ha+Km0ctEXrUQOfa02+0yUiergLzWI4A2GPfOFVf9LVLOgSU0aZtFYfg==";
+    </script>
+    
+    <script id="html_notice_dialog_script" src="https://www.genspark.ai/notice_dialog.js"></script>
+    
