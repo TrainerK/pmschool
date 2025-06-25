@@ -1,0 +1,1154 @@
+/* 
+ * 독일피엠학교 스타일시트
+ * 파일명: styles.css
+ * 설명: 모든 CSS 스타일 정의
+ * 의존성: 없음
+ */
+
+/* CSS 변수 정의 */
+:root {
+    --primary-bg: #000;
+    --primary-text: #fff;
+    --accent-color: #FFD700;
+    --secondary-bg: #333;
+    --hover-bg: #666;
+    --border-radius: 8px;
+    --transition: all 0.3s ease;
+}
+
+/* 기본 리셋 및 레이아웃 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--primary-bg) !important;
+    color: var(--primary-text);
+    font-family: Arial, sans-serif;
+    padding: 20px 10px !important;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* 헤더 스타일 */
+.header {
+    text-align: center;
+    margin-bottom: 25px !important;
+    cursor: pointer;
+}
+
+.header h1 {
+    color: #ccc;
+    font-size: 18px !important;
+    margin-bottom: 5px !important;
+}
+
+.header h2 {
+    color: var(--accent-color);
+    font-size: 32px !important;
+    font-weight: bold !important;
+}
+
+/* 메뉴 컨테이너 */
+.menu-container {
+    max-width: 500px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.button-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+/* 메뉴 버튼 스타일 */
+.menu-button {
+    width: 100%;
+    height: 70px !important;
+    font-size: 28px !important;
+    font-weight: bold !important;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: var(--transition);
+    color: var(--primary-text) !important;
+    position: relative;
+    z-index: 1;
+}
+
+.menu-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+.menu-button:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* 버튼 색상 테마 */
+.btn-1 { background: linear-gradient(145deg, #ff6b7a, #ff5252) !important; }
+.btn-2 { background: linear-gradient(145deg, #4ecdc4, #26a69a) !important; }
+.btn-3 { background: linear-gradient(145deg, #42a5f5, #1e88e5) !important; }
+.btn-4 { background: linear-gradient(145deg, #a5d6a7, #66bb6a) !important; }
+.btn-5 { background: linear-gradient(145deg, #ffb74d, #ff9800) !important; }
+.btn-6 { background: linear-gradient(145deg, #ab47bc, #8e24aa) !important; }
+.btn-7 { background: linear-gradient(145deg, #f06292, #e91e63) !important; }
+.btn-8 { background: linear-gradient(145deg, #ba68c8, #9c27b0) !important; }
+.btn-9 { background: linear-gradient(145deg, #ffb74d, #ff9800) !important; }
+.btn-10 { background: linear-gradient(145deg, #42a5f5, #1976d2) !important; }
+.btn-11 { background: linear-gradient(145deg, #4dd0e1, #00acc1) !important; }
+.btn-12 { background: linear-gradient(145deg, #f06292, #ec407a) !important; }
+
+/* 드롭다운 컨테이너 */
+.dropdown-container {
+    width: 100%;
+    margin: 0;
+    position: relative;
+    z-index: 2;
+}
+
+.dropdown-content {
+    display: none;
+    background: var(--secondary-bg);
+    border-radius: 10px;
+    padding: 15px;
+    margin: 8px 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.dropdown-content.show {
+    display: block;
+}
+
+/* 주문 관련 스타일 */
+.order-dropdown {
+    display: none;
+    background: var(--secondary-bg);
+    border-radius: 10px;
+    padding: 15px;
+    margin: 8px 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.order-dropdown.show {
+    display: block;
+}
+
+.order-top-row {
+    display: grid;
+    grid-template-columns: 4fr 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.order-select,
+.quantity-button,
+.reset-button {
+    background: #555;
+    color: var(--primary-text);
+    padding: 12px 10px;
+    border-radius: var(--border-radius);
+    border: none;
+    font-size: 14px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.order-select:hover,
+.quantity-button:hover {
+    background: var(--hover-bg);
+}
+
+.order-select:focus {
+    outline: none;
+    background: #777;
+}
+
+.reset-button {
+    background: #ff4444;
+}
+
+.reset-button:hover {
+    background: #cc3333;
+}
+
+.quantity-dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: #444;
+    border-radius: var(--border-radius);
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 100;
+    border: 1px solid var(--hover-bg);
+}
+
+.quantity-dropdown.show {
+    display: block;
+}
+
+.quantity-option {
+    padding: 10px;
+    cursor: pointer;
+    border-bottom: 1px solid #555;
+    font-size: 14px;
+}
+
+.quantity-option:hover {
+    background: #555;
+}
+
+.quantity-option:last-child {
+    border-bottom: none;
+}
+
+.price-buttons-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.price-button {
+    background: #555;
+    color: var(--primary-text);
+    padding: 12px 10px;
+    border-radius: var(--border-radius);
+    border: none;
+    font-size: 14px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.price-button:hover {
+    background: var(--hover-bg);
+}
+
+.price-button.selected {
+    background: var(--accent-color) !important;
+    color: var(--primary-bg) !important;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
+.order-bottom-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 0.5fr 0.5fr;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.order-bottom-button {
+    background: var(--hover-bg);
+    color: var(--primary-text);
+    padding: 15px 10px;
+    border-radius: var(--border-radius);
+    border: none;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: var(--transition);
+    text-align: center;
+}
+
+.order-bottom-button:hover {
+    background: #777;
+}
+
+.order-bottom-button.display {
+    background: #444 !important;
+    cursor: default;
+    color: var(--accent-color);
+}
+
+.order-bottom-button.display:hover {
+    background: #444 !important;
+}
+
+.order-bottom-checkbox {
+    background: var(--hover-bg);
+    color: var(--primary-text);
+    padding: 15px 10px;
+    border-radius: var(--border-radius);
+    border: none;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: var(--transition);
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.order-bottom-checkbox:hover {
+    background: #777;
+}
+
+.order-bottom-checkbox input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+}
+
+.order-textbox,
+.memo-textbox {
+    width: 100%;
+    background: #444;
+    color: var(--primary-text);
+    border: 1px solid var(--hover-bg);
+    border-radius: var(--border-radius);
+    padding: 10px;
+    font-size: 14px;
+    resize: vertical;
+}
+
+.order-textbox {
+    margin-bottom: 10px;
+    min-height: 200px;
+}
+
+.memo-textbox {
+    height: 60px;
+}
+
+.order-textbox:focus,
+.memo-textbox:focus {
+    outline: none;
+    border-color: var(--accent-color);
+}
+
+/* 뉴스, 그룹, 알람, 카탈로그 아이템 */
+.news-item,
+.group-item,
+.alarm-item,
+.catalog-item {
+    background: #555;
+    color: var(--primary-text);
+    padding: 12px 15px !important;
+    margin: 5px 0;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-size: 16px !important;
+    transition: var(--transition);
+}
+
+.news-item:hover,
+.group-item:hover,
+.alarm-item:hover,
+.catalog-item:hover {
+    background: var(--hover-bg);
+}
+
+.news-item:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+    background: var(--secondary-bg);
+}
+
+.news-item-full {
+    width: 100%;
+}
+
+.alarm-item {
+    text-align: center;
+}
+
+/* 시간 선택 버튼 */
+.time-period-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.time-period-btn {
+    background: #555;
+    color: var(--primary-text);
+    padding: 12px 15px;
+    border-radius: var(--border-radius);
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    transition: var(--transition);
+    text-align: center;
+}
+
+.time-period-btn:hover {
+    background: var(--hover-bg);
+}
+
+.time-period-btn.selected {
+    background: var(--accent-color) !important;
+    color: var(--primary-bg) !important;
+}
+
+/* 프로그램 그리드 */
+.program-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.program-item {
+    background: #555;
+    color: var(--primary-text);
+    padding: 15px 15px 15px 10px !important;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-size: 16px !important;
+    text-align: right !important;
+    transition: var(--transition);
+}
+
+.program-item:hover {
+    background: var(--hover-bg);
+}
+
+.program-word {
+    font-size: 21px !important;
+}
+
+.program-suffix {
+    font-size: 15px !important;
+}
+
+/* 섭취방법 그리드 */
+.intake-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+
+.intake-bottom {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+}
+
+.intake-item {
+    background: #555;
+    color: var(--primary-text);
+    padding: 10px 8px !important;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-size: 14px !important;
+    text-align: center;
+    transition: var(--transition);
+}
+
+.intake-item:hover {
+    background: var(--hover-bg);
+}
+
+.intake-bottom .intake-item {
+    font-size: 16px !important;
+    padding: 12px 8px !important;
+}
+
+/* 인증 모달 */
+.auth-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 2000;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.auth-modal-content {
+    background: linear-gradient(145deg, var(--secondary-bg), #444);
+    border-radius: 20px;
+    padding: 30px;
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+    border: 2px solid var(--accent-color);
+    box-shadow: 0 8px 25px rgba(255, 215, 0, 0.3);
+}
+
+.auth-modal h3 {
+    color: var(--accent-color);
+    font-size: 24px;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.auth-modal p {
+    color: #ccc;
+    font-size: 16px;
+    margin-bottom: 25px;
+    line-height: 1.5;
+}
+
+.auth-input {
+    width: 100%;
+    padding: 15px;
+    font-size: 18px;
+    text-align: center;
+    border: 2px solid #555;
+    border-radius: 10px;
+    background: #222;
+    color: var(--primary-text);
+    margin-bottom: 15px;
+}
+
+.auth-input:focus {
+    border-color: var(--accent-color);
+    outline: none;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
+.auth-buttons {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.auth-btn {
+    flex: 1;
+    padding: 15px;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.auth-btn-confirm {
+    background: linear-gradient(145deg, #4CAF50, #45a049);
+    color: var(--primary-text);
+}
+
+.auth-btn-confirm:hover {
+    background: linear-gradient(145deg, #45a049, #4CAF50);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(76, 175, 80, 0.4);
+}
+
+.auth-btn-cancel {
+    background: linear-gradient(145deg, #f44336, #da190b);
+    color: var(--primary-text);
+}
+
+.auth-btn-cancel:hover {
+    background: linear-gradient(145deg, #da190b, #f44336);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(244, 67, 54, 0.4);
+}
+
+.auth-message {
+    margin-top: 15px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.auth-success {
+    color: #4CAF50;
+}
+
+.auth-error {
+    color: #f44336;
+}
+
+.auth-loading {
+    color: var(--accent-color);
+}
+
+/* 팝업 및 슬라이드 */
+.popup-overlay,
+.slide-popup-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.popup-content,
+.slide-popup-content {
+    position: relative;
+    max-width: 95%;
+    max-height: 95%;
+    background: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.slide-popup-content {
+    flex-direction: column;
+}
+
+.popup-image,
+.slide-image {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(255, 255, 255, 0.1);
+}
+
+.slide-container {
+    position: relative;
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.slide-image {
+    display: none;
+    max-height: 80vh;
+}
+
+.slide-image.active {
+    display: block;
+}
+
+.slide-navigation-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.slide-nav-new {
+    background: rgba(0, 0, 0, 0.7);
+    color: var(--primary-text);
+    border: 2px solid var(--primary-text);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    transition: var(--transition);
+}
+
+.slide-nav-new:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.slide-indicator-new {
+    color: var(--primary-text);
+    font-size: 16px;
+    font-weight: bold;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 8px 16px;
+    border-radius: 20px;
+    border: 1px solid var(--primary-text);
+    min-width: 60px;
+    text-align: center;
+}
+
+.popup-close,
+.slide-close {
+    position: absolute;
+    top: -40px;
+    right: -10px;
+    color: var(--primary-text);
+    font-size: 30px;
+    cursor: pointer;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid var(--primary-text);
+}
+
+.slide-close {
+    top: -50px;
+}
+
+.popup-close:hover,
+.slide-close:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* 알람 버튼 */
+.alarm-button-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 15px;
+}
+
+Copy
+.alarm-button {
+    background: #555;
+    color: var(--primary-text);
+    padding: 12px 8px;
+    border-radius: var(--border-radius);
+    border: none;
+    font-size: 14px;
+    cursor: pointer;
+    transition: var(--transition);
+    text-align: center;
+}
+
+.alarm-button:hover {
+    background: var(--hover-bg);
+}
+
+.alarm-button.active-on {
+    background: #4CAF50 !important;
+    color: var(--primary-text) !important;
+}
+
+.alarm-button.active-off {
+    background: #f44336 !important;
+    color: var(--primary-text) !important;
+}
+
+.alarm-row {
+    display: grid;
+    grid-template-columns: 15% 15% 15% 55%;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.alarm-select,
+.alarm-input {
+    background: #555;
+    color: var(--primary-text);
+    padding: 8px 6px;
+    border-radius: var(--border-radius);
+    border: none;
+    font-size: 12px;
+}
+
+.alarm-select:focus,
+.alarm-input:focus {
+    outline: none;
+    border: 1px solid var(--accent-color);
+}
+
+/* 알람 소리 모달 */
+.alarm-sound-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 2000;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.alarm-sound-content {
+    background: linear-gradient(145deg, var(--secondary-bg), #444);
+    border-radius: 20px;
+    padding: 30px;
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+    border: 2px solid var(--accent-color);
+    box-shadow: 0 8px 25px rgba(255, 215, 0, 0.3);
+}
+
+.alarm-sound-title {
+    color: var(--accent-color);
+    font-size: 24px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.sound-options {
+    margin: 20px 0;
+}
+
+.sound-option {
+    display: flex;
+    align-items: center;
+    margin: 15px 0;
+    padding: 10px;
+    background: #555;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.sound-option:hover {
+    background: var(--hover-bg);
+}
+
+.sound-option input {
+    margin-right: 15px;
+    width: 18px;
+    height: 18px;
+}
+
+.sound-option label {
+    color: var(--primary-text);
+    font-size: 16px;
+    cursor: pointer;
+    flex: 1;
+    text-align: left;
+}
+
+.alarm-sound-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.alarm-sound-btn {
+    flex: 1;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.alarm-sound-btn-preview {
+    background: #666;
+    color: var(--primary-text);
+}
+
+.alarm-sound-btn-confirm {
+    background: #4CAF50;
+    color: var(--primary-text);
+}
+
+.alarm-sound-btn-cancel {
+    background: #f44336;
+    color: var(--primary-text);
+}
+
+.alarm-sound-btn:hover {
+    transform: translateY(-1px);
+    opacity: 0.9;
+}
+
+/* 건강 설문 모달 */
+.health-survey-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    z-index: 2000;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.health-survey-content {
+    background: linear-gradient(145deg, var(--secondary-bg), #444);
+    border-radius: 15px;
+    padding: 20px;
+    max-width: 500px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    border: 2px solid var(--accent-color);
+    box-shadow: 0 8px 25px rgba(255, 215, 0, 0.3);
+}
+
+.survey-title {
+    color: var(--accent-color);
+    font-size: 20px;
+    margin-bottom: 8px;
+    text-align: center;
+    line-height: 1.3;
+}
+
+.survey-subtitle {
+    color: var(--accent-color);
+    font-size: 22px;
+    margin-bottom: 15px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.survey-description {
+    color: #ccc;
+    font-size: 14px;
+    margin-bottom: 20px;
+    line-height: 1.4;
+}
+
+.survey-question {
+    color: var(--accent-color);
+    font-size: 16px;
+    margin: 15px 0 8px 0;
+    font-weight: bold;
+}
+
+.survey-input,
+.survey-select {
+    width: 100%;
+    background: #555;
+    color: var(--primary-text);
+    border: 1px solid var(--hover-bg);
+    border-radius: var(--border-radius);
+    padding: 10px;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.survey-input:focus,
+.survey-select:focus {
+    outline: none;
+    border-color: var(--accent-color);
+}
+
+.survey-radio-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 10px;
+}
+
+.survey-radio-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.survey-radio {
+    width: 18px;
+    height: 18px;
+}
+
+.survey-radio-label {
+    color: var(--primary-text);
+    font-size: 14px;
+}
+
+.survey-checkbox-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 10px;
+}
+
+.survey-checkbox-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.survey-checkbox {
+    width: 18px;
+    height: 18px;
+}
+
+.survey-checkbox-label {
+    color: var(--primary-text);
+    font-size: 14px;
+}
+
+.survey-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.survey-btn {
+    padding: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.survey-btn-close {
+    background: #666;
+    color: var(--primary-text);
+}
+
+.survey-btn-prev {
+    background: #f44336;
+    color: var(--primary-text);
+}
+
+.survey-btn-next {
+    background: #4CAF50;
+    color: var(--primary-text);
+}
+
+.survey-btn:hover {
+    transform: translateY(-1px);
+    opacity: 0.9;
+}
+
+.survey-page {
+    display: none;
+}
+
+.survey-page.active {
+    display: block;
+}
+
+/* 인증 상태 버튼 */
+.auth-status-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: linear-gradient(145deg, #4CAF50, #45a049);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+    z-index: 1000;
+    transition: var(--transition);
+}
+
+.auth-status-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(76, 175, 80, 0.4);
+}
+
+.auth-status-btn.logout {
+    background: linear-gradient(145deg, #f44336, #da190b);
+    box-shadow: 0 4px 12px rgba(244, 67, 54, 0.3);
+}
+
+.auth-status-btn.logout:hover {
+    box-shadow: 0 6px 16px rgba(244, 67, 54, 0.4);
+}
+
+/* 푸터 */
+.footer {
+    text-align: center;
+    margin-top: 25px !important;
+    color: #ccc;
+    font-size: 14px !important;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 480px) {
+    body {
+        padding: 15px 5px !important;
+    }
+    
+    .menu-button {
+        font-size: 24px !important;
+        height: 65px !important;
+    }
+    
+    .header h2 {
+        font-size: 28px !important;
+    }
+    
+    .button-row {
+        gap: 6px;
+        margin-bottom: 6px;
+    }
+    
+    .popup-close,
+    .slide-close {
+        top: -35px;
+        right: -5px;
+        font-size: 25px;
+        width: 35px;
+        height: 35px;
+    }
+    
+    .slide-navigation-container {
+        gap: 15px;
+        margin-top: 15px;
+    }
+    
+    .slide-nav-new {
+        width: 35px;
+        height: 35px;
+        font-size: 16px;
+    }
+    
+    .slide-indicator-new {
+        font-size: 14px;
+        padding: 6px 12px;
+    }
+    
+    .auth-modal-content {
+        padding: 20px;
+        margin: 10px;
+    }
+    
+    .auth-modal h3 {
+        font-size: 20px;
+    }
+    
+    .auth-input {
+        font-size: 16px;
+        padding: 12px;
+    }
+    
+    .auth-btn {
+        font-size: 16px;
+        padding: 12px;
+    }
+    
+    .health-survey-content {
+        padding: 15px;
+        margin: 5px;
+    }
+    
+    .survey-title {
+        font-size: 18px;
+    }
+    
+    .survey-subtitle {
+        font-size: 20px;
+    }
+    
+    .auth-status-btn {
+        bottom: 15px;
+        right: 15px;
+        padding: 8px 16px;
+        font-size: 12px;
+    }
+}
