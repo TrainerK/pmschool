@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>독일피엠학교 - 제품 가격 계산기</title>
+    <style>
+        body {
+            font-family: 'Noto Sans KR', Arial, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+        }
+        .calculator-section {
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #fafafa;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #555;
+        }
+        select, input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #e7f3ff;
+            border-left: 4px solid #007bff;
+            border-radius: 4px;
+        }
+        .price-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        .price-table th, .price-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        .price-table th {
+            background-color: #f8f9fa;
+            font-weight: bold;
+        }
+        .price-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        .highlight {
+            background-color: #fff3cd !important;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>독일피엠학교 제품 가격 계산기</h1>
+
+        <div class="calculator-section">
+            <h2>가격 계산</h2>
+            <div class="form-group">
+                <label for="product">제품 선택:</label>
+                <select id="product">
+                    <option value="">제품을 선택하세요</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="priceType">가격 유형:</label>
+                <select id="priceType">
+                    <option value="">가격 유형을 선택하세요</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="quantity">수량:</label>
+                <input type="number" id="quantity" min="1" value="1">
+            </div>
+
+            <button onclick="calculatePrice()">가격 계산</button>
+
+            <div id="result" class="result" style="display: none;">
+                <h3>계산 결과</h3>
+                <p id="resultText"></p>
+            </div>
+        </div>
+
+        <div class="calculator-section">
+            <h2>전체 가격표</h2>
+            <button onclick="showAllPrices()">전체 가격표 보기</button>
+            <div id="priceTableContainer"></div>
+        </div>
+    </div>
+
+    <!-- prices.js 파일 import -->
+    <script src="prices.js"></script>
+
+    <script>
+        // 페이지 로드 시 제품 목록 초기화
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeProductList();
+        });
+
+        function initializeProductList() {
+            const productSelect = document.getElementById('product');
+            const products = Object.keys(PRODUCT_PRICES);
+
+            products.forEach(product => {
+                const option = document.createElement('option');
+                option.value = product;
+                option.textContent = product;
+                productSelect.appendChild(option);
+            });
+        }
+
+        function updatePriceTypes() {
+            const product = document.getElementById('product').value;
+            const priceTypeSelect = document.getElementById('priceType');
+
+            // 기존 옵션 제거
+            priceTypeSelect.innerHTML = '<option value="">가격 유형을 선택하세요</option>';
+
+            if (product && PRODUCT_PRICES[product]) {
+                const priceTypes = Object.keys(PRODUCT_PRICES[product]);
+                priceTypes.forEach(type => {
+                    const option = document.createElement('option');
+                    option.value = type;
+                    option.textContent = type;
+                    priceTypeSelect.appendChild(option);
+                });
+            }
+        }
+
+        // 제품 선택 시 가격 유형 업데이트
+        document.getElementById('product').addEventListener('change', updatePriceTypes);
+
+        function calculatePrice() {
+            const product = document.getElementById('product').value;
+            const priceType = document.getElementById('priceType').value;
+            const quantity = parseInt(document.getElementById('quantity').value) || 1;
+
+            if (!product || !priceType) {
+                alert('제품과 가격 유형을 모두 선택해주세요.');
+                return;
+            }
+
+            const unitPrice = PRODUCT_PRICES[product][priceType];
+            if (unitPrice === undefined) {
+                alert('선택한 제품의 가격 정보를 찾을 수 없습니다.');
+                return;
+            }
+
+            const totalPrice = unitPrice * quantity;
+
+            const resultDiv = document.getElementById('result');
+            const resultText = document.getElementById('resultText');
+
+            resultText.innerHTML = `
+                <strong>제품:</strong> ${product}<br>
+                <strong>가격 유형:</strong> ${priceType}<br>
+                <strong>단가:</strong> ${unitPrice.toLocaleString()}원<br>
+                <strong>수량:</strong> ${quantity}개<br>
+                <strong>총 가격:</strong> ${totalPrice.toLocaleString()}원
+            `;
+
+            resultDiv.style.display = 'block';
+        }
+
+        function showAllPrices() {
+            const container = document.getElementById('priceTableContainer');
+
+            let tableHTML = `
+                <table class="price-table">
+                    <thead>
+                        <tr>
+                            <th>제품명</th>
+                            <th>회원기준</th>
+                            <th>오토십</th>
+                            <th>BA</th>
+                            <th>액션팩</th>
+                            <th>5+1 세트</th>
+                            <th>5+1 단품</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+            `;
+
+            Object.keys(PRODUCT_PRICES).forEach(product => {
+                const prices = PRODUCT_PRICES[product];
+                tableHTML += `
+                    <tr>
+                        <td><strong>${product}</strong></td>
+                        <td>${prices['회원기준'] ? prices['회원기준'].toLocaleString() + '원' : '-'}</td>
+                        <td>${prices['오토십'] ? prices['오토십'].toLocaleString() + '원' : '-'}</td>
+                        <td>${prices['BA'] ? prices['BA'].toLocaleString() + '원' : '-'}</td>
+                        <td>${prices['액션팩'] ? prices['액션팩'].toLocaleString() + '원' : '-'}</td>
+                        <td>${prices['5+1 세트'] ? prices['5+1 세트'].toLocaleString() + '원' : '-'}</td>
+                        <td>${prices['5+1 단품'] ? prices['5+1 단품'].toLocaleString() + '원' : '-'}</td>
+                    </tr>
+                `;
+            });
+
+            tableHTML += `
+                    </tbody>
+                </table>
+            `;
+
+            container.innerHTML = tableHTML;
+        }
+
+        // Enter 키로 계산 실행
+        document.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                calculatePrice();
+            }
+        });
+    </script>
+</body>
+</html>
