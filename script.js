@@ -1,4 +1,3 @@
-Copy
 /*
  * 독일피엠학교 JavaScript
  * 파일명: script.js
