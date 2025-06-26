@@ -1,0 +1,1836 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>독일피엠학교</title>
+<style>
+:root{--primary-bg:#000;--primary-text:#fff;--accent-color:#FFD700;--secondary-bg:#333;--hover-bg:#666;--border-radius:8px;--transition:all 0.3s ease}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--primary-bg)!important;color:var(--primary-text);font-family:Arial,sans-serif;padding:20px 10px!important;min-height:100vh;overflow-x:hidden}
+.header{text-align:center;margin-bottom:25px!important;cursor:pointer}
+.header h1{color:#ccc;font-size:18px!important;margin-bottom:5px!important}
+.header h2{color:var(--accent-color);font-size:32px!important;font-weight:bold!important}
+.menu-container{max-width:500px;margin:0 auto;position:relative}
+.button-row{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px}
+.menu-button{width:100%;height:70px!important;font-size:28px!important;font-weight:bold!important;border:none;border-radius:15px;cursor:pointer;transition:var(--transition);color:var(--primary-text)!important;position:relative;z-index:1}
+.menu-button:hover{transform:translateY(-2px);box-shadow:0 6px 12px rgba(0,0,0,0.4)}
+.menu-button:disabled{opacity:0.3;cursor:not-allowed;transform:none}
+.btn-1{background:linear-gradient(145deg,#ff6b7a,#ff5252)!important}
+.btn-2{background:linear-gradient(145deg,#4ecdc4,#26a69a)!important}
+.btn-3{background:linear-gradient(145deg,#42a5f5,#1e88e5)!important}
+.btn-4{background:linear-gradient(145deg,#a5d6a7,#66bb6a)!important}
+.btn-5{background:linear-gradient(145deg,#ffb74d,#ff9800)!important}
+.btn-6{background:linear-gradient(145deg,#ab47bc,#8e24aa)!important}
+.btn-7{background:linear-gradient(145deg,#f06292,#e91e63)!important}
+.btn-8{background:linear-gradient(145deg,#ba68c8,#9c27b0)!important}
+.btn-9{background:linear-gradient(145deg,#ffb74d,#ff9800)!important}
+.btn-10{background:linear-gradient(145deg,#42a5f5,#1976d2)!important}
+.btn-11{background:linear-gradient(145deg,#4dd0e1,#00acc1)!important}
+.btn-12{background:linear-gradient(145deg,#f06292,#ec407a)!important}
+.dropdown-container{width:100%;margin:0;position:relative;z-index:2}
+.dropdown-content{display:none;background:var(--secondary-bg);border-radius:10px;padding:15px;margin:8px 0;box-shadow:0 4px 8px rgba(0,0,0,0.3)}
+.dropdown-content.show{display:block}
+.order-dropdown{display:none;background:var(--secondary-bg);border-radius:10px;padding:15px;margin:8px 0;box-shadow:0 4px 8px rgba(0,0,0,0.3)}
+.order-dropdown.show{display:block}
+.order-top-row{display:grid;grid-template-columns:4fr 1fr 1fr;gap:10px;margin-bottom:15px}
+.order-select,.quantity-button,.reset-button{background:#555;color:var(--primary-text);padding:12px 10px;border-radius:var(--border-radius);border:none;font-size:14px;cursor:pointer;transition:var(--transition)}
+.order-select:hover,.quantity-button:hover{background:var(--hover-bg)}
+.order-select:focus{outline:none;background:#777}
+.reset-button{background:#ff4444}
+.reset-button:hover{background:#cc3333}
+.quantity-dropdown{display:none;position:absolute;top:100%;left:0;right:0;background:#444;border-radius:var(--border-radius);max-height:200px;overflow-y:auto;z-index:100;border:1px solid var(--hover-bg)}
+.quantity-dropdown.show{display:block}
+.quantity-option{padding:10px;cursor:pointer;border-bottom:1px solid #555;font-size:14px}
+.quantity-option:hover{background:#555}
+.quantity-option:last-child{border-bottom:none}
+.price-buttons-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:15px}
+.price-button{background:#555;color:var(--primary-text);padding:12px 10px;border-radius:var(--border-radius);border:none;font-size:14px;cursor:pointer;transition:var(--transition)}
+.price-button:hover{background:var(--hover-bg)}
+.price-button.selected{background:var(--accent-color)!important;color:var(--primary-bg)!important;box-shadow:0 0 10px rgba(255,215,0,0.5)}
+.order-bottom-row{display:grid;grid-template-columns:1fr 1fr 0.5fr 0.5fr;gap:10px;margin-bottom:15px}
+.order-bottom-button{background:var(--hover-bg);color:var(--primary-text);padding:15px 10px;border-radius:var(--border-radius);border:none;font-size:16px;font-weight:bold;cursor:pointer;transition:var(--transition);text-align:center}
+.order-bottom-button:hover{background:#777}
+.order-bottom-button.display{background:#444!important;cursor:default;color:var(--accent-color)}
+.order-bottom-button.display:hover{background:#444!important}
+.order-bottom-checkbox{background:var(--hover-bg);color:var(--primary-text);padding:15px 10px;border-radius:var(--border-radius);border:none;font-size:16px;font-weight:bold;cursor:pointer;transition:var(--transition);text-align:center;display:flex;align-items:center;justify-content:center;gap:8px}
+.order-bottom-checkbox:hover{background:#777}
+.order-bottom-checkbox input[type="checkbox"]{width:18px;height:18px;cursor:pointer}
+.order-textbox,.memo-textbox{width:100%;background:#444;color:var(--primary-text);border:1px solid var(--hover-bg);border-radius:var(--border-radius);padding:10px;font-size:14px;resize:vertical}
+.order-textbox{margin-bottom:10px;min-height:200px}
+.memo-textbox{height:60px}
+.order-textbox:focus,.memo-textbox:focus{outline:none;border-color:var(--accent-color)}
+.news-item,.group-item,.alarm-item,.catalog-item{background:#555;color:var(--primary-text);padding:12px 15px!important;margin:5px 0;border-radius:var(--border-radius);cursor:pointer;font-size:16px!important;transition:var(--transition)}
+.news-item:hover,.group-item:hover,.alarm-item:hover,.catalog-item:hover{background:var(--hover-bg)}
+.news-item:disabled{opacity:0.3;cursor:not-allowed;background:var(--secondary-bg)}
+.news-item-full{width:100%}
+.alarm-item{text-align:center}
+.time-period-buttons{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
+.time-period-btn{background:#555;color:var(--primary-text);padding:12px 15px;border-radius:var(--border-radius);border:none;cursor:pointer;font-size:16px;transition:var(--transition);text-align:center}
+.time-period-btn:hover{background:var(--hover-bg)}
+.time-period-btn.selected{background:var(--accent-color)!important;color:var(--primary-bg)!important}
+.program-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.program-item{background:#555;color:var(--primary-text);padding:15px 15px 15px 10px!important;border-radius:var(--border-radius);cursor:pointer;font-size:16px!important;text-align:right!important;transition:var(--transition)}
+.program-item:hover{background:var(--hover-bg)}
+.program-word{font-size:21px!important}
+.program-suffix{font-size:15px!important}
+.intake-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:10px}
+.intake-bottom{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.intake-item{background:#555;color:var(--primary-text);padding:10px 8px!important;border-radius:var(--border-radius);cursor:pointer;font-size:14px!important;text-align:center;transition:var(--transition)}
+.intake-item:hover{background:var(--hover-bg)}
+.intake-bottom .intake-item{font-size:16px!important;padding:12px 8px!important}
+.auth-modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.9);z-index:2000;justify-content:center;align-items:center;padding:20px}
+.auth-modal-content{background:linear-gradient(145deg,var(--secondary-bg),#444);border-radius:20px;padding:30px;max-width:400px;width:100%;text-align:center;border:2px solid var(--accent-color);box-shadow:0 8px 25px rgba(255,215,0,0.3)}
+.auth-modal h3{color:var(--accent-color);font-size:24px;margin-bottom:20px;font-weight:bold}
+.auth-modal p{color:#ccc;font-size:16px;margin-bottom:25px;line-height:1.5}
+.auth-input{width:100%;padding:15px;font-size:18px;text-align:center;border:2px solid #555;border-radius:10px;background:#222;color:var(--primary-text);margin-bottom:15px}
+.auth-input:focus{border-color:var(--accent-color);outline:none;box-shadow:0 0 10px rgba(255,215,0,0.5)}
+.auth-buttons{display:flex;gap:15px;margin-top:20px}
+.auth-btn{flex:1;padding:15px;font-size:18px;font-weight:bold;border:none;border-radius:10px;cursor:pointer;transition:var(--transition)}
+.auth-btn-confirm{background:linear-gradient(145deg,#4CAF50,#45a049);color:var(--primary-text)}
+.auth-btn-confirm:hover{background:linear-gradient(145deg,#45a049,#4CAF50);transform:translateY(-2px);box-shadow:0 4px 12px rgba(76,175,80,0.4)}
+.auth-btn-cancel{background:linear-gradient(145deg,#f44336,#da190b);color:var(--primary-text)}
+.auth-btn-cancel:hover{background:linear-gradient(145deg,#da190b,#f44336);transform:translateY(-2px);box-shadow:0 4px 12px rgba(244,67,54,0.4)}
+.auth-message{margin-top:15px;font-size:16px;font-weight:bold}
+.auth-success{color:#4CAF50}
+.auth-error{color:#f44336}
+.auth-loading{color:var(--accent-color)}
+.popup-overlay,.slide-popup-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.9);z-index:1000;justify-content:center;align-items:center;padding:10px}
+.popup-content,.slide-popup-content{position:relative;max-width:95%;max-height:95%;background:transparent;display:flex;justify-content:center;align-items:center}
+.slide-popup-content{flex-direction:column}
+.popup-image,.slide-image{max-width:100%;max-height:100%;width:auto;height:auto;border-radius:10px;box-shadow:0 4px 20px rgba(255,255,255,0.1)}
+.slide-container{position:relative;width:100%;height:auto;display:flex;justify-content:center;align-items:center}
+.slide-image{display:none;max-height:80vh}
+.slide-image.active{display:block}
+.slide-navigation-container{display:flex;align-items:center;justify-content:center;gap:20px;margin-top:20px}
+.slide-nav-new{background:rgba(0,0,0,0.7);color:var(--primary-text);border:2px solid var(--primary-text);border-radius:50%;width:40px;height:40px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:18px;font-weight:bold;transition:var(--transition)}
+.slide-nav-new:hover{background:rgba(255,255,255,0.2)}
+.slide-indicator-new{color:var(--primary-text);font-size:16px;font-weight:bold;background:rgba(0,0,0,0.7);padding:8px 16px;border-radius:20px;border:1px solid var(--primary-text);min-width:60px;text-align:center}
+.popup-close,.slide-close{position:absolute;top:-40px;right:-10px;color:var(--primary-text);font-size:30px;cursor:pointer;background:rgba(0,0,0,0.7);border-radius:50%;width:40px;height:40px;display:flex;align-items:center;justify-content:center;border:2px solid var(--primary-text)}
+.slide-close{top:-50px}
+.popup-close:hover,.slide-close:hover{background:rgba(255,255,255,0.2)}
+.alarm-button-row{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:8px;margin-bottom:15px}
+.alarm-button{background:#555;color:var(--primary-text);padding:12px 8px;border-radius:var(--border-radius);border:none;font-size:14px;cursor:pointer;transition:var(--transition);text-align:center}
+.alarm-button:hover{background:var(--hover-bg)}
+.alarm-button.active-on{background:#4CAF50!important;color:var(--primary-text)!important}
+.alarm-button.active-off{background:#f44336!important;color:var(--primary-text)!important}
+.alarm-row{display:grid;grid-template-columns:15% 15% 15% 55%;gap:8px;margin-bottom:8px}
+.alarm-select,.alarm-input{background:#555;color:var(--primary-text);padding:8px 6px;border-radius:var(--border-radius);border:none;font-size:12px}
+.alarm-select:focus,.alarm-input:focus{outline:none;border:1px solid var(--accent-color)}
+.alarm-sound-modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.9);z-index:2000;justify-content:center;align-items:center;padding:20px}
+.alarm-sound-content{background:linear-gradient(145deg,var(--secondary-bg),#444);border-radius:20px;padding:30px;max-width:400px;width:100%;text-align:center;border:2px solid var(--accent-color);box-shadow:0 8px 25px rgba(255,215,0,0.3)}
+.alarm-sound-title{color:var(--accent-color);font-size:24px;margin-bottom:20px;font-weight:bold;display:flex;align-items:center;justify-content:center;gap:10px}
+.sound-options{margin:20px 0}
+.sound-option{display:flex;align-items:center;margin:15px 0;padding:10px;background:#555;border-radius:10px;cursor:pointer;transition:var(--transition)}
+.sound-option:hover{background:var(--hover-bg)}
+.sound-option input{margin-right:15px;width:18px;height:18px}
+.sound-option label{color:var(--primary-text);font-size:16px;cursor:pointer;flex:1;text-align:left}
+.alarm-sound-buttons{display:flex;gap:10px;margin-top:20px}
+.alarm-sound-btn{flex:1;padding:12px;font-size:16px;font-weight:bold;border:none;border-radius:10px;cursor:pointer;transition:var(--transition)}
+.alarm-sound-btn-preview{background:#666;color:var(--primary-text)}
+.alarm-sound-btn-confirm{background:#4CAF50;color:var(--primary-text)}
+.alarm-sound-btn-cancel{background:#f44336;color:var(--primary-text)}
+.alarm-sound-btn:hover{transform:translateY(-1px);opacity:0.9}
+.health-survey-modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.95);z-index:2000;justify-content:center;align-items:center;padding:10px}
+.health-survey-content{background:linear-gradient(145deg,var(--secondary-bg),#444);border-radius:15px;padding:20px;max-width:500px;width:100%;max-height:90vh;overflow-y:auto;border:2px solid var(--accent-color);box-shadow:0 8px 25px rgba(255,215,0,0.3)}
+.survey-title{color:var(--accent-color);font-size:20px;margin-bottom:8px;text-align:center;line-height:1.3}
+.survey-subtitle{color:var(--accent-color);font-size:22px;margin-bottom:15px;text-align:center;font-weight:bold}
+.survey-description{color:#ccc;font-size:14px;margin-bottom:20px;line-height:1.4}
+.survey-question{color:var(--accent-color);font-size:16px;margin:15px 0 8px 0;font-weight:bold}
+.survey-input,.survey-select{width:100%;background:#555;color:var(--primary-text);border:1px solid var(--hover-bg);border-radius:var(--border-radius);padding:10px;font-size:14px;margin-bottom:10px}
+.survey-input:focus,.survey-select:focus{outline:none;border-color:var(--accent-color)}
+.survey-radio-group{display:flex;flex-wrap:wrap;gap:15px;margin-bottom:10px}
+.survey-radio-item{display:flex;align-items:center;gap:8px}
+.survey-radio{width:18px;height:18px}
+.survey-radio-label{color:var(--primary-text);font-size:14px}
+.survey-checkbox-group{display:flex;flex-wrap:wrap;gap:15px;margin-bottom:10px}
+.survey-checkbox-item{display:flex;align-items:center;gap:8px}
+.survey-checkbox{width:18px;height:18px}
+.survey-checkbox-label{color:var(--primary-text);font-size:14px}
+.survey-buttons{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:20px}
+.survey-btn{padding:12px;font-size:16px;font-weight:bold;border:none;border-radius:var(--border-radius);cursor:pointer;transition:var(--transition)}
+.survey-btn-close{background:#666;color:var(--primary-text)}
+.survey-btn-prev{background:#f44336;color:var(--primary-text)}
+.survey-btn-next{background:#4CAF50;color:var(--primary-text)}
+.survey-btn:hover{transform:translateY(-1px);opacity:0.9}
+.survey-page{display:none}
+.survey-page.active{display:block}
+.auth-status-btn{position:fixed;bottom:20px;right:20px;background:linear-gradient(145deg,#4CAF50,#45a049);color:white;border:none;border-radius:25px;padding:10px 20px;font-size:14px;font-weight:bold;cursor:pointer;box-shadow:0 4px 12px rgba(76,175,80,0.3);z-index:1000;transition:var(--transition)}
+.auth-status-btn:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(76,175,80,0.4)}
+.auth-status-btn.logout{background:linear-gradient(145deg,#f44336,#da190b);box-shadow:0 4px 12px rgba(244,67,54,0.3)}
+.auth-status-btn.logout:hover{box-shadow:0 6px 16px rgba(244,67,54,0.4)}
+.footer{text-align:center;margin-top:25px!important;color:#ccc;font-size:14px!important}
+@media (max-width:480px){
+body{padding:15px 5px!important}
+.menu-button{font-size:24px!important;height:65px!important}
+.header h2{font-size:28px!important}
+.button-row{gap:6px;margin-bottom:6px}
+.popup-close,.slide-close{top:-35px;right:-5px;font-size:25px;width:35px;height:35px}
+.slide-navigation-container{gap:15px;margin-top:15px}
+.slide-nav-new{width:35px;height:35px;font-size:16px}
+.slide-indicator-new{font-size:14px;padding:6px 12px}
+.auth-modal-content{padding:20px;margin:10px}
+.auth-modal h3{font-size:20px}
+.auth-input{font-size:16px;padding:12px}
+.auth-btn{font-size:16px;padding:12px}
+.health-survey-content{padding:15px;margin:5px}
+.survey-title{font-size:18px}
+.survey-subtitle{font-size:20px}
+.auth-status-btn{bottom:15px;right:15px;padding:8px 16px;font-size:12px}
+}
+</style>
+</head>
+<body>
+<div class="header" onclick="goToMain()">
+<h1>God is Love</h1>
+<h2>독일피엠학교</h2>
+</div>
+<div class="menu-container">
+<div class="button-row">
+<button class="menu-button btn-1" onclick="toggleDropdown('news')">피엠소식</button>
+<button class="menu-button btn-2" onclick="toggleDropdown('order')">주문서작성</button>
+</div>
+<div class="dropdown-container">
+<div class="dropdown-content" id="news-dropdown">
+<div class="news-item">공지사항</div>
+<div class="news-item" onclick="showImage(IMG_BASE + 'card-1.png', '카드 무이자 할부 안내')">이달의 카드 무이자</div>
+<div class="news-item" onclick="showImage(IMG_BASE + 'BA-1.png', '2025년 6월 비즈니스 아카데미')">이달의 BA 행사</div>
+<div class="news-item" onclick="showSlide('ba-event', 5)">이달의 BA 이벤트</div>
+<div class="news-item" onclick="showImage(IMG_BASE + 'month-event-1.png', '월말 이벤트 안내')">이달의 월말 이벤트</div>
+<div class="news-item" onclick="showSlide('special-event', 3)">이달의 특별 이벤트</div>
+<div class="news-item" onclick="showSlide('monthly-plan', 3)">이달의 본사 일정</div>
+<div class="news-item" onclick="showSlide('warning', 4)">규정위반 조치안내</div>
+<div class="news-item news-item-full" onclick="showImage(IMG_BASE + 'branch-1.png', '독일피엠 전국지사 및 반품처')">독일피엠 전국지사 및 반품처</div>
+</div>
+</div>
+<div class="dropdown-container">
+<div class="dropdown-content" id="group-dropdown">
+<div class="group-item" onclick="checkMemberAuth('참고용 체험사례들')">참고용 체험사례들</div>
+<div class="group-item" onclick="checkMemberAuth('트레이너 K 일정')">트레이너 K 일정</div>
+<div class="group-item" onclick="checkMemberAuth('독일피엠학교 소식')">독일피엠학교 소식</div>
+<div class="group-item" onclick="checkMemberAuth('독일피엠학교 문화')">독일피엠학교 문화</div>
+<div class="group-item" onclick="checkMemberAuth('독일피엠학교 이벤트')">독일피엠학교 이벤트</div>
+<div class="group-item" onclick="checkMemberAuth('독일피엠학교 교육프로그램')">독일피엠학교 교육프로그램</div>
+<div class="group-item" onclick="checkMemberAuth('독일피엠학교 교칙 및 후원안내')">독일피엠학교 교칙 및 후원안내</div>
+</div>
+</div>
+<div class="button-row">
+<button class="menu-button btn-3" onclick="toggleDropdown('catalog')">카달로그</button>
+<button class="menu-button btn-4" onclick="toggleDropdown('alarm')">섭취알람기</button>
+</div>
+<div class="dropdown-container">
+<div class="dropdown-content" id="program-dropdown">
+<div class="program-grid">
+<div class="program-item" onclick="checkMemberAuth('해독 프로그램')"><span class="program-word">해독</span> <span class="program-suffix">프로그램</span></div>
+<div class="program-item" onclick="checkMemberAuth('다이어트 프로그램')"><span class="program-word">다이어트</span> <span class="program-suffix">프로그램</span></div>
+<div class="program-item" onclick="checkMemberAuth('장건강 프로그램')"><span class="program-word">장건강</span> <span class="program-suffix">프로그램</span></div>
+<div class="program-item" onclick="checkMemberAuth('혈당관리 프로그램')"><span class="program-word">혈당관리</span> <span class="program-suffix">프로그램</span></div>
+<div class="program-item" onclick="checkMemberAuth('눈건강 프로그램')"><span class="program-word">눈건강</span> <span class="program-suffix">프로그램</span></div>
+<div class="program-item" onclick="checkMemberAuth('혈압관리 프로그램')"><span class="program-word">혈압관리</span> <span class="program-suffix">프로그램</span></div>
+<div class="program-item" onclick="checkMemberAuth('뼈건강 프로그램')"><span class="program-word">뼈건강</span> <span class="program-suffix">프로그램</span></div>
+<div class="program-item" onclick="checkMemberAuth('혈액생성 프로그램')"><span class="program-word">혈액생성</span> <span class="program-suffix">프로그램</span></div>
+<div class="program-item" onclick="checkMemberAuth('갱년기 프로그램')"><span class="program-word">갱년기</span> <span class="program-suffix">프로그램</span></div>
+<div class="program-item" onclick="checkMemberAuth('혈관건강 프로그램')"><span class="program-word">혈관건강</span> <span class="program-suffix">프로그램</span></div>
+<div class="program-item" onclick="checkMemberAuth('전립선 프로그램')"><span class="program-word">전립선</span> <span class="program-suffix">프로그램</span></div>
+<div class="program-item" onclick="checkMemberAuth('염증제거 프로그램')"><span class="program-word">염증제거</span> <span class="program-suffix">프로그램</span></div>
+<div class="program-item" onclick="checkMemberAuth('고지혈 프로그램')"><span class="program-word">고지혈</span> <span class="program-suffix">프로그램</span></div>
+<div class="program-item" onclick="checkMemberAuth('피로회복 프로그램')"><span class="program-word">피로회복</span> <span class="program-suffix">프로그램</span></div>
+</div>
+</div>
+</div>
+<div class="dropdown-container">
+<div class="dropdown-content" id="order-dropdown">
+<div class="order-top-row">
+<select class="order-select" id="product-select">
+<option value="">제품을 선택하세요</option>
+<option value="파워">파워</option>
+<option value="리스">리스</option>
+<option value="액티(스테비아)">액티(스테비아)</option>
+<option value="액티(레몬라임)">액티(레몬라임)</option>
+<option value="액티(레몬그라스)">액티(레몬그라스)</option>
+<option value="액티(피치 아이스티)">액티(피치 아이스티)</option>
+<option value="액티펀치">액티펀치</option>
+<option value="액티 투 고">액티 투 고</option>
+<option value="피트니스 드링크">피트니스 드링크</option>
+<option value="젤슈츠(오렌지)">젤슈츠(오렌지)</option>
+<option value="젤슈츠(사과)">젤슈츠(사과)</option>
+<option value="요거트 드링크">요거트 드링크</option>
+<option value="D-드링크">D-드링크</option>
+<option value="제너레이션">제너레이션</option>
+<option value="듀오">듀오</option>
+<option value="오메가3">오메가3</option>
+<option value="큐10 플러스">큐10 플러스</option>
+<option value="뮤노겐">뮤노겐</option>
+<option value="뷰티">뷰티</option>
+<option value="C-밸런스">C-밸런스</option>
+<option value="겔링핏">겔링핏</option>
+<option value="액티브 젤">액티브 젤</option>
+<option value="맨플러스">맨플러스</option>
+<option value="허벌티">허벌티</option>
+<option value="탑쉐이프">탑쉐이프</option>
+<option value="아이비5(IB5)">아이비5(IB5)</option>
+<option value="프로(망고)">프로(망고)</option>
+<option value="프로(바닐라)">프로(바닐라)</option>
+<option value="프로(베리)">프로(베리)</option>
+<option value="프로(코코넛)">프로(코코넛)</option>
+<option value="프로(초코릿무스)">프로(초코릿무스)</option>
+<option value="웨이">웨이</option>
+<option value="주니어">주니어</option>
+<option value="맨 페이스">맨 페이스</option>
+<option value="액티 세럼">액티 세럼</option>
+<option value="브라이트닝 포에버">브라이트닝 포에버</option>
+<option value="클렌징폼">클렌징폼</option>
+<option value="밸런싱크림">밸런싱크림</option>
+<option value="필링마스크">필링마스크</option>
+<option value="영케어 세트">영케어 세트</option>
+<option value="하이드레이팅 샷 마스크">하이드레이팅 샷 마스크</option>
+<option value="브라이트닝 샷 마스크">브라이트닝 샷 마스크</option>
+<option value="요거트 메이커">요거트 메이커</option>
+<option value="티인퓨저">티인퓨저</option>
+<option value="데모백">데모백</option>
+</select>
+<div style="position: relative;">
+<button class="quantity-button" id="quantity-button" onclick="toggleQuantityDropdown()">수량</button>
+<div class="quantity-dropdown" id="quantity-dropdown">
+<div class="quantity-option" onclick="selectQuantity(1)">1</div>
+<div class="quantity-option" onclick="selectQuantity(2)">2</div>
+<div class="quantity-option" onclick="selectQuantity(3)">3</div>
+<div class="quantity-option" onclick="selectQuantity(4)">4</div>
+<div class="quantity-option" onclick="selectQuantity(5)">5</div>
+<div class="quantity-option" onclick="selectQuantity(6)">6</div>
+<div class="quantity-option" onclick="selectQuantity(7)">7</div>
+<div class="quantity-option" onclick="selectQuantity(8)">8</div>
+<div class="quantity-option" onclick="selectQuantity(9)">9</div>
+<div class="quantity-option" onclick="selectQuantity(10)">10</div>
+<div class="quantity-option" onclick="selectQuantity(11)">11</div>
+<div class="quantity-option" onclick="selectQuantity(12)">12</div>
+<div class="quantity-option" onclick="selectQuantity(13)">13</div>
+<div class="quantity-option" onclick="selectQuantity(14)">14</div>
+<div class="quantity-option" onclick="selectQuantity(15)">15</div>
+<div class="quantity-option" onclick="selectQuantity(16)">16</div>
+<div class="quantity-option" onclick="selectQuantity(17)">17</div>
+<div class="quantity-option" onclick="selectQuantity(18)">18</div>
+<div class="quantity-option" onclick="selectQuantity(19)">19</div>
+<div class="quantity-option" onclick="selectQuantity(20)">20</div>
+<div class="quantity-option" onclick="selectQuantity(21)">21</div>
+<div class="quantity-option" onclick="selectQuantity(22)">22</div>
+<div class="quantity-option" onclick="selectQuantity(23)">23</div>
+<div class="quantity-option" onclick="selectQuantity(24)">24</div>
+<div class="quantity-option" onclick="selectQuantity(25)">25</div>
+<div class="quantity-option" onclick="selectQuantity(26)">26</div>
+</div>
+</div>
+<button class="reset-button" onclick="resetOrderList()">초기화</button>
+</div>
+<div class="price-buttons-grid">
+<button class="price-button" onclick="selectPriceType('회원기준')">회원기준</button>
+<button class="price-button" onclick="selectPriceType('5+1 단품')">5+1 단품</button>
+<button class="price-button" onclick="selectPriceType('5+1 세트')">5+1 세트</button>
+<button class="price-button" onclick="selectPriceType('오토십')">오토십</button>
+<button class="price-button" onclick="selectPriceType('BA')">BA</button>
+<button class="price-button" onclick="selectPriceType('액션팩')">액션팩</button>
+</div>
+<div class="order-bottom-row">
+<div class="order-bottom-button display" id="subtotal-display">소계</div>
+<label class="order-bottom-checkbox">
+<input type="checkbox" id="point-include-checkbox">
+<span>포인트포함</span>
+</label>
+<button class="order-bottom-button" onclick="registerOrder()">등록</button>
+<button class="order-bottom-button" onclick="calculateAndCopy()">정산</button>
+</div>
+<textarea class="order-textbox" id="order-textbox" placeholder="등록된 주문 내역이 여기에 표시됩니다..."></textarea>
+<textarea class="memo-textbox" id="memo-textbox" placeholder="메모를 입력하세요...">[입금계좌안내] 
+카카오뱅크/김희진 3333-12-564789</textarea>
+</div>
+</div>
+<div class="button-row">
+<button class="menu-button btn-5" onclick="toggleDropdown('program')">프로그램</button>
+<button class="menu-button btn-8" onclick="window.open('https://www.youtube.com/@독일피엠학교', '_blank')">유튜브채널</button>
+</div>
+<div class="dropdown-container">
+<div class="dropdown-content" id="catalog-dropdown">
+<div class="catalog-item" onclick="showSlide('price', 35)">가격정보 카탈로그</div>
+<div class="catalog-item" onclick="showSlide('promotion', 28)">프로모션 카탈로그</div>
+<div class="catalog-item">효능정보 카탈로그</div>
+<div class="catalog-item" onclick="showImage(IMG_BASE + 'ratio-pvsr-1.png', '파워리스 비율계산표')">파워리스 비율계산표</div>
+</div>
+</div>
+<div class="dropdown-container">
+<div class="dropdown-content" id="alarm-dropdown">
+<div class="alarm-button-row">
+<button class="alarm-button" id="alarm-on-btn" onclick="toggleAlarm('on')">알람켜기</button>
+<button class="alarm-button" id="alarm-off-btn" onclick="toggleAlarm('off')">알람끄기</button>
+<button class="alarm-button" onclick="showAlarmSoundModal()">알람소리</button>
+<button class="alarm-button" onclick="addAlarmRow()">알람추가</button>
+</div>
+<div id="alarm-rows-container">
+<div class="alarm-row">
+<select class="alarm-select">
+<option value="오전" selected>오전</option>
+<option value="오후">오후</option>
+</select>
+<select class="alarm-select">
+<option value="">시간</option>
+<option value="1시">1시</option>
+<option value="2시">2시</option>
+<option value="3시">3시</option>
+<option value="4시">4시</option>
+<option value="5시">5시</option>
+<option value="6시">6시</option>
+<option value="7시" selected>7시</option>
+<option value="8시">8시</option>
+<option value="9시">9시</option>
+<option value="10시">10시</option>
+<option value="11시">11시</option>
+<option value="12시">12시</option>
+</select>
+<select class="alarm-select">
+<option value="">분</option>
+<option value="00분" selected>00분</option>
+<option value="10분">10분</option>
+<option value="20분">20분</option>
+<option value="30분">30분</option>
+<option value="40분">40분</option>
+<option value="50분">50분</option>
+</select>
+<input type="text" class="alarm-input" placeholder="제품명 및 메모">
+</div>
+<div class="alarm-row">
+<select class="alarm-select">
+<option value="오전" selected>오전</option>
+<option value="오후">오후</option>
+</select>
+<select class="alarm-select">
+<option value="">시간</option>
+<option value="1시">1시</option>
+<option value="2시">2시</option>
+<option value="3시">3시</option>
+<option value="4시">4시</option>
+<option value="5시">5시</option>
+<option value="6시">6시</option>
+<option value="7시" selected>7시</option>
+<option value="8시">8시</option>
+<option value="9시">9시</option>
+<option value="10시">10시</option>
+<option value="11시">11시</option>
+<option value="12시">12시</option>
+</select>
+<select class="alarm-select">
+<option value="">분</option>
+<option value="00분" selected>00분</option>
+<option value="10분">10분</option>
+<option value="20분">20분</option>
+<option value="30분">30분</option>
+<option value="40분">40분</option>
+<option value="50분">50분</option>
+</select>
+<input type="text" class="alarm-input" placeholder="제품명 및 메모">
+</div>
+<div class="alarm-row">
+<select class="alarm-select">
+<option value="오전" selected>오전</option>
+<option value="오후">오후</option>
+</select>
+<select class="alarm-select">
+<option value="">시간</option>
+<option value="1시">1시</option>
+<option value="2시">2시</option>
+<option value="3시">3시</option>
+<option value="4시">4시</option>
+<option value="5시">5시</option>
+<option value="6시">6시</option>
+<option value="7시" selected>7시</option>
+<option value="8시">8시</option>
+<option value="9시">9시</option>
+<option value="10시">10시</option>
+<option value="11시">11시</option>
+<option value="12시">12시</option>
+</select>
+<select class="alarm-select">
+<option value="">분</option>
+<option value="00분" selected>00분</option>
+<option value="10분">10분</option>
+<option value="20분">20분</option>
+<option value="30분">30분</option>
+<option value="40분">40분</option>
+<option value="50분">50분</option>
+</select>
+<input type="text" class="alarm-input" placeholder="제품명 및 메모">
+</div>
+<div class="alarm-row">
+<select class="alarm-select">
+<option value="오전" selected>오전</option>
+<option value="오후">오후</option>
+</select>
+<select class="alarm-select">
+<option value="">시간</option>
+<option value="1시">1시</option>
+<option value="2시">2시</option>
+<option value="3시">3시</option>
+<option value="4시">4시</option>
+<option value="5시">5시</option>
+<option value="6시">6시</option>
+<option value="7시" selected>7시</option>
+<option value="8시">8시</option>
+<option value="9시">9시</option>
+<option value="10시">10시</option>
+<option value="11시">11시</option>
+<option value="12시">12시</option>
+</select>
+<select class="alarm-select">
+<option value="">분</option>
+<option value="00분" selected>00분</option>
+<option value="10분">10분</option>
+<option value="20분">20분</option>
+<option value="30분">30분</option>
+<option value="40분">40분</option>
+<option value="50분">50분</option>
+</select>
+<input type="text" class="alarm-input" placeholder="제품명 및 메모">
+</div>
+<div class="alarm-row">
+<select class="alarm-select">
+<option value="오전" selected>오전</option>
+<option value="오후">오후</option>
+</select>
+<select class="alarm-select">
+<option value="">시간</option>
+<option value="1시">1시</option>
+<option value="2시">2시</option>
+<option value="3시">3시</option>
+<option value="4시">4시</option>
+<option value="5시">5시</option>
+<option value="6시">6시</option>
+<option value="7시" selected>7시</option>
+<option value="8시">8시</option>
+<option value="9시">9시</option>
+<option value="10시">10시</option>
+<option value="11시">11시</option>
+<option value="12시">12시</option>
+</select>
+<select class="alarm-select">
+<option value="">분</option>
+<option value="00분" selected>00분</option>
+<option value="10분">10분</option>
+<option value="20분">20분</option>
+<option value="30분">30분</option>
+<option value="40분">40분</option>
+<option value="50분">50분</option>
+</select>
+<input type="text" class="alarm-input" placeholder="제품명 및 메모">
+</div>
+</div>
+</div>
+</div>
+<div class="button-row">
+<button class="menu-button btn-4" onclick="toggleDropdown('alarm')">섭취알람기</button>
+<button class="menu-button btn-6" onclick="showHealthSurvey()">건강상담실</button>
+</div>
+<div class="dropdown-container">
+<div class="dropdown-content" id="intake-dropdown">
+<div class="intake-grid">
+<div class="intake-item" onclick="showImage(IMG_BASE + 'howtotake-01.png', '파워 섭취방법')">파워</div>
+<div class="intake-item" onclick="showImage(IMG_BASE + 'howtotake-02.png', '리스 섭취방법')">리스</div>
+<div class="intake-item" onclick="showImage(IMG_BASE + 'howtotake-03.png', '젤슈츠 섭취방법')">젤슈츠</div>
+<div class="intake-item" onclick="showImage(IMG_BASE + 'howtotake-04.png', '액티 섭취방법')">액티</div>
+<div class="intake-item" onclick="showImage(IMG_BASE + 'howtotake-05.png', '뷰티 섭취방법')">뷰티</div>
+<div class="intake-item" onclick="showImage(IMG_BASE + 'howtotake-06.png', '겔링핏 섭취방법')">겔링핏</div>
+<div class="intake-item" onclick="showSlide('pro-intake', 2)">프로</div>
+<div class="intake-item" onclick="showImage(IMG_BASE + 'howtotake-08.png', '웨이 섭취방법')">웨이</div>
+<div class="intake-item" onclick="showImage(IMG_BASE + 'howtotake-09.png', '뮤노겐 섭취방법')">뮤노겐</div>
+<div class="intake-item" onclick="showImage(IMG_BASE + 'howtotake-10.png', '듀오 섭취방법')">듀오</div>
+<div class="intake-item" onclick="showImage(IMG_BASE + 'howtotake-11.png', '큐10 섭취방법')">큐10</div>
+<div class="intake-item" onclick="showImage(IMG_BASE + 'howtotake-12.png', '오메가-3 섭취방법')">오메가-3</div>
+<div class="intake-item" onclick="showImage(IMG_BASE + 'howtotake-13.png', '제너 섭취방법')">제너</div>
+<div class="intake-item" onclick="showImage(IMG_BASE + 'howtotake-14.png', '맨+ 섭취방법')">맨+</div>
+<div class="intake-item" onclick="showImage(IMG_BASE + 'howtotake-15.png', 'C-밸런스 섭취방법')">C-밸런스</div>
+<div class="intake-item" onclick="showImage(IMG_BASE + 'howtotake-16.png', 'IB5 섭취방법')">IB5</div>
+<div class="intake-item" onclick="showImage(IMG_BASE + 'howtotake-17.png', '주니어 섭취방법')">주니어</div>
+<div class="intake-item" onclick="showImage(IMG_BASE + 'howtotake-18.png', 'D-드링크 섭취방법')">D-드링크</div>
+</div>
+<div class="intake-bottom">
+<div class="intake-item" onclick="showImage(IMG_BASE + 'howtotake-19.png', '피트니스 드링크 섭취방법')">피트니스 드링크</div>
+<div class="intake-item" onclick="showImage(IMG_BASE + 'howtotake-20.png', '요거트 드링크 섭취방법')">요거트 드링크</div>
+</div>
+</div>
+</div>
+<div class="button-row">
+<button class="menu-button btn-9" onclick="window.open('https://xn--9d0bl6jk3qcqb4w6a9e.com/', '_blank')">피엠학교</button>
+<button class="menu-button btn-10" onclick="window.open('https://www.youtube.com/@독일피엠학교', '_blank')">유튜브채널</button>
+</div>
+<div class="button-row">
+<button class="menu-button btn-11" onclick="window.open('https://www.pm-international.com/en/?action=locale', '_blank')">독일피엠</button>
+<button class="menu-button btn-12" onclick="window.open('https://www.fitline.com/kr/ko-kr', '_blank')">FitLine</button>
+</div>
+</div>
+<button class="auth-status-btn" id="auth-status-btn" onclick="handleAuthStatus()">로그인</button>
+<div class="auth-modal" id="auth-modal">
+<div class="auth-modal-content">
+<h3>🔐 회원 인증</h3>
+<p>프로그램 이용을 위해<br/>회원번호와 비밀번호를 입력해주세요</p>
+<input class="auth-input" id="member-id" maxlength="8" placeholder="회원번호 (7-8자리)" type="text"/>
+<input class="auth-input" id="member-password" placeholder="비밀번호" type="password"/>
+<div class="auth-buttons">
+<button class="auth-btn auth-btn-confirm" onclick="verifyMemberAuth()">확인</button>
+<button class="auth-btn auth-btn-cancel" onclick="closeAuthModal()">취소</button>
+</div>
+<div class="auth-message" id="auth-message"></div>
+</div>
+</div>
+<div class="alarm-sound-modal" id="alarm-sound-modal">
+<div class="alarm-sound-content">
+<div class="alarm-sound-title">
+<span>🔊</span> 알람음 설정
+</div>
+<div class="sound-options">
+<div class="sound-option">
+<input type="radio" name="alarm-sound" value="browser" id="sound-browser" checked>
+<label for="sound-browser">🔔 브라우저 기본 알림음</label>
+</div>
+<div class="sound-option">
+<input type="radio" name="alarm-sound" value="beep" id="sound-beep">
+<label for="sound-beep">📢 비프음 (짧은 소리)</label>
+</div>
+<div class="sound-option">
+<input type="radio" name="alarm-sound" value="bell" id="sound-bell">
+<label for="sound-bell">🔔 벨 소리</label>
+</div>
+<div class="sound-option">
+<input type="radio" name="alarm-sound" value="vibrate" id="sound-vibrate">
+<label for="sound-vibrate">📳 진동 + 소리 (모바일)</label>
+</div>
+</div>
+<div class="alarm-sound-buttons">
+<button class="alarm-sound-btn alarm-sound-btn-preview" onclick="previewAlarmSound()">미리듣기</button>
+<button class="alarm-sound-btn alarm-sound-btn-confirm" onclick="confirmAlarmSound()">설정완료</button>
+<button class="alarm-sound-btn alarm-sound-btn-cancel" onclick="closeAlarmSoundModal()">취소</button>
+</div>
+</div>
+</div>
+<div class="health-survey-modal" id="health-survey-modal">
+<div class="health-survey-content">
+<div class="survey-page active" id="survey-page-1">
+<div class="survey-title">개인맞춤 영양설계를 위한</div>
+<div class="survey-subtitle">사전문진표</div>
+<div class="survey-description">😊 건강상담을 보다 정확하게 도와드리기 위해, 간단한 질문 몇가지를 드리려고 합니다. 편하게 답해주시면 감사하겠습니다!</div>
+<div class="survey-question">당신의 성별은 무엇인가요?</div>
+<select class="survey-select" id="gender">
+<option value="">성별을 선택해 주세요</option>
+<option value="남성">남성</option>
+<option value="여성">여성</option>
+</select>
+<div class="survey-question">당신의 키는 몇 cm인가요?</div>
+<input type="number" class="survey-input" id="height" placeholder="숫자만 입력해 주세요 (예: 165)">
+<div class="survey-question">당신의 몸무게는 몇 kg인가요?</div>
+<input type="number" class="survey-input" id="weight" placeholder="숫자만 입력해 주세요 (예: 55)">
+<div class="survey-question">당신은 몇년생인가요?</div>
+<input type="number" class="survey-input" id="birth-year" placeholder="숫자만 입력해 주세요 (예: 1970)">
+<div class="survey-buttons">
+<button class="survey-btn survey-btn-close" onclick="closeHealthSurvey()">닫기</button>
+<button class="survey-btn survey-btn-prev" onclick="prevSurveyPage()" disabled>이전</button>
+<button class="survey-btn survey-btn-next" onclick="nextSurveyPage()">다음</button>
+</div>
+</div>
+<div class="survey-page" id="survey-page-2">
+<div class="survey-title">개인맞춤 영양설계를 위한</div>
+<div class="survey-subtitle">사전문진표</div>
+<div class="survey-question">당신은 수술 또는 시술을 한적이 있나요?</div>
+<div class="survey-radio-group">
+<div class="survey-radio-item">
+<input type="radio" class="survey-radio" name="surgery" value="있다" id="surgery-yes">
+<label class="survey-radio-label" for="surgery-yes">있다</label>
+</div>
+<div class="survey-radio-item">
+<input type="radio" class="survey-radio" name="surgery" value="없다" id="surgery-no">
+<label class="survey-radio-label" for="surgery-no">없다</label>
+</div>
+</div>
+<div class="survey-question">당신은 술을 드시나요?</div>
+<div class="survey-radio-group">
+<div class="survey-radio-item">
+<input type="radio" class="survey-radio" name="alcohol" value="먹는다" id="alcohol-yes">
+<label class="survey-radio-label" for="alcohol-yes">먹는다</label>
+</div>
+<div class="survey-radio-item">
+<input type="radio" class="survey-radio" name="alcohol" value="전혀 안먹는다" id="alcohol-no">
+<label class="survey-radio-label" for="alcohol-no">전혀 안먹는다</label>
+</div>
+</div>
+<div class="survey-question">당신은 흡연을 하시나요?</div>
+<div class="survey-radio-group">
+<div class="survey-radio-item">
+<input type="radio" class="survey-radio" name="smoking" value="한다" id="smoking-yes">
+<label class="survey-radio-label" for="smoking-yes">한다</label>
+</div>
+<div class="survey-radio-item">
+<input type="radio" class="survey-radio" name="smoking" value="안한다" id="smoking-no">
+<label class="survey-radio-label" for="smoking-no">안한다</label>
+</div>
+</div>
+<div class="survey-question">당신은 우유를 섭취하면 설사를 하나요?</div>
+<div class="survey-radio-group">
+<div class="survey-radio-item">
+<input type="radio" class="survey-radio" name="milk-diarrhea" value="한다" id="milk-yes">
+<label class="survey-radio-label" for="milk-yes">한다</label>
+</div>
+<div class="survey-radio-item">
+<input type="radio" class="survey-radio" name="milk-diarrhea" value="안한다" id="milk-no">
+<label class="survey-radio-label" for="milk-no">안한다</label>
+</div>
+</div>
+<div class="survey-buttons">
+<button class="survey-btn survey-btn-close" onclick="closeHealthSurvey()">닫기</button>
+<button class="survey-btn survey-btn-prev" onclick="prevSurveyPage()">이전</button>
+<button class="survey-btn survey-btn-next" onclick="nextSurveyPage()">다음</button>
+</div>
+</div>
+<div class="survey-page" id="survey-page-3">
+<div class="survey-title">개인맞춤 영양설계를 위한</div>
+<div class="survey-subtitle">사전문진표</div>
+<div class="survey-question">당신은 하루에 커피를 몇잔정도 드시나요?</div>
+<input type="number" class="survey-input" id="coffee-cups" placeholder="숫자만 입력해 주세요"> 잔
+<div class="survey-question">당신의 대변보는 주기는 어떤가요?</div>
+<input type="number" class="survey-input" id="bowel-days" placeholder="숫자만 입력해 주세요" style="width: 30%; display: inline-block;">일에
+<input type="number" class="survey-input" id="bowel-times" placeholder="숫자만 입력해 주세요" style="width: 30%; display: inline-block;">회
+<div class="survey-question">당신이 1가지만 먹고 살아야 한다면 무엇을 선택하겠습니까?</div>
+<div class="survey-radio-group">
+<div class="survey-radio-item">
+<input type="radio" class="survey-radio" name="food-choice" value="육식" id="food-meat">
+<label class="survey-radio-label" for="food-meat">육식</label>
+</div>
+<div class="survey-radio-item">
+<input type="radio" class="survey-radio" name="food-choice" value="생선" id="food-fish">
+<label class="survey-radio-label" for="food-fish">생선</label>
+</div>
+<div class="survey-radio-item">
+<input type="radio" class="survey-radio" name="food-choice" value="채식" id="food-vegetable">
+<label class="survey-radio-label" for="food-vegetable">채식</label>
+</div>
+<div class="survey-radio-item">
+<input type="radio" class="survey-radio" name="food-choice" value="과일" id="food-fruit">
+<label class="survey-radio-label" for="food-fruit">과일</label>
+</div>
+</div>
+<div class="survey-question">당신은 국,찌게,탕,라면 등을 요리할때 수돗물을 사용하나요?</div>
+<div class="survey-radio-group">
+<div class="survey-radio-item">
+<input type="radio" class="survey-radio" name="tap-water" value="사용한다" id="tap-yes">
+<label class="survey-radio-label" for="tap-yes">사용한다</label>
+</div>
+<div class="survey-radio-item">
+<input type="radio" class="survey-radio" name="tap-water" value="사용안한다" id="tap-no">
+<label class="survey-radio-label" for="tap-no">사용안한다</label>
+</div>
+</div>
+<div class="survey-buttons">
+<button class="survey-btn survey-btn-close" onclick="closeHealthSurvey()">닫기</button>
+<button class="survey-btn survey-btn-prev" onclick="prevSurveyPage()">이전</button>
+<button class="survey-btn survey-btn-next" onclick="nextSurveyPage()">다음</button>
+</div>
+</div>
+<div class="survey-page" id="survey-page-4">
+<div class="survey-title">개인맞춤 영양설계를 위한</div>
+<div class="survey-subtitle">사전문진표</div>
+<div class="survey-question">당신은 하루 평균 몇 끼를 드시나요?</div>
+<div class="survey-radio-group">
+<div class="survey-radio-item">
+<input type="radio" class="survey-radio" name="meals-per-day" value="1끼" id="meals-1">
+<label class="survey-radio-label" for="meals-1">1끼</label>
+</div>
+<div class="survey-radio-item">
+<input type="radio" class="survey-radio" name="meals-per-day" value="2끼" id="meals-2">
+<label class="survey-radio-label" for="meals-2">2끼</label>
+</div>
+<div class="survey-radio-item">
+<input type="radio" class="survey-radio" name="meals-per-day" value="3끼" id="meals-3">
+<label class="survey-radio-label" for="meals-3">3끼</label>
+</div>
+<div class="survey-radio-item">
+<input type="radio" class="survey-radio" name="meals-per-day" value="불규칙" id="meals-irregular">
+<label class="survey-radio-label" for="meals-irregular">불규칙</label>
+</div>
+</div>
+<div class="survey-question">당신의 식사시간은 주로 어떻게 되시나요?</div>
+<div class="survey-checkbox-group">
+<div class="survey-checkbox-item">
+<input type="checkbox" class="survey-checkbox" name="meal-time" value="아침" id="time-morning">
+<label class="survey-checkbox-label" for="time-morning">아침</label>
+</div>
+<div class="survey-checkbox-item">
+<input type="checkbox" class="survey-checkbox" name="meal-time" value="오전" id="time-am">
+<label class="survey-checkbox-label" for="time-am">오전</label>
+</div>
+<div class="survey-checkbox-item">
+<input type="checkbox" class="survey-checkbox" name="meal-time" value="점심" id="time-lunch">
+<label class="survey-checkbox-label" for="time-lunch">점심</label>
+</div>
+<div class="survey-checkbox-item">
+<input type="checkbox" class="survey-checkbox" name="meal-time" value="오후" id="time-pm">
+<label class="survey-checkbox-label" for="time-pm">오후</label>
+</div>
+<div class="survey-checkbox-item">
+<input type="checkbox" class="survey-checkbox" name="meal-time" value="저녁" id="time-dinner">
+<label class="survey-checkbox-label" for="time-dinner">저녁</label>
+</div>
+<div class="survey-checkbox-item">
+<input type="checkbox" class="survey-checkbox" name="meal-time" value="밤" id="time-night">
+<label class="survey-checkbox-label" for="time-night">밤</label>
+</div>
+</div>
+<div class="survey-question">당신은 음식 섭취 후 속쓰림, 더부룩함, 가스, 트림 등이 자주 발생하나요?</div>
+<div class="survey-radio-group">
+<div class="survey-radio-item">
+<input type="radio" class="survey-radio" name="digestion-issues" value="그렇다" id="digestion-yes">
+<label class="survey-radio-label" for="digestion-yes">그렇다</label>
+</div>
+<div class="survey-radio-item">
+<input type="radio" class="survey-radio" name="digestion-issues" value="그렇지않다" id="digestion-no">
+<label class="survey-radio-label" for="digestion-no">그렇지않다</label>
+</div>
+</div>
+<div class="survey-question">당신은 특별히 알러지 반응이 있는 음식이 있으신가요?</div>
+<input type="text" class="survey-input" id="allergy-food" placeholder="알러지가 있는 음식을 입력해주세요"> 알러지가 있다.
+<div class="survey-buttons">
+<button class="survey-btn survey-btn-close" onclick="closeHealthSurvey()">닫기</button>
+<button class="survey-btn survey-btn-prev" onclick="prevSurveyPage()">이전</button>
+<button class="survey-btn survey-btn-next" onclick="nextSurveyPage()">다음</button>
+</div>
+</div>
+<div class="survey-page" id="survey-page-5">
+<div class="survey-title">개인맞춤 영양설계를 위한</div>
+<div class="survey-subtitle">사전문진표</div>
+<div class="survey-question">당신은 과거에 영양제를 섭취해 봤거나 섭취하고 있나요?</div>
+<div class="survey-radio-group">
+<div class="survey-radio-item">
+<input type="radio" class="survey-radio" name="supplements" value="그렇다" id="supplements-yes">
+<label class="survey-radio-label" for="supplements-yes">그렇다</label>
+</div>
+<div class="survey-radio-item">
+<input type="radio" class="survey-radio" name="supplements" value="그렇지않다" id="supplements-no">
+<label class="survey-radio-label" for="supplements-no">그렇지않다</label>
+</div>
+</div>
+<div class="survey-question">당신은 독일피엠 제품을 섭취해 봤거나 섭취하고 있나요?</div>
+<div class="survey-radio-group">
+<div class="survey-radio-item">
+<input type="radio" class="survey-radio" name="pm-products" value="그렇다" id="pm-yes">
+<label class="survey-radio-label" for="pm-yes">그렇다</label>
+</div>
+<div class="survey-radio-item">
+<input type="radio" class="survey-radio" name="pm-products" value="그렇지않다" id="pm-no">
+<label class="survey-radio-label" for="pm-no">그렇지않다</label>
+</div>
+</div>
+<div class="survey-question">당신은 현재 영양제가 아닌 약을 섭취하고 계신가요?</div>
+<div class="survey-radio-group">
+<div class="survey-radio-item">
+<input type="radio" class="survey-radio" name="medication" value="섭취중이다" id="medication-yes">
+<label class="survey-radio-label" for="medication-yes">섭취중이다</label>
+</div>
+<div class="survey-radio-item">
+<input type="radio" class="survey-radio" name="medication" value="섭취중이 아니다" id="medication-no">
+<label class="survey-radio-label" for="medication-no">섭취중이 아니다</label>
+</div>
+</div>
+<div class="survey-question">당신은 지금까지 살면서 암에 걸린 적이 있나요?</div>
+<div class="survey-radio-group">
+<div class="survey-radio-item">
+<input type="radio" class="survey-radio" name="cancer-history" value="있다" id="cancer-yes">
+<label class="survey-radio-label" for="cancer-yes">있다</label>
+</div>
+<div class="survey-radio-item">
+<input type="radio" class="survey-radio" name="cancer-history" value="없다" id="cancer-no">
+<label class="survey-radio-label" for="cancer-no">없다</label>
+</div>
+</div>
+<div class="survey-buttons">
+<button class="survey-btn survey-btn-close" onclick="closeHealthSurvey()">닫기</button>
+<button class="survey-btn survey-btn-prev" onclick="prevSurveyPage()">이전</button>
+<button class="survey-btn survey-btn-next" onclick="nextSurveyPage()">다음</button>
+</div>
+</div>
+<div class="survey-page" id="survey-page-6">
+<div class="survey-title">개인맞춤 영양설계를 위한</div>
+<div class="survey-subtitle">사전문진표</div>
+<div class="survey-question">당신은 해독이란 것을 해본적이 있나요?</div>
+<div class="survey-radio-group">
+<div class="survey-radio-item">
+<input type="radio" class="survey-radio" name="detox-experience" value="있다" id="detox-yes">
+<label class="survey-radio-label" for="detox-yes">있다</label>
+</div>
+<div class="survey-radio-item">
+<input type="radio" class="survey-radio" name="detox-experience" value="없다" id="detox-no">
+<label class="survey-radio-label" for="detox-no">없다</label>
+</div>
+</div>
+<div class="survey-question">당신의 하루 평균 수면 시간은 몇 시간인가요?</div>
+<input type="number" class="survey-input" id="sleep-hours" placeholder="숫자만 입력해 주세요"> 시간
+<div class="survey-question">당신의 수면은 어떤가요?</div>
+<div class="survey-radio-group">
+<div class="survey-radio-item">
+<input type="radio" class="survey-radio" name="sleep-quality" value="잠들기 힘들다" id="sleep-hard">
+<label class="survey-radio-label" for="sleep-hard">잠들기 힘들다</label>
+</div>
+<div class="survey-radio-item">
+<input type="radio" class="survey-radio" name="sleep-quality" value="중간에 자주깬다" id="sleep-wake">
+<label class="survey-radio-label" for="sleep-wake">중간에 자주깬다</label>
+</div>
+<div class="survey-radio-item">
+<input type="radio" class="survey-radio" name="sleep-quality" value="잘잔다" id="sleep-good">
+<label class="survey-radio-label" for="sleep-good">잘잔다</label>
+</div>
+</div>
+<div class="survey-question">당신은 하루중 에너지가 가장 떨어지는 시간은 언제인가요?</div>
+<div class="survey-radio-group">
+<div class="survey-radio-item">
+<input type="radio" class="survey-radio" name="low-energy-time" value="아침" id="energy-morning">
+<label class="survey-radio-label" for="energy-morning">아침</label>
+</div>
+<div class="survey-radio-item">
+<input type="radio" class="survey-radio" name="low-energy-time" value="오전" id="energy-am">
+<label class="survey-radio-label" for="energy-am">오전</label>
+</div>
+<div class="survey-radio-item">
+<input type="radio" class="survey-radio" name="low-energy-time" value="오후" id="energy-pm">
+<label class="survey-radio-label" for="energy-pm">오후</label>
+</div>
+<div class="survey-radio-item">
+<input type="radio" class="survey-radio" name="low-energy-time" value="저녁" id="energy-evening">
+<label class="survey-radio-label" for="energy-evening">저녁</label>
+</div>
+<div class="survey-radio-item">
+<input type="radio" class="survey-radio" name="low-energy-time" value="식후" id="energy-after-meal">
+<label class="survey-radio-label" for="energy-after-meal">식후</label>
+</div>
+<div class="survey-radio-item">
+<input type="radio" class="survey-radio" name="low-energy-time" value="일정치않음" id="energy-irregular">
+<label class="survey-radio-label" for="energy-irregular">일정치않음</label>
+</div>
+</div>
+<div class="survey-buttons">
+<button class="survey-btn survey-btn-close" onclick="closeHealthSurvey()">닫기</button>
+<button class="survey-btn survey-btn-prev" onclick="prevSurveyPage()">이전</button>
+<button class="survey-btn survey-btn-next" onclick="nextSurveyPage()">다음</button>
+</div>
+</div>
+<div class="survey-page" id="survey-page-7">
+<div class="survey-title">개인맞춤 영양설계를 위한</div>
+<div class="survey-subtitle">사전문진표</div>
+<div class="survey-question">당신은 스트레스를 얼마나 느끼시나요?</div>
+<div class="survey-radio-group">
+<div class="survey-radio-item">
+<input type="radio" class="survey-radio" name="stress-level" value="거의없음" id="stress-none">
+<label class="survey-radio-label" for="stress-none">거의없음</label>
+</div>
+<div class="survey-radio-item">
+<input type="radio" class="survey-radio" name="stress-level" value="가끔" id="stress-sometimes">
+<label class="survey-radio-label" for="stress-sometimes">가끔</label>
+</div>
+<div class="survey-radio-item">
+<input type="radio" class="survey-radio" name="stress-level" value="자주" id="stress-often">
+<label class="survey-radio-label" for="stress-often">자주</label>
+</div>
+<div class="survey-radio-item">
+<input type="radio" class="survey-radio" name="stress-level" value="매우심함" id="stress-severe">
+<label class="survey-radio-label" for="stress-severe">매우심함</label>
+</div>
+</div>
+<div class="survey-question">당신은 아직 생리를 하시나요?</div>
+<div class="survey-radio-group">
+<div class="survey-radio-item">
+<input type="radio" class="survey-radio" name="menstruation" value="잘한다" id="menstruation-regular">
+<label class="survey-radio-label" for="menstruation-regular">잘한다</label>
+</div>
+<div class="survey-radio-item">
+<input type="radio" class="survey-radio" name="menstruation" value="불순하다" id="menstruation-irregular">
+<label class="survey-radio-label" for="menstruation-irregular">불순하다</label>
+</div>
+<div class="survey-radio-item">
+<input type="radio" class="survey-radio" name="menstruation" value="폐경이다" id="menstruation-menopause">
+<label class="survey-radio-label" for="menstruation-menopause">폐경이다</label>
+</div>
+<div class="survey-radio-item">
+<input type="radio" class="survey-radio" name="menstruation" value="폐경진행중이다" id="menstruation-premenopause">
+<label class="survey-radio-label" for="menstruation-premenopause">폐경진행중이다</label>
+</div>
+</div>
+<div class="survey-question">당신은 생리통 또는 생리전증상(PMS)은 있으신가요?</div>
+<div class="survey-radio-group">
+<div class="survey-radio-item">
+<input type="radio" class="survey-radio" name="pms" value="전혀없다" id="pms-none">
+<label class="survey-radio-label" for="pms-none">전혀없다</label>
+</div>
+<div class="survey-radio-item">
+<input type="radio" class="survey-radio" name="pms" value="가볍게 있다" id="pms-mild">
+<label class="survey-radio-label" for="pms-mild">가볍게 있다</label>
+</div>
+<div class="survey-radio-item">
+<input type="radio" class="survey-radio" name="pms" value="매우 심하다" id="pms-severe">
+<label class="survey-radio-label" for="pms-severe">매우 심하다</label>
+</div>
+</div>
+<div class="survey-question">당신은 지금 생활하면서 제일 불편한 점이 무엇인가요 이것만 좋아지면 좋겠다 라는 것을 적어주세요.</div>
+<textarea class="survey-input" id="main-concern" placeholder="가장 불편한 점이나 개선하고 싶은 것을 자유롭게 적어주세요" style="height: 80px; resize: vertical;"></textarea>
+<div class="survey-buttons">
+<button class="survey-btn survey-btn-close" onclick="closeHealthSurvey()">닫기</button>
+<button class="survey-btn survey-btn-prev" onclick="prevSurveyPage()">이전</button>
+<button class="survey-btn survey-btn-next" onclick="nextSurveyPage()">다음</button>
+</div>
+</div>
+<div class="survey-page" id="survey-page-8">
+<div class="survey-title">개인맞춤 영양설계를 위한</div>
+<div class="survey-subtitle">사전문진표</div>
+<div class="survey-question">당신의 이름은 무엇인가요?</div>
+<input type="text" class="survey-input" id="user-name" placeholder="이름을 입력해주세요">
+<div class="survey-question">당신이 연락받을 핸드폰 번호를 알려주세요?</div>
+<input type="tel" class="survey-input" id="user-phone" placeholder="010-0000-0000" value="010-">
+<div class="survey-question">당신은 이 문진표를 제출하고 상담받기를 원하시면 상담요청을 눌러주세요.</div>
+<div class="survey-buttons">
+<button class="survey-btn survey-btn-close" onclick="closeHealthSurvey()">닫기</button>
+<button class="survey-btn survey-btn-prev" onclick="prevSurveyPage()">이전</button>
+<button class="survey-btn survey-btn-next" onclick="submitSurvey()">상담요청</button>
+</div>
+</div>
+</div>
+</div>
+<div class="popup-overlay" id="popup-overlay" onclick="closePopup()">
+<div class="popup-content" onclick="event.stopPropagation()">
+<span class="popup-close" onclick="closePopup()">×</span>
+<img alt="이벤트 안내" class="popup-image" id="popup-image" src=""/>
+</div>
+</div>
+<div class="slide-popup-overlay" id="slide-overlay">
+<div class="slide-popup-content" onclick="event.stopPropagation()">
+<span class="slide-close" onclick="closeSlide()">×</span>
+<div class="slide-container">
+<div id="slide-images-container"></div>
+</div>
+<div class="slide-navigation-container">
+<div class="slide-nav-new" onclick="prevSlide()">‹</div>
+<div class="slide-indicator-new" id="slide-indicator">1 / 1</div>
+<div class="slide-nav-new" onclick="nextSlide()">›</div>
+</div>
+</div>
+</div>
+<div class="footer">
+독일피엠 프리미엄그룹<br/>
+독일피엠학교 @ 2025
+</div>
+
+<script>
+const PRODUCT_PRICES={
+"액티(스테비아)":{회원기준:{price:42600,point:32},"5+1 단품":{price:35500,point:24.2},"5+1 세트":{price:213000,point:145}},
+"액티(레몬라임)":{회원기준:{price:42600,point:32},"5+1 단품":{price:35500,point:24.2},"5+1 세트":{price:213000,point:145}},
+"액티(레몬그라스)":{회원기준:{price:42600,point:32},"5+1 단품":{price:35500,point:24.2},"5+1 세트":{price:213000,point:145}},
+"액티(피치 아이스티)":{회원기준:{price:42600,point:32},"5+1 단품":{price:35500,point:24.2},"5+1 세트":{price:213000,point:145}},
+"액티펀치":{회원기준:{price:42600,point:32},"5+1 단품":{price:35500,point:24},"5+1 세트":{price:213000,point:144}},
+"액티 투 고":{회원기준:{price:58000,point:12},"5+1 단품":{price:48333,point:9},"5+1 세트":{price:290000,point:54}},
+"피트니스 드링크":{회원기준:{price:59200,point:37},"5+1 단품":{price:49333,point:30},"5+1 세트":{price:296000,point:180}},
+"젤슈츠(오렌지)":{회원기준:{price:60600,point:40},"5+1 단품":{price:50500,point:30},"5+1 세트":{price:303000,point:180}},
+"젤슈츠(사과)":{회원기준:{price:60600,point:40},"5+1 단품":{price:50500,point:30},"5+1 세트":{price:303000,point:180}},
+"요거트 드링크":{회원기준:{price:37000,point:23},"5+1 단품":{price:30833,point:16.7},"5+1 세트":{price:185000,point:100}},
+"D-드링크":{회원기준:{price:46000,point:25},"5+1 단품":{price:38333,point:16.7},"5+1 세트":{price:230000,point:100}},
+"제너레이션":{회원기준:{price:120300,point:80},"5+1 단품":{price:100250,point:60},"5+1 세트":{price:601500,point:360}},
+"듀오":{회원기준:{price:84000,point:50},"5+1 단품":{price:70000,point:38.3},"5+1 세트":{price:420000,point:230}},
+"오메가3":{회원기준:{price:46600,point:26},"5+1 단품":{price:38833,point:19.5},"5+1 세트":{price:233000,point:117}},
+"큐10 플러스":{회원기준:{price:57600,point:26},"5+1 단품":{price:48000,point:19.5},"5+1 세트":{price:288000,point:117}},
+"뮤노겐":{회원기준:{price:73500,point:50},"5+1 단품":{price:61250,point:37.5},"5+1 세트":{price:367500,point:225}},
+"뷰티":{회원기준:{price:68400,point:40},"5+1 단품":{price:57000,point:31.7},"5+1 세트":{price:342000,point:190}},
+"C-밸런스":{회원기준:{price:54480,point:28},"5+1 단품":{price:45400,point:21},"5+1 세트":{price:272400,point:126}},
+"겔링핏":{회원기준:{price:84400,point:51},"5+1 단품":{price:70333,point:36.7},"5+1 세트":{price:422000,point:220}},
+"액티브 젤":{회원기준:{price:37000,point:23},"5+1 단품":{price:30833,point:16.7},"5+1 세트":{price:185000,point:100}},
+"맨플러스":{회원기준:{price:65800,point:40},"5+1 단품":{price:54833,point:30},"5+1 세트":{price:329000,point:180}},
+"허벌티":{회원기준:{price:16400,point:8},"5+1 단품":{price:13667,point:5.7},"5+1 세트":{price:82000,point:34}},
+"탑쉐이프":{회원기준:{price:120000,point:70},"5+1 단품":{price:100000,point:52.5},"5+1 세트":{price:600000,point:315}},
+"아이비5(IB5)":{회원기준:{price:36900,point:25},"5+1 단품":{price:30750,point:0},"5+1 세트":{price:184500,point:0}},
+"프로(망고)":{회원기준:{price:51000,point:20},"5+1 단품":{price:42500,point:16.7},"5+1 세트":{price:255000,point:100}},
+"프로(바닐라)":{회원기준:{price:51000,point:20},"5+1 단품":{price:42500,point:16.7},"5+1 세트":{price:255000,point:100}},
+"프로(베리)":{회원기준:{price:51000,point:20},"5+1 단품":{price:42500,point:16.7},"5+1 세트":{price:255000,point:100}},
+"프로(코코넛)":{회원기준:{price:51000,point:20},"5+1 단품":{price:42500,point:16.7},"5+1 세트":{price:255000,point:100}},
+"프로(초코릿무스)":{회원기준:{price:51000,point:20},"5+1 단품":{price:42500,point:16.7},"5+1 세트":{price:255000,point:100}},
+"웨이":{회원기준:{price:69900,point:25},"5+1 단품":{price:0,point:0},"5+1 세트":{price:0,point:0}},
+"주니어":{회원기준:{price:44400,point:25},"5+1 단품":{price:37000,point:0},"5+1 세트":{price:222000,point:0}},
+"맨 페이스":{회원기준:{price:37000,point:25},"5+1 단품":{price:30833,point:18.7},"5+1 세트":{price:185000,point:112}},
+"액티 세럼":{회원기준:{price:62800,point:40},"5+1 단품":{price:52333,point:30},"5+1 세트":{price:314000,point:180}},
+"브라이트닝 포에버":{회원기준:{price:75700,point:50},"5+1 단품":{price:63083,point:0},"5+1 세트":{price:378500,point:0}},
+"클렌징폼":{회원기준:{price:23000,point:10},"5+1 단품":{price:19167,point:0},"5+1 세트":{price:115000,point:0}},
+"밸런싱크림":{회원기준:{price:24600,point:12},"5+1 단품":{price:20500,point:0},"5+1 세트":{price:123000,point:0}},
+"필링마스크":{회원기준:{price:21600,point:10},"5+1 단품":{price:18000,point:0},"5+1 세트":{price:108000,point:0}},
+"영케어 세트":{회원기준:{price:62280,point:25},"5+1 단품":{price:51900,point:16.3},"5+1 세트":{price:311400,point:98}},
+"하이드레이팅 샷 마스크":{회원기준:{price:64800,point:40},"5+1 단품":{price:54000,point:33.3},"5+1 세트":{price:324000,point:200}},
+"브라이트닝 샷 마스크":{회원기준:{price:64800,point:40},"5+1 단품":{price:54000,point:33.3},"5+1 세트":{price:324000,point:200}},
+"요거트 메이커":{회원기준:{price:33000,point:0},"5+1 단품":{price:0,point:0},"5+1 세트":{price:0,point:0}},
+"티인퓨저":{회원기준:{price:7900,point:0},"5+1 단품":{price:0,point:0},"5+1 세트":{price:0,point:0}},
+"데모백":{회원기준:{price:39000,point:0},"5+1 단품":{price:0,point:0},"5+1 세트":{price:0,point:0}},
+"파워":{회원기준:{price:125000,point:89},오토십:{price:107987,point:86.5},BA:{price:93762,point:84},액션팩:{price:85948,point:84}},
+"리스":{회원기준:{price:33700,point:17},오토십:{price:29113,point:16.5},BA:{price:25278,point:16},액션팩:{price:23172,point:16}}
+};
+</script>
+
+<script>
+const IMG_BASE = 'https://res.cloudinary.com/dj2g9dtca/image/upload/c_auto,f_auto,q_auto/';
+
+let currentDropdown = null;
+let currentSlideIndex = 1;
+let totalSlides = 1;
+let currentSlideType = '';
+let currentProgramName = '';
+let selectedQuantity = null;
+let selectedPriceType = '회원기준';
+let alarmEnabled = false;
+let alarmInterval = null;
+let selectedAlarmSound = 'browser';
+let currentSurveyPage = 1;
+let totalSurveyPages = 8;
+let isLoggedIn = false;
+
+const MEMBER_LIST_URL = 'https://res.cloudinary.com/dj2g9dtca/raw/upload/member_list.txt';
+let memberDataCache = null;
+let memberDataCacheTime = 0;
+const CACHE_DURATION = 5 * 60 * 1000;
+
+const slideData = {
+    'ba-event': { count: 5, baseUrl: IMG_BASE + 'BA-event-' },
+    'special-event': { count: 3, baseUrl: IMG_BASE + 'special-event-' },
+    'monthly-plan': { count: 3, baseUrl: IMG_BASE + 'MonthlyPlan-' },
+    'warning': { count: 4, baseUrl: IMG_BASE + 'Warning-' },
+    'price': { count: 35, baseUrl: IMG_BASE + 'price-' },
+    'promotion': { count: 28, baseUrl: IMG_BASE + 'promotion-' },
+    'pro-intake': { count: 2, baseUrl: IMG_BASE + 'howtotake-07' }
+};
+
+function goToMain() {
+    const dropdowns = ['news', 'program', 'catalog', 'intake', 'order', 'group', 'alarm'];
+    dropdowns.forEach(dropdown => {
+        const element = document.getElementById(dropdown + '-dropdown');
+        if (element) element.classList.remove('show');
+    });
+    
+    closeAuthModal();
+    closeHealthSurvey();
+    closePopup();
+    closeSlide();
+    closeAlarmSoundModal();
+    
+    window.scrollTo({top: 0, behavior: 'smooth'});
+    currentDropdown = null;
+}
+
+function toggleDropdown(type) {
+    const dropdowns = ['news', 'program', 'catalog', 'intake', 'order', 'group', 'alarm'];
+    const targetDropdown = document.getElementById(type + '-dropdown');
+    
+    dropdowns.forEach(dropdown => {
+        if (dropdown !== type) {
+            const element = document.getElementById(dropdown + '-dropdown');
+            if (element) {
+                element.classList.remove('show');
+            }
+        }
+    });
+    
+    if (targetDropdown) {
+        if (currentDropdown === type && targetDropdown.classList.contains('show')) {
+            targetDropdown.classList.remove('show');
+            currentDropdown = null;
+        } else {
+            targetDropdown.classList.add('show');
+            currentDropdown = type;
+        }
+    }
+}
+
+function showImage(src, title) {
+    const popup = document.getElementById('popup-overlay');
+    const image = document.getElementById('popup-image');
+    image.src = src;
+    image.alt = title;
+    popup.style.display = 'flex';
+}
+
+function closePopup() {
+    document.getElementById('popup-overlay').style.display = 'none';
+}
+
+function showSlide(type, count) {
+    currentSlideType = type;
+    totalSlides = count;
+    currentSlideIndex = 1;
+    
+    const container = document.getElementById('slide-images-container');
+    container.innerHTML = '';
+    
+    const data = slideData[type];
+    if (data) {
+        for (let i = 1; i <= count; i++) {
+            const img = document.createElement('img');
+            img.className = 'slide-image' + (i === 1 ? ' active' : '');
+            img.alt = `${type} ${i}`;
+            
+            if (type === 'pro-intake') {
+                img.src = i === 1 ? 
+                    IMG_BASE + 'howtotake-07.png' :
+                    IMG_BASE + 'howtotake-071.png';
+            } else if (type === 'price' || type === 'promotion') {
+                img.src = `${data.baseUrl}${i < 10 ? '0' + i : i}.png`;
+            } else {
+                img.src = `${data.baseUrl}${i}.png`;
+            }
+            
+            container.appendChild(img);
+        }
+    }
+    
+    updateSlideIndicator();
+    document.getElementById('slide-overlay').style.display = 'flex';
+}
+
+function nextSlide() {
+    currentSlideIndex = currentSlideIndex >= totalSlides ? 1 : currentSlideIndex + 1;
+    updateSlideDisplay();
+}
+
+function prevSlide() {
+    currentSlideIndex = currentSlideIndex <= 1 ? totalSlides : currentSlideIndex - 1;
+    updateSlideDisplay();
+}
+
+function updateSlideDisplay() {
+    const images = document.querySelectorAll('.slide-image');
+    images.forEach((img, index) => {
+        img.classList.toggle('active', index === currentSlideIndex - 1);
+    });
+    updateSlideIndicator();
+}
+
+function updateSlideIndicator() {
+    document.getElementById('slide-indicator').textContent = `${currentSlideIndex} / ${totalSlides}`;
+}
+
+function closeSlide() {
+    document.getElementById('slide-overlay').style.display = 'none';
+}
+
+async function fetchMemberData() {
+    const now = new Date().getTime();
+    
+    if (memberDataCache && (now - memberDataCacheTime) < CACHE_DURATION) {
+        return memberDataCache;
+    }
+    
+    try {
+        const response = await fetch(`${MEMBER_LIST_URL}?t=${now}`);
+        if (!response.ok) throw new Error('회원정보를 불러올 수 없습니다.');
+        
+        const text = await response.text();
+        const memberData = {};
+        
+        text.split('\n')
+            .map(line => line.trim())
+            .filter(line => line.length > 0)
+            .forEach(line => {
+                const [id, password] = line.split(',');
+                if (id && password && /^\d{7,8}$/.test(id.trim())) {
+                    memberData[id.trim()] = password.trim();
+                }
+            });
+        
+        memberDataCache = memberData;
+        memberDataCacheTime = now;
+        return memberData;
+    } catch (error) {
+        console.error('회원정보 로딩 실패:', error);
+        throw new Error('회원정보를 불러올 수 없습니다. 네트워크 연결을 확인해주세요.');
+    }
+}
+
+function checkMemberAuth(itemName) {
+    currentProgramName = itemName;
+    if (isLoggedIn) {
+        showProgramContent(itemName);
+    } else {
+        showAuthModal();
+    }
+}
+
+function showAuthModal() {
+    const modal = document.getElementById('auth-modal');
+    const idInput = document.getElementById('member-id');
+    const passwordInput = document.getElementById('member-password');
+    const message = document.getElementById('auth-message');
+    
+    idInput.value = '';
+    passwordInput.value = '';
+    message.textContent = '';
+    modal.style.display = 'flex';
+    
+    setTimeout(() => idInput.focus(), 300);
+    
+    idInput.oninput = function() {
+        this.value = this.value.replace(/[^0-9]/g, '');
+        if (this.value.length > 8) {
+            this.value = this.value.slice(0, 8);
+        }
+    };
+    
+    idInput.onkeypress = function(e) {
+        if (e.key === 'Enter') passwordInput.focus();
+    };
+    
+    passwordInput.onkeypress = function(e) {
+        if (e.key === 'Enter') verifyMemberAuth();
+    };
+}
+
+async function verifyMemberAuth() {
+    const idInput = document.getElementById('member-id');
+    const passwordInput = document.getElementById('member-password');
+    const message = document.getElementById('auth-message');
+    const memberId = idInput.value.trim();
+    const memberPassword = passwordInput.value.trim();
+    
+    if (!memberId) {
+        message.textContent = '회원번호를 입력해주세요.';
+        message.className = 'auth-message auth-error';
+        idInput.focus();
+        return;
+    }
+    
+    if (memberId.length < 7 || memberId.length > 8) {
+        message.textContent = '회원번호는 7-8자리 숫자입니다.';
+        message.className = 'auth-message auth-error';
+        idInput.focus();
+        return;
+    }
+    
+    if (!memberPassword) {
+        message.textContent = '비밀번호를 입력해주세요.';
+        message.className = 'auth-message auth-error';
+        passwordInput.focus();
+        return;
+    }
+    
+    message.textContent = '인증 정보를 확인하고 있습니다...';
+    message.className = 'auth-message auth-loading';
+    
+    try {
+        const memberData = await fetchMemberData();
+        
+        if (memberData[memberId] && memberData[memberId] === memberPassword) {
+            message.textContent = '인증되었습니다! 잠시만 기다려주세요...';
+            message.className = 'auth-message auth-success';
+            
+            isLoggedIn = true;
+            updateAuthButton();
+            
+            setTimeout(() => {
+                closeAuthModal();
+                showProgramContent(currentProgramName);
+            }, 1000);
+        } else {
+            message.textContent = '회원번호 또는 비밀번호가 일치하지 않습니다.';
+            message.className = 'auth-message auth-error';
+            
+            setTimeout(() => {
+                message.textContent = '';
+                idInput.value = '';
+                passwordInput.value = '';
+                idInput.focus();
+            }, 3000);
+        }
+    } catch (error) {
+        message.textContent = '회원정보를 불러올 수 없습니다. 네트워크 연결을 확인해주세요.';
+        message.className = 'auth-message auth-error';
+        setTimeout(() => {
+            message.textContent = '';
+            idInput.focus();
+        }, 3000);
+    }
+}
+
+function closeAuthModal() {
+    document.getElementById('auth-modal').style.display = 'none';
+}
+
+function showProgramContent(programName) {
+    if (programName === '해독 프로그램') {
+        showImage(IMG_BASE + 'plan-dtox-01', '해독 프로그램 안내');
+    } else {
+        alert(`${programName} 콘텐츠에 접근하였습니다.`);
+    }
+}
+
+function handleAuthStatus() {
+    if (isLoggedIn) {
+        logout();
+    } else {
+        showAuthModal();
+    }
+}
+
+function logout() {
+    isLoggedIn = false;
+    updateAuthButton();
+    
+    const dropdowns = ['news', 'program', 'catalog', 'intake', 'order', 'group', 'alarm'];
+    dropdowns.forEach(dropdown => {
+        const element = document.getElementById(dropdown + '-dropdown');
+        if (element) element.classList.remove('show');
+    });
+    
+    closeAuthModal();
+    closeHealthSurvey();
+    closePopup();
+    closeSlide();
+    closeAlarmSoundModal();
+    
+    currentDropdown = null;
+    alert('로그아웃되었습니다.');
+}
+
+function updateAuthButton() {
+    const btn = document.getElementById('auth-status-btn');
+    if (isLoggedIn) {
+        btn.textContent = '로그아웃';
+        btn.className = 'auth-status-btn logout';
+    } else {
+        btn.textContent = '로그인';
+        btn.className = 'auth-status-btn';
+    }
+}
+
+function toggleQuantityDropdown() {
+    const dropdown = document.getElementById('quantity-dropdown');
+    dropdown.classList.toggle('show');
+}
+
+function selectQuantity(quantity) {
+    selectedQuantity = quantity;
+    document.getElementById('quantity-button').textContent = `수량: ${quantity}`;
+    document.getElementById('quantity-dropdown').classList.remove('show');
+    calculatePrice();
+}
+
+function selectPriceType(priceType) {
+    document.querySelectorAll('.price-button').forEach(btn => {
+        btn.classList.remove('selected');
+    });
+    event.target.classList.add('selected');
+    selectedPriceType = priceType;
+    calculatePrice();
+}
+
+function calculatePrice() {
+    const productSelect = document.getElementById('product-select');
+    const selectedProduct = productSelect.value;
+    const subtotalDisplay = document.getElementById('subtotal-display');
+
+    if (selectedProduct && selectedQuantity && selectedPriceType) {
+        const productData = PRODUCT_PRICES[selectedProduct];
+
+        if (productData && productData[selectedPriceType]) {
+            const unitPrice = productData[selectedPriceType].price;
+            const total = unitPrice * selectedQuantity;
+            subtotalDisplay.textContent = `${total.toLocaleString()}원`;
+        } else {
+            subtotalDisplay.textContent = '해당 가격 없음';
+            alert("선택한 옵션에 대한 가격 정보가 없습니다.");
+        }
+    } else {
+        subtotalDisplay.textContent = '소계';
+    }
+}
+
+function calculatePoints(price) {
+    return Math.floor(price / 1000);
+}
+function registerOrder() {
+    const productSelect = document.getElementById('product-select');
+    const selectedProduct = productSelect.value;
+    const orderTextbox = document.getElementById('order-textbox');
+    
+    if (!selectedProduct || !selectedQuantity || !selectedPriceType) {
+        alert('제품, 수량, 가격기준을 모두 선택해주세요.');
+        return;
+    }
+    
+    const productData = PRODUCT_PRICES[selectedProduct];
+    if (!productData || !productData[selectedPriceType]) {
+        alert('선택한 제품에 해당 가격기준이 없습니다.');
+        return;
+    }
+    
+const unitPrice = productData[selectedPriceType].price;
+const unitPoint = productData[selectedPriceType].point;
+const pointIncludeChecked = document.getElementById('point-include-checkbox').checked;
+
+// 디버깅용 코드를 여기에 추가
+console.log('selectedProduct:', selectedProduct);
+console.log('selectedPriceType:', selectedPriceType);
+console.log('unitPoint:', unitPoint);
+console.log('pointIncludeChecked:', pointIncludeChecked);
+
+const total = unitPrice * selectedQuantity;
+const totalPoints = unitPoint * selectedQuantity;
+let orderLine = `${selectedProduct} (${selectedPriceType}) ${unitPrice.toLocaleString()} x ${selectedQuantity} = ${total.toLocaleString()}원`;
+
+if (pointIncludeChecked) {
+    orderLine += `\n-----------------------------------------------------\n${selectedProduct} (${selectedPriceType}) ${unitPoint} x ${selectedQuantity} = ${totalPoints} 포인트`;
+}
+    
+    if (orderTextbox.value) {
+        orderTextbox.value += '\n' + orderLine;
+    } else {
+        orderTextbox.value = orderLine;
+    }
+    
+    productSelect.value = '';
+    selectedQuantity = null;
+    selectedPriceType = '회원기준';
+    document.getElementById('quantity-button').textContent = '수량';
+    document.querySelectorAll('.price-button').forEach(btn => {
+        btn.classList.remove('selected');
+    });
+    document.getElementById('subtotal-display').textContent = '소계';
+}
+
+function calculateAndCopy() {
+    const orderTextbox = document.getElementById('order-textbox');
+    const memoTextbox = document.getElementById('memo-textbox');
+    
+    if (!orderTextbox.value.trim()) {
+        alert('등록된 주문이 없습니다.');
+        return;
+    }
+    
+const lines = orderTextbox.value.split('\n');
+let total = 0;
+let totalPoints = 0;
+let hasPointItems = false;
+
+lines.forEach(line => {
+    const priceMatch = line.match(/= ([\d,]+)원/);
+    const pointMatch = line.match(/= ([\d,]+) 포인트/);
+    
+    if (priceMatch) {
+        const amount = parseInt(priceMatch[1].replace(/,/g, ''));
+        total += amount;
+    } else if (pointMatch) {
+        const points = parseInt(pointMatch[1].replace(/,/g, ''));
+        totalPoints += points;
+        hasPointItems = true;
+    }
+});
+
+if (total === 0 && !hasPointItems) {
+    alert('계산할 금액이 없습니다.');
+    return;
+}
+
+const memoContent = memoTextbox.value.trim();
+let finalContent = orderTextbox.value;
+
+if (hasPointItems && totalPoints > 0) {
+    // 포인트 라인들만 추출
+    const pointLines = lines.filter(line => line.includes('포인트'));
+    const pointSection = pointLines.join('\n');
+    
+    finalContent += `\n\n합계 = ${total.toLocaleString()}원\n[입금계좌안내] \n카카오뱅크/김희진 3333-12-564789\n-----------------------------------------------------\n${pointSection}\n\n합계 = ${totalPoints} 포인트`;
+} else {
+    finalContent += '\n\n합계 = ' + total.toLocaleString() + '원';
+}
+
+    orderTextbox.value = finalContent;
+    
+if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(finalContent).then(() => {
+        alert('정산 완료! 전체 내용이 클립보드에 복사되었습니다.');
+    }).catch(() => {
+        fallbackCopy(finalContent, orderTextbox);
+    });
+} else {
+    fallbackCopy(finalContent, orderTextbox);
+}
+
+function fallbackCopy(content, textbox) {
+    textbox.select();
+    try {
+        document.execCommand('copy');
+        alert('정산 완료! 전체 내용이 클립보드에 복사되었습니다.');
+    } catch (error) {
+        alert('정산 완료! 텍스트가 선택되었습니다. Ctrl+C로 복사해주세요.');
+    }
+}
+
+}
+
+function resetOrderList() {
+    document.getElementById('order-textbox').value = '';
+    alert('목록이 초기화되었습니다.');
+}
+
+function toggleAlarm(state) {
+    const onBtn = document.getElementById('alarm-on-btn');
+    const offBtn = document.getElementById('alarm-off-btn');
+    
+    if (state === 'on') {
+        alarmEnabled = true;
+        onBtn.classList.add('active-on');
+        offBtn.classList.remove('active-off');
+        startAlarmCheck();
+    } else {
+        alarmEnabled = false;
+        offBtn.classList.add('active-off');
+        onBtn.classList.remove('active-on');
+        stopAlarmCheck();
+    }
+}
+
+function startAlarmCheck() {
+    if (alarmInterval) clearInterval(alarmInterval);
+    alarmInterval = setInterval(checkAlarmTime, 60000);
+}
+
+function stopAlarmCheck() {
+    if (alarmInterval) {
+        clearInterval(alarmInterval);
+        alarmInterval = null;
+    }
+}
+
+function checkAlarmTime() {
+    if (!alarmEnabled) return;
+    
+    const now = new Date();
+    const currentHour = now.getHours();
+    const currentMinute = now.getMinutes();
+    
+    const alarmRows = document.querySelectorAll('.alarm-row');
+    
+    alarmRows.forEach(row => {
+        const periodSelect = row.querySelector('.alarm-select:nth-child(1)').value;
+        const hourSelect = row.querySelector('.alarm-select:nth-child(2)').value;
+        const minuteSelect = row.querySelector('.alarm-select:nth-child(3)').value;
+        const memoInput = row.querySelector('.alarm-input').value;
+        
+        if (periodSelect && hourSelect && minuteSelect) {
+            let alarmHour = parseInt(hourSelect);
+            if (periodSelect === '오후' && alarmHour !== 12) alarmHour += 12;
+            if (periodSelect === '오전' && alarmHour === 12) alarmHour = 0;
+            
+            const alarmMinute = parseInt(minuteSelect);
+            
+            if (currentHour === alarmHour && currentMinute === alarmMinute) {
+                triggerAlarm(memoInput || '알람 시간입니다!');
+            }
+        }
+    });
+}
+
+function triggerAlarm(message) {
+    playAlarmSound();
+    
+    if ('Notification' in window) {
+        if (Notification.permission === 'granted') {
+            new Notification('독일피엠학교 알람', {
+                body: message,
+                icon: '/favicon.ico'
+            });
+        } else if (Notification.permission !== 'denied') {
+            Notification.requestPermission().then(permission => {
+                if (permission === 'granted') {
+                    new Notification('독일피엠학교 알람', {
+                        body: message,
+                        icon: '/favicon.ico'
+                    });
+                }
+            });
+        }
+    }
+    
+    if ('vibrate' in navigator) {
+        navigator.vibrate([500, 200, 500, 200, 500]);
+    }
+}
+
+function playAlarmSound() {
+    try {
+        const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        
+        if (selectedAlarmSound === 'beep') {
+            const oscillator = audioContext.createOscillator();
+            const gainNode = audioContext.createGain();
+            
+            oscillator.connect(gainNode);
+            gainNode.connect(audioContext.destination);
+            
+            oscillator.frequency.setValueAtTime(800, audioContext.currentTime);
+            gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.5);
+            
+            oscillator.start(audioContext.currentTime);
+            oscillator.stop(audioContext.currentTime + 0.5);
+        } else if (selectedAlarmSound === 'bell') {
+            for (let i = 0; i < 3; i++) {
+                setTimeout(() => {
+                    const oscillator = audioContext.createOscillator();
+                    const gainNode = audioContext.createGain();
+                    
+                    oscillator.connect(gainNode);
+                    gainNode.connect(audioContext.destination);
+                    
+                    oscillator.frequency.setValueAtTime(1000, audioContext.currentTime);
+                    gainNode.gain.setValueAtTime(0.2, audioContext.currentTime);
+                    gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.3);
+                    
+                    oscillator.start(audioContext.currentTime);
+                    oscillator.stop(audioContext.currentTime + 0.3);
+                }, i * 400);
+            }
+        }
+    } catch (error) {
+        console.log('알람음 재생 실패:', error);
+    }
+}
+
+function showAlarmSoundModal() {
+    document.getElementById('alarm-sound-modal').style.display = 'flex';
+}
+
+function closeAlarmSoundModal() {
+    document.getElementById('alarm-sound-modal').style.display = 'none';
+}
+
+function previewAlarmSound() {
+    const selected = document.querySelector('input[name="alarm-sound"]:checked').value;
+    selectedAlarmSound = selected;
+    playAlarmSound();
+}
+
+function confirmAlarmSound() {
+    const selected = document.querySelector('input[name="alarm-sound"]:checked').value;
+    selectedAlarmSound = selected;
+    alert('알람음이 설정되었습니다.');
+    closeAlarmSoundModal();
+}
+
+function addAlarmRow() {
+    const container = document.getElementById('alarm-rows-container');
+    const newRow = document.createElement('div');
+    newRow.className = 'alarm-row';
+    newRow.innerHTML = `
+        <select class="alarm-select">
+            <option value="오전" selected>오전</option>
+            <option value="오후">오후</option>
+        </select>
+        <select class="alarm-select">
+            <option value="">시간</option>
+            <option value="1시">1시</option>
+            <option value="2시">2시</option>
+            <option value="3시">3시</option>
+            <option value="4시">4시</option>
+            <option value="5시">5시</option>
+            <option value="6시">6시</option>
+            <option value="7시" selected>7시</option>
+            <option value="8시">8시</option>
+            <option value="9시">9시</option>
+            <option value="10시">10시</option>
+            <option value="11시">11시</option>
+            <option value="12시">12시</option>
+        </select>
+        <select class="alarm-select">
+            <option value="">분</option>
+            <option value="00분" selected>00분</option>
+            <option value="10분">10분</option>
+            <option value="20분">20분</option>
+            <option value="30분">30분</option>
+            <option value="40분">40분</option>
+            <option value="50분">50분</option>
+        </select>
+        <input type="text" class="alarm-input" placeholder="제품명 및 메모">
+    `;
+    container.appendChild(newRow);
+}
+
+function showHealthSurvey() {
+    currentSurveyPage = 1;
+    updateSurveyPageDisplay();
+    document.getElementById('health-survey-modal').style.display = 'flex';
+}
+
+function closeHealthSurvey() {
+    document.getElementById('health-survey-modal').style.display = 'none';
+}
+
+function nextSurveyPage() {
+    if (currentSurveyPage < totalSurveyPages) {
+        currentSurveyPage++;
+        updateSurveyPageDisplay();
+    }
+}
+
+function prevSurveyPage() {
+    if (currentSurveyPage > 1) {
+        currentSurveyPage--;
+        updateSurveyPageDisplay();
+    }
+}
+
+function updateSurveyPageDisplay() {
+    for (let i = 1; i <= totalSurveyPages; i++) {
+        const page = document.getElementById(`survey-page-${i}`);
+        if (page) {
+            page.classList.toggle('active', i === currentSurveyPage);
+        }
+    }
+    
+    const prevBtn = document.querySelector('.survey-btn-prev');
+    const nextBtn = document.querySelector('.survey-btn-next');
+    
+    if (prevBtn) prevBtn.disabled = currentSurveyPage === 1;
+    if (nextBtn) {
+        if (currentSurveyPage === totalSurveyPages) {
+            nextBtn.textContent = '상담요청';
+        } else {
+            nextBtn.textContent = '다음';
+        }
+    }
+}
+
+function submitSurvey() {
+    alert('문진표가 완료되었습니다. 상담 요청이 접수되었습니다. 감사합니다!');
+    closeHealthSurvey();
+}
+
+document.addEventListener('click', function(event) {
+    const menuContainer = document.querySelector('.menu-container');
+    const authModal = document.getElementById('auth-modal');
+    const quantityDropdown = document.getElementById('quantity-dropdown');
+    const alarmSoundModal = document.getElementById('alarm-sound-modal');
+    
+    if (!menuContainer.contains(event.target) && !authModal.contains(event.target) && !alarmSoundModal.contains(event.target)) {
+        const dropdowns = ['news', 'program', 'catalog', 'intake', 'order', 'group', 'alarm'];
+        dropdowns.forEach(dropdown => {
+            const element = document.getElementById(dropdown + '-dropdown');
+            if (element) {
+                element.classList.remove('show');
+            }
+        });
+        currentDropdown = null;
+    }
+    
+    if (!event.target.closest('#quantity-button') && !quantityDropdown.contains(event.target)) {
+        quantityDropdown.classList.remove('show');
+    }
+});
+
+window.addEventListener('load', function() {
+    updateAuthButton();
+    // 회원기준 버튼을 기본 선택 상태로 설정
+    document.querySelector('.price-button').classList.add('selected');
+});
+</script>
+
+</body>
+</html>
