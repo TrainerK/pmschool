@@ -225,11 +225,11 @@ body{padding:15px 5px!important}
 <div class="news-item">공지사항</div>
 <div class="news-item" onclick="showImage(IMG_BASE + 'card-1.jpg', '카드 무이자 할부 안내')">이달의 카드 무이자</div>
 <div class="news-item" onclick="showSlide('BA', 4)">이달의 BA 행사</div>
-<div class="news-item" onclick="showSlide('ba-event', 10)">이달의 BA 이벤트</div>
+<div class="news-item" onclick="showSlide('Ba-event', 10)">이달의 BA 이벤트</div>
 <div class="news-item" onclick="showImage(IMG_BASE + 'month-event-1.jpg', '월말 이벤트 안내')">이달의 월말 이벤트</div>
 <div class="news-item" onclick="showSlide('special-event', 3)">이달의 특별 이벤트</div>
 <div class="news-item" onclick="showSlide('monthly-plan', 3)">이달의 본사 일정</div>
-<div class="news-item" onclick="showSlide('warning', 4)">규정위반 조치안내</div>
+<div class="news-item" onclick="showSlide('Warning', 4)">규정위반 조치안내</div>
 <div class="news-item news-item-full" onclick="showImage(IMG_BASE + 'branch-1.jpg', '독일피엠 전국지사 및 반품처')">독일피엠 전국지사 및 반품처</div>
 </div>
 </div>
@@ -1132,14 +1132,14 @@ let memberDataCacheTime = 0;
 const CACHE_DURATION = 5 * 60 * 1000;
 
 const slideData = {
-    'BA': { count: 4, baseUrl: IMG_BASE + 'BA-' },
-    'ba-event': { count: 10, baseUrl: IMG_BASE + 'BA-event-' },
-    'special-event': { count: 3, baseUrl: IMG_BASE + 'special-event-' },
-    'monthly-plan': { count: 3, baseUrl: IMG_BASE + 'MonthlyPlan-' },
-    'warning': { count: 4, baseUrl: IMG_BASE + 'Warning-' },
-    'price': { count: 35, baseUrl: IMG_BASE + 'price-' },
-    'promotion': { count: 28, baseUrl: IMG_BASE + 'promotion-' },
-    'howtotake': { count: 21, baseUrl: IMG_BASE + 'howtotake-' }
+    'BA': { count: 4, baseUrl: IMG_BASE + 'BA-', extension: 'jpg' },
+    'Ba-event': { count: 10, baseUrl: IMG_BASE + 'BA-event-', extension: 'jpg' },
+    'special-event': { count: 3, baseUrl: IMG_BASE + 'special-event-', extension: 'jpg' },
+    'monthly-plan': { count: 3, baseUrl: IMG_BASE + 'MonthlyPlan-', extension: 'jpg' },
+    'Warning': { count: 4, baseUrl: IMG_BASE + 'Warning-', extension: 'jpg' },
+    'price': { count: 35, baseUrl: IMG_BASE + 'price-', extension: 'png' },
+    'promotion': { count: 28, baseUrl: IMG_BASE + 'promotion-', extension: 'png' },
+    'howtotake': { count: 21, baseUrl: IMG_BASE + 'howtotake-', extension: 'png' },
 };
 
 function goToMain() {
@@ -1228,9 +1228,9 @@ if (type === 'pro-intake') {
         IMG_BASE + 'howtotake-07.png' :
         IMG_BASE + 'howtotake-08.png';            
             } else if (type === 'price' || type === 'promotion' || type === 'howtotake') {
-                img.src = `${data.baseUrl}${i < 10 ? '0' + i : i}.png`;
+                img.src = `${data.baseUrl}${i < 10 ? '0' + i : i}.${data.extension}`;
             } else {
-                img.src = `${data.baseUrl}${i}.png`;
+                img.src = `${data.baseUrl}${i}.${data.extension}`;
             }
             
             container.appendChild(img);
