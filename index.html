@@ -110,7 +110,8 @@ body{background:var(--primary-bg)!important;color:var(--primary-text);font-famil
 .slide-close {
     position: absolute;
     bottom: -5px;
-    left: 10px;
+    left: auto;     /* left 해제 */
+    right: 10px;    /* 우측에서 10px */
     color: var(--primary-text);
     font-size: 30px;
     cursor: pointer;
@@ -217,7 +218,7 @@ body{padding:15px 5px!important}
 .header h2{font-size:28px!important}
 .button-row{gap:6px;margin-bottom:6px}
 .popup-close{top:-35px;right:-5px;font-size:25px;width:35px;height:35px}
-.slide-close{bottom:-10px;left:5px;font-size:25px;width:45px;height:45px}
+.slide-close{bottom:-10px;left:auto;right:5px;font-size:25px;width:45px;height:45px}
 .slide-navigation-container{gap:15px;margin-top:15px}
 .slide-nav-new{width:35px;height:35px;font-size:16px}
 .slide-indicator-new{font-size:14px;padding:6px 12px}
