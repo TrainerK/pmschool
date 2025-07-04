@@ -1283,10 +1283,6 @@ async function showSlide(type, maxCount = 20) {
     document.getElementById('slide-overlay').style.display = 'flex';
 }
     
-    updateSlideIndicator();
-    document.getElementById('slide-overlay').style.display = 'flex';
-}
-
 function nextSlide() {
     currentSlideIndex = currentSlideIndex >= totalSlides ? 1 : currentSlideIndex + 1;
     updateSlideDisplay();
