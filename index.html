@@ -107,8 +107,33 @@ body{background:var(--primary-bg)!important;color:var(--primary-text);font-famil
 .slide-nav-new:hover{background:rgba(255,255,255,0.2)}
 .slide-indicator-new{color:var(--primary-text);font-size:16px;font-weight:bold;background:rgba(0,0,0,0.7);padding:8px 16px;border-radius:20px;border:1px solid var(--primary-text);min-width:60px;text-align:center}
 .popup-close,.slide-close{position:absolute;top:-40px;right:-10px;color:var(--primary-text);font-size:30px;cursor:pointer;background:rgba(0,0,0,0.7);border-radius:50%;width:40px;height:40px;display:flex;align-items:center;justify-content:center;border:2px solid var(--primary-text)}
-.slide-close{top:-50px}
-.popup-close:hover,.slide-close:hover{background:rgba(255,255,255,0.2)}
+.slide-close {
+    position: absolute;
+    top: auto;  /* 기존 top 값 제거 */
+    bottom: 20px;  /* 하단에서 20px */
+    left: 20px;   /* 좌측에서 20px */
+    right: auto;  /* 기존 right 값 제거 */
+    color: var(--primary-text);
+    font-size: 30px;
+    cursor: pointer;
+    background: rgba(0,0,0,0.8);  /* 배경을 더 진하게 */
+    border-radius: 50%;
+    width: 50px;   /* 크기도 조금 더 크게 */
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid var(--primary-text);
+    z-index: 1001;  /* 다른 요소들보다 위에 */
+}
+
+.popup-close:hover {
+    background: rgba(255,255,255,0.2);
+}
+
+.slide-close:hover {
+    background: rgba(255,255,255,0.3);
+}
 .alarm-button-row{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:8px;margin-bottom:15px}
 .alarm-button{background:#555;color:var(--primary-text);padding:12px 8px;border-radius:var(--border-radius);border:none;font-size:14px;cursor:pointer;transition:var(--transition);text-align:center}
 .alarm-button:hover{background:var(--hover-bg)}
