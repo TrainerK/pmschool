@@ -253,11 +253,11 @@ body{padding:15px 5px!important}
 <div class="dropdown-content" id="news-dropdown">
 <div class="news-item">공지사항</div>
 <div class="news-item" onclick="showImage(IMG_BASE + 'card-1.jpg', '카드 무이자 할부 안내')">이달의 카드 무이자</div>
-<div class="news-item" onclick="showSlide('BA', 4)">이달의 BA 행사</div>
-<div class="news-item" onclick="showSlide('Ba-event', 10)">이달의 BA 이벤트</div>
-<div class="news-item" onclick="showSlide('special-event', 3)">이달의 기타 이벤트</div>
-<div class="news-item" onclick="showSlide('monthly-plan', 3)">이달의 본사 일정</div>
-<div class="news-item" onclick="showSlide('Warning', 4)">규정위반 조치안내</div>
+<div class="news-item" onclick="showSlide('BA')">이달의 BA 행사</div>
+<div class="news-item" onclick="showSlide('Ba-event')">이달의 BA 이벤트</div>
+<div class="news-item" onclick="showSlide('special-event')">이달의 기타 이벤트</div>
+<div class="news-item" onclick="showSlide('monthly-plan')">이달의 본사 일정</div>
+<div class="news-item" onclick="showSlide('Warning')">규정위반 조치안내</div>
 <div class="news-item news-item-full" onclick="showImage(IMG_BASE + 'branch-1.jpg', '독일피엠 전국지사 및 반품처')">독일피엠 전국지사 및 반품처</div>
 </div>
 </div>
@@ -373,9 +373,9 @@ body{padding:15px 5px!important}
 </div>
 <div class="dropdown-container">
 <div class="dropdown-content" id="catalog-dropdown">
-<div class="catalog-item" onclick="showSlide('price', 35)">가격정보 카탈로그</div>
-<div class="catalog-item" onclick="showSlide('promotion', 28)">프로모션 카탈로그</div>
-<div class="catalog-item" onclick="showSlide('howtotake', 21)">섭취방법 카달로그</div>
+<div class="catalog-item" onclick="showSlide('price')">가격정보 카탈로그</div>
+<div class="catalog-item" onclick="showSlide('promotion')">프로모션 카탈로그</div>
+<div class="catalog-item" onclick="showSlide('howtotake')">섭취방법 카달로그</div>
 <div class="catalog-item">효능정보 카탈로그</div>
 <div class="catalog-item" onclick="showImage(IMG_BASE + 'ratio-pvsr-1.jpg', '파워리스 비율계산표')">파워리스 비율계산표</div>
 </div>
@@ -1237,34 +1237,51 @@ function closePopup() {
     document.getElementById('popup-overlay').style.display = 'none';
 }
 
-function showSlide(type, count) {
+async function showSlide(type, maxCount = 20) {
     currentSlideType = type;
-    totalSlides = count;
     currentSlideIndex = 1;
     
     const container = document.getElementById('slide-images-container');
     container.innerHTML = '';
     
     const data = slideData[type];
-    if (data) {
-        for (let i = 1; i <= count; i++) {
-            const img = document.createElement('img');
-            img.className = 'slide-image' + (i === 1 ? ' active' : '');
-            img.alt = `${type} ${i}`;
-
-if (type === 'pro-intake') {
-    img.src = i === 1 ? 
-        IMG_BASE + 'howtotake-07.png' :
-        IMG_BASE + 'howtotake-08.png';            
-            } else if (type === 'price' || type === 'promotion' || type === 'howtotake') {
-                img.src = `${data.baseUrl}${i < 10 ? '0' + i : i}.${data.extension}`;
-            } else {
-                img.src = `${data.baseUrl}${i}.${data.extension}`;
-            }
-            
-            container.appendChild(img);
+    if (!data) return;
+    
+    let actualCount = 0;
+    const loadedImages = [];
+    
+    // 최대 maxCount까지 이미지 존재 여부 확인
+    for (let i = 1; i <= maxCount; i++) {
+        const img = new Image();
+        
+        const imageUrl = type === 'price' || type === 'promotion' || type === 'howtotake' 
+            ? `${data.baseUrl}${i < 10 ? '0' + i : i}.${data.extension}`
+            : `${data.baseUrl}${i}.${data.extension}`;
+        
+        try {
+            await new Promise((resolve, reject) => {
+                img.onload = () => {
+                    actualCount++;
+                    img.className = 'slide-image' + (actualCount === 1 ? ' active' : '');
+                    img.alt = `${type} ${i}`;
+                    loadedImages.push(img);
+                    resolve();
+                };
+                img.onerror = () => reject();
+                img.src = imageUrl;
+            });
+        } catch {
+            break; // 이미지가 없으면 중단
         }
     }
+    
+    // 로드된 이미지들을 컨테이너에 추가
+    loadedImages.forEach(img => container.appendChild(img));
+    
+    totalSlides = actualCount;
+    updateSlideIndicator();
+    document.getElementById('slide-overlay').style.display = 'flex';
+}
     
     updateSlideIndicator();
     document.getElementById('slide-overlay').style.display = 'flex';
