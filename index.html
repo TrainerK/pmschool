@@ -444,27 +444,28 @@ body{padding:15px 5px!important}
 function openAddressSearch() {
     new daum.Postcode({
         oncomplete: function(data) {
-            console.log('전체 데이터:', data); // 전체 객체 확인
-            
-            // 모든 속성 출력
-            for (let key in data) {
-                if (data[key] && data[key].toString().includes('20')) {
-                    console.log(key + ':', data[key]);
-                }
-            }
-            
             var sido = data.sido + ' ' + data.sigungu;
             var roadName = data.roadname;
             
-            // 가능한 모든 건물번호 필드 확인
-            if (data.buildingNum1) {
-                roadName += ' ' + data.buildingNum1;
-            } else if (data.buildingNum) {
-                roadName += ' ' + data.buildingNum;
-            } else if (data.roadAddressEnglish && data.roadAddressEnglish.includes('20')) {
-                // 영문 주소에서 숫자 추출
-                var match = data.roadAddressEnglish.match(/\d+/);
-                if (match) roadName += ' ' + match[0];
+            // roadAddress에서 건물번호 추출
+            if (data.roadAddress) {
+                // "전북특별자치도 전주시 덕진구 은평길 20" 에서 "은평길 20" 부분 추출
+                var addressParts = data.roadAddress.split(' ');
+                var roadPart = '';
+                var foundRoad = false;
+                
+                for (let i = 0; i < addressParts.length; i++) {
+                    if (addressParts[i] === data.roadname) {
+                        foundRoad = true;
+                        roadPart = addressParts[i];
+                        // 다음 부분이 숫자면 건물번호
+                        if (i + 1 < addressParts.length && /^\d+/.test(addressParts[i + 1])) {
+                            roadPart += ' ' + addressParts[i + 1];
+                        }
+                        break;
+                    }
+                }
+                roadName = roadPart || roadName;
             }
             
             document.getElementById("delivery-address").value = sido;
