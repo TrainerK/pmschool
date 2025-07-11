@@ -444,19 +444,27 @@ body{padding:15px 5px!important}
 function openAddressSearch() {
     new daum.Postcode({
         oncomplete: function(data) {
-            console.log('전체 데이터:', data); // 디버깅용
+            console.log('전체 데이터:', data); // 전체 객체 확인
+            
+            // 모든 속성 출력
+            for (let key in data) {
+                if (data[key] && data[key].toString().includes('20')) {
+                    console.log(key + ':', data[key]);
+                }
+            }
             
             var sido = data.sido + ' ' + data.sigungu;
             var roadName = data.roadname;
             
-            console.log('roadname:', data.roadname);
-            console.log('buildingNum1:', data.buildingNum1);
-            console.log('buildingNum:', data.buildingNum);
-            console.log('bname1:', data.bname1);
-            console.log('bname2:', data.bname2);
-            
+            // 가능한 모든 건물번호 필드 확인
             if (data.buildingNum1) {
                 roadName += ' ' + data.buildingNum1;
+            } else if (data.buildingNum) {
+                roadName += ' ' + data.buildingNum;
+            } else if (data.roadAddressEnglish && data.roadAddressEnglish.includes('20')) {
+                // 영문 주소에서 숫자 추출
+                var match = data.roadAddressEnglish.match(/\d+/);
+                if (match) roadName += ' ' + match[0];
             }
             
             document.getElementById("delivery-address").value = sido;
