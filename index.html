@@ -444,10 +444,19 @@ body{padding:15px 5px!important}
 function openAddressSearch() {
     new daum.Postcode({
         oncomplete: function(data) {
-            var sido = data.sido + ' ' + data.sigungu;  // 전라북도 전주시 덕진구
+            console.log('전체 데이터:', data); // 디버깅용
+            
+            var sido = data.sido + ' ' + data.sigungu;
             var roadName = data.roadname;
+            
+            console.log('roadname:', data.roadname);
+            console.log('buildingNum1:', data.buildingNum1);
+            console.log('buildingNum:', data.buildingNum);
+            console.log('bname1:', data.bname1);
+            console.log('bname2:', data.bname2);
+            
             if (data.buildingNum1) {
-                roadName += ' ' + data.buildingNum1;  // 은평길 20
+                roadName += ' ' + data.buildingNum1;
             }
             
             document.getElementById("delivery-address").value = sido;
